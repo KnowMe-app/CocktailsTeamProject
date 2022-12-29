@@ -1,2 +1,27 @@
-@import './common';
-@import './example';
+// Base
+@import './base/common';
+@import './base/reset';
+@import './base/vars';
+@import './base/container';
+
+body {
+  font-family: $primary-font;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $primary-text-color-light;
+  background-color: $primary-bg-color-light;
+}
+
+// Partials
+@import './header';
+@import './hero';
+@import './searching-grid';
+@import './no-results';
+@import './footer';
+@import './favor-ingredients';
+@import './favor-cocktails';
+@import './modal-cocktails';
+@import './modal-ingredients';
+@import './mob-menu';
