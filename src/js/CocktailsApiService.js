@@ -34,7 +34,7 @@ export async function searchIngredientsByName(searchParams) {
   }
 }
 
-export async function searchByIngredients() {
+export async function searchByIngredients(searchParams) {
   const url = `${BASE_URL}/${API_KEY}/filter.php?i=${searchParams}`;
   try {
     const response = await fetch(url);
@@ -45,7 +45,7 @@ export async function searchByIngredients() {
   }
 }
 
-export async function getIngredientById() {
+export async function getIngredientById(searchParams) {
   const url = `${BASE_URL}/${API_KEY}/lookup.php?iid=${searchParams}`;
   try {
     const response = await fetch(url);
@@ -56,7 +56,7 @@ export async function getIngredientById() {
   }
 }
 
-export async function getCocktailById() {
+export async function getCocktailById(searchParams) {
   const url = `${BASE_URL}/${API_KEY}/lookup.php?i=${searchParams}`;
   try {
     const response = await fetch(url);
