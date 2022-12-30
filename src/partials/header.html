@@ -1,1 +1,52 @@
-<span class="test1"> TEST-TEST-TEST</span>
+<div class="container">
+  <div class="header">
+    
+      <img
+        class="logo__header"
+        src="./images/Logo_cocktail1 (1).svg"
+      >
+   
+  <div class="navigation">
+    <p p class="navigation__list">Home</p>
+    <p class="navigation__list">Favorite</p>
+  </div>
+  <div class="search">
+    
+    <form class="search__form">
+      <button type="submit">
+        <svg class="search__icon"width="18" height="16">
+          <use
+            href="./images/icons.svg#icon-search"
+          ></use>
+        </svg>
+      </button>
+      <input type="text" placeholder="Search  |">
+      
+      </form>
+  </div>
+ <div class="theme">
+  <p class="theme__light">Light</p>
+  <label class="switch">
+    <input type="checkbox" onchange="changeTheme(this.checked)">
+    <span class="slider round"></span>
+  </label>
+  <p class="theme__dark">Dark</p>
+</div>
+<svg class="mobile__icon" width="30" height="16">
+    <use
+      class="icon__menu"
+      href="./images/icons.svg#icon-menu"
+    ></use>
+  </svg>
+
+  </div>
+</div>
+<script>
+  function changeTheme(isChecked) {
+    if (isChecked) {
+      document.body.setAttribute('dark', '');
+    } else {
+      document.body.removeAttribute('dark');
+    }
+  }
+</script>
