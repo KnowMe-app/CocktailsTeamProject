@@ -10,14 +10,15 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
-  color: $primary-text-color-light;
-  background-color: $primary-bg-color-light;
+  color: var(--var-primary-text-color);
+  background-color: var(--var-primary-bg-color);
 }
 
 // Partials
 @import './header';
 @import './hero';
 @import './searching-grid';
+@import './cards';
 @import './no-results';
 @import './footer';
 @import './favor-ingredients';
