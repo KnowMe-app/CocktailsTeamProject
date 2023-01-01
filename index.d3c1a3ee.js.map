@@ -1,0 +1,1 @@
+{"mappings":"oeAAAA,EAAA,S","sources":["src/index.js"],"sourcesContent":["import './js/CocktailsApiService';\nimport './js/randomCocktailsCards';\n"],"names":["parcelRequire"],"version":3,"file":"index.d3c1a3ee.js.map"}
