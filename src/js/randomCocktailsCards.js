@@ -1,10 +1,43 @@
 import { getRandomCocktail } from './CocktailsApiService';
 
 const markupCards = document.querySelector('.markup-cards');
+const mobilScreen = window.matchMedia('(max-width: 767px)');
+const desctopScreen = window.matchMedia('(min-width: 1280px)');
+let countImg = 6;
+
+console.log("mobil:", mobilScreen.matches, "descktop:", desctopScreen.matches);
+
 randomCocktailsCards();
 
 function randomCocktailsCards() {
-    for (let i = 1; i <= 9; i++) {
+    // mobilScreen.onchange = (event) => {
+    //     if (event.matches) {
+    //         countImg = 3;
+    //         console.log("listener mobil");
+    //     }
+    // }
+    // desctopScreen.onchange = (event) => {
+    //     if (event.matches) {
+    //         countImg = 9;
+    //         console.log("listener mobil");
+    //     }
+    //     }
+    
+    if (mobilScreen.matches) { countImg = 3; }
+    else if (desctopScreen.matches) { countImg = 9; }
+    // else { countImg = 6; }
+
+    
+    // mobilScreen.addEventListener("change", (event) => {
+    //     if (event.matches) { countImg = 3; }
+    //     else desctopScreen.addEventListener("change", (event) => {
+    //         if (event.matches) { countImg = 9; }
+    //     })
+    // })
+
+
+
+    for (let i = 1; i <= countImg; i++) {
         getRandomCocktail()
         .then(data => {
             const drink = data.drinks;
@@ -14,14 +47,9 @@ function randomCocktailsCards() {
 }
 
 export function markupCard(dataForCard, position) {
-    for (const item of dataForCard) {
+        for (const item of dataForCard) {
                 const htmlCards = `<li class="card">
-                                    <picture>
-                                    <source srcset="${item.strDrinkThumb}" media="(min-width: 480px)" />
-                                    <source srcset="" media="(min-width: 768px)" />
-                                    <source srcset="" media="(min-width: 1200px)" />
                                     <img src="${item.strDrinkThumb}" alt="${item.strDrink}" />
-                                    </picture>
                                     <div class="card__info">
                                     <p class="card__title">${item.strDrink}</p>
                                     <div class="card__btns">
@@ -38,3 +66,5 @@ export function markupCard(dataForCard, position) {
                 position.innerHTML += htmlCards;
     }
 }
+
+
