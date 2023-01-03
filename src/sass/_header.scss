@@ -50,7 +50,7 @@ body {
     top: 33px;
   right: 32px;
   }
-  @media screen and(min-width: 768px) {
+  @media screen and(min-width: 1280px) {
     display: none;
   }
 }
@@ -59,20 +59,17 @@ body {
   margin-top: 39px;
   margin-left: 43px;
   gap: 60px;
-
   font-family: 'Poppins';
 font-style: normal;
 font-weight: 400;
 font-size: 18px;
 line-height: 24px;
 letter-spacing: 0.02em;
-color: var(--var-primary-text-color);
-
-@media screen and(max-width: 768px) {
+@media screen and(max-width: 1279px) {
   display: none,
 }
 }
-
+.navigation a{color: var(--var-primary-text-color)}
  
   .theme{
     display: flex;
@@ -82,7 +79,7 @@ color: var(--var-primary-text-color);
     position: absolute;
     top: 20px;
     right: 20px;
-    @media screen and(max-width: 768px) {
+    @media screen and(max-width: 1279px) {
       display: none,
     }
   }
@@ -94,7 +91,7 @@ color: var(--var-primary-text-color);
     display: flex;
     margin-left: 150px;
     padding-top: 20px;
-    @media screen and(max-width: 480px) {
+    @media screen and(max-width: 767px) {
       display: none,
     }
     
