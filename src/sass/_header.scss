@@ -13,8 +13,16 @@ body {
   background-color: var(--var-bgcolor);
   color: var(--var-fontcolor);
 }
-
-.header{
+// .header{
+//   background-color: aqua;
+//   position: fixed;
+//   width: 100%;
+//   z-index: 1000;
+// }
+.dark-tema{
+  color: var(--var-primary-text-color);
+}
+.content{
   // min-width: 320px;
     display: flex;
   //  align-items:baseline;

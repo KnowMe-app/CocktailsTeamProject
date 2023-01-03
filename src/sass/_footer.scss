@@ -1,5 +1,5 @@
 .cards__pagination {
-  background-color: var(--var-primary-bg-color);
+  // background-color: var(--var-primary-bg-color);
   padding: 45px 39px;
   font-family: $primary-font;
   font-weight: 400;
@@ -16,7 +16,7 @@
     justify-content: center;
 
     .pagination__arrow {
-      color: var(--var-primary-text-color);
+      // color: var(--var-primary-text-color);
       cursor: pointer;
 
       .svg-icon {
