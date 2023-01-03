@@ -1,0 +1,32 @@
+.modal {
+    display: none;
+    background: var(--var-primary-bg-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 99999;
+}
+.modal_vis {
+    display: block;
+}
+.body_block {
+    overflow: hidden;
+    margin-right: 17px;
+}
+#close_modal {
+    color: #000;
+    margin-top: 29px;
+    margin-right: 27px;
+    cursor: pointer;
+    position: absolute;
+}
+
+.modal_txt {
+  
+    background: #FFF;
+    padding: 30px;
+    margin: 100px auto;
+    max-width: 100vw;
+}

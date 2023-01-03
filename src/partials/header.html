@@ -1,6 +1,6 @@
-<section>
+<section class="header">
   <div class="container">
-  <div class="header">
+  <div class="content">
     
       <img
         class="logo__header"
@@ -8,8 +8,9 @@
       >
    
   <div class="navigation">
-    <p  class="navigation__home">Home</p>
-    <p class="navigation__favorite">Favorite</p>
+    <a class="navigation__home" href="./index.html">Home</a>
+    
+    <a class="navigation__favorite" href="./index.html">Favorite</a>
   </div>
   <div class="search">
     
@@ -34,13 +35,31 @@
   
   <p class="theme__dark">Dark</p>
 </div>
-<svg class="mobile__icon" width="30" height="16">
+<!-- mobile icon-->
+<button><svg class="mobile__icon open_modal" href="#open" width="30" height="16">
+  <use
+    class="icon__menu"
+    href="./images/icons.svg#icon-menu"
+  ></use>
+</svg></button>
+<div id="modal" class="modal bounceIn">
+  <svg class="mobile__icon open_modal" id="close_modal" href="#open" width="17" height="17">
     <use
       class="icon__menu"
-      href="./images/icons.svg#icon-menu"
+      href="./images/icons.svg#icon-vector-off"
     ></use>
   </svg>
-
+  <div class="theme">
+    <p class="theme__light">Light</p>
+    <label class="switch">
+      <input class="checkbox" type="checkbox" >
+      <span class="slider round"></span>
+    </label>
+    
+    <p class="theme__dark">Dark</p>
+  </div>
+  <div class="modal_txt">Текст в модальном окне</div>
+</div>
   </div>
 </div>
 
