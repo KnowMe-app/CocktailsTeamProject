@@ -51,7 +51,7 @@ export function markupCard(dataForCard, position) {
                 const htmlCards = `<li class="card">
                                     <img src="${item.strDrinkThumb}" alt="${item.strDrink}" />
                                     <div class="card__info">
-                                    <p class="card__title">${item.strDrink}</p>
+                                    <p class="card__title theme__dark">${item.strDrink}</p>
                                     <div class="card__btns">
                                         <button type="button" class="card__btn">Learn more</button>
                                         <button type="button" class="card__btn-add">

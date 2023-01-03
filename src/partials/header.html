@@ -1,4 +1,5 @@
-<div class="container">
+<section>
+  <div class="container">
   <div class="header">
     
       <img
@@ -7,8 +8,8 @@
       >
    
   <div class="navigation">
-    <p p class="navigation__list">Home</p>
-    <p class="navigation__list">Favorite</p>
+    <p  class="navigation__home">Home</p>
+    <p class="navigation__favorite">Favorite</p>
   </div>
   <div class="search">
     
@@ -27,9 +28,10 @@
  <div class="theme">
   <p class="theme__light">Light</p>
   <label class="switch">
-    <input type="checkbox" onchange="changeTheme(this.checked)">
+    <input class="checkbox" type="checkbox" >
     <span class="slider round"></span>
   </label>
+  
   <p class="theme__dark">Dark</p>
 </div>
 <svg class="mobile__icon" width="30" height="16">
@@ -41,12 +43,5 @@
 
   </div>
 </div>
-<script>
-  function changeTheme(isChecked) {
-    if (isChecked) {
-      document.body.setAttribute('dark', '');
-    } else {
-      document.body.removeAttribute('dark');
-    }
-  }
-</script>
+
+</section>
