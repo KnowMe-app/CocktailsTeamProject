@@ -1,5 +1,4 @@
 .cards__pagination {
-  background-color: var(--var-primary-bg-color);
   padding: 45px 39px;
   font-family: $primary-font;
   font-weight: 400;
@@ -15,33 +14,36 @@
     display: flex;
     justify-content: center;
 
-    .pagination__arrow {
+    .page__arrow {
       color: var(--var-primary-text-color);
       cursor: pointer;
+
+      &.disabled {
+        color: var(--var-primary-text-color-grey);
+      }
 
       .svg-icon {
         fill: currentColor;
       }
     }
 
-    .page-prev {
-      transform: rotate(90deg);
-      margin-right: 16px;
-    }
-
-    .page-next {
-      transform: rotate(-90deg);
-      margin-left: 16px;
-    }
-
-    .pagination__pages {
+    .pagination__controls {
       display: flex;
-      flex-direction: row;
       gap: 8px;
       margin: 0 auto;
 
       @media screen and(min-width: 768px) {
         gap: 12px;
+      }
+
+      .pagination__numbers {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+
+        @media screen and(min-width: 768px) {
+          gap: 12px;
+        }
       }
 
       .page__number {
@@ -59,24 +61,24 @@
           height: 40px;
         }
 
-        &.page__active {
+        &.page-active {
           background-color: var(--var-accent-color-lighter);
         }
-      }
-
-      .page__dots {
-        display: flex;
-        align-items: center;
-        font-weight: 700;
-        font-size: 16px;
-        color: var(--var-accent-color-lighter);
-        cursor: pointer;
       }
     }
   }
 }
 
-.footer {
-  height: 110px;
-  background-color: var(--var-accent-color);
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }

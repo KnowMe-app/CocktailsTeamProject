@@ -1,4 +1,5 @@
 import { getRandomCocktail } from './CocktailsApiService';
+import * as icons from '../images/icons.svg';
 
 const markupCards = document.querySelector('.markup-cards');
 const mobilScreen = window.matchMedia('(max-width: 767px)');
@@ -57,7 +58,7 @@ export function markupCard(dataForCard, position) {
                                         <button type="button" class="card__btn-add">
                                         Add to
                                         <svg class="card__icon" width="18" height="18">
-                                            <use href="./images/icons.svg#icon-Heart"></use>
+                                            <use href="${icons}#icon-Heart"></use>
                                         </svg>
                                         </button>
                                     </div>
