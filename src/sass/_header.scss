@@ -1,11 +1,11 @@
 :root {
-  --var-bgcolor: #fff;
-  --var-fontcolor: #000;
+  --var-bgcolor: var(--var-primary-bg-color);
+  --var-fontcolor:var(--var-primary-text-color) ;
 }
 
-[dark] {
-  --var-bgcolor: #202025;
-  --var-fontcolor: #eee;
+.dark {
+  --var-bgcolor: var(--var-primary-text-color);
+  --var-fontcolor: var(--var-accent-color);
  
 }
 
@@ -39,7 +39,7 @@ body {
 .search__icon{
   width: 18px;
   height:16px;
-  fill: #FD5103;
+  fill: var(--var-accent-color);
 }
 .mobile__icon{
   position: absolute;
@@ -66,7 +66,7 @@ font-weight: 400;
 font-size: 18px;
 line-height: 24px;
 letter-spacing: 0.02em;
-color: #202025;
+color: var(--var-primary-text-color);
 
 @media screen and(max-width: 768px) {
   display: none,
@@ -86,6 +86,9 @@ color: #202025;
       display: none,
     }
   }
+  .theme__light{
+    color: var(--var-accent-color);
+  }
   // 
   .search__form {
     display: flex;
@@ -99,23 +102,23 @@ color: #202025;
     }
     .searchTerm {
     width: 100px;
-    border: 1px solid #FD5103;
+    border: 1px solid var(--var-accent-color);
     border-right: none;
     height: 20px;
     border-radius: 5px 0 0 5px;
     outline: none;
     }
     .searchTerm:focus{
-    color: #FD5103;
+    color: var(--var-accent-color);
     }
     .searchButton {
       padding-top: 21px;
     width: 40px;
     height: 20px;
-    border: 1px solid #FD5103;
-    background: #ffffff;
+    border: 1px solid var(--var-accent-color);
+    background: var(--var-primary-bg-color);
     text-align: center;
-    color: #FD5103;
+    color: var(--var-accent-color);
     border-radius: 0 5px 5px 0;
     cursor: pointer;
     font-size: 20px;
@@ -144,9 +147,9 @@ color: #202025;
       left: 0;
       right: 0;
       bottom: 0;
-      border: 2px solid #FD5103;
+      border: 2px solid var(--var-accent-color);
   
-      background-color: #ffffff;
+      background-color: var(--var-primary-bg-color);
       -webkit-transition: .4s;
       transition: .4s;
     }
@@ -159,37 +162,37 @@ color: #202025;
       left: 4px;
       bottom: 2px;
       
-      background-color: white;
+      background-color: var(--var-primary-bg-color);
       -webkit-transition: .4s;
       transition: .4s;
     }
     
     input:checked + .slider {
-      background-color: #FD5103;
+      background-color: var(--var-accent-color);
     }
     input:checked + .theme__light{
-      color: #FD5103;
+      color: var(--var-accent-color);
     }
     
     input:focus + .slider {
-      box-shadow: 0 0 1px #FD5103;
+      box-shadow: 0 0 1px var(--var-accent-color);
     }
     
     input:checked + .slider:before {
       -webkit-transform: translateX(26px);
       -ms-transform: translateX(26px);
       transform: translateX(26px);
-      background-color: #fff;
+      background-color: var(--var-primary-bg-color);
       
     }
 
     .slider.round {
       border-radius: 34px;
-      background-color: #fff;
+      background-color: var(--var-primary-bg-color);
     }
     
     .slider.round:before {
-      background-color: #FD5103;
+      background-color: var(--var-accent-color);
       border-radius: 50%;
     }
     
@@ -199,19 +202,19 @@ color: #202025;
       
       height: 42px;
       padding-left: 50px;
-      border: 2px solid #FD5103;
+      border: 2px solid var(--var-accent-color);
       border-radius: 5px;
       outline: none;
-      background: #fff;
+      background: var(--var-primary-bg-color);
       color: #9E9C9C;
     }
     .search__form button {
       position: absolute; 
       width: 42px;
       height: 42px;
-      border: 2px solid #FD5103;
-      border-right: 1px solid #FD5103;
-      background: #ffffff;
+      border: 2px solid var(--var-accent-color);
+      border-right: 1px solid var(--var-accent-color);
+      background: var(--var-primary-bg-color);
       border-radius:5px 0 0 5px;
      
     }
