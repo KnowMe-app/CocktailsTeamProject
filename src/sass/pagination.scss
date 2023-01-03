@@ -17,7 +17,6 @@
     .page__arrow {
       color: var(--var-primary-text-color);
       cursor: pointer;
-      border: 1px solid var(--var-accent-color-lighter);
 
       &.disabled {
         color: var(--var-primary-text-color-grey);
