@@ -1,7 +1,10 @@
 import { searchCocktailsByLetter } from './CocktailsApiService';
 
 const searchListEl = document.querySelector('.hero__search-list');
-const cardsList = document.querySelector('.markup-cards');
+const cardsListEl = document.querySelector('.markup-cards');
+const paginationEl = document.querySelector('.cards__pagination');
+const cardsSectionEl = document.querySelector('.section-cards');
+const voidMarkup = document.querySelector('.void');
 
 searchListEl.addEventListener('click', onLetterClick);
 
@@ -13,12 +16,26 @@ function onLetterClick(event) {
 }
 
 function renderCards(cardsArray) {
-  let cardMarkup = [];
-  for (let i = 0; i < cardsArray.length; i += 1) {
-    if (i < 9) {
-      console.log(cardsArray[i].strDrink);
-      cardMarkup.push(`<li class="card">
-      <img src="${cardsArray[i].strDrinkThumb}" alt="${cardsArray[i].strDrink}" />
+  if (cardsArray === null) {
+    console.log('error');
+    if (!cardsSectionEl.classList.contains('is-hidden')) {
+      markupToggle();
+    }
+  } else {
+    if (cardsSectionEl.classList.contains('is-hidden')) {
+      markupToggle();
+      renderMarkup(cardsArray);
+    }
+    renderMarkup(cardsArray);
+  }
+
+  function renderMarkup(cardsArray) {
+    let cardMarkup = [];
+    for (let i = 0; i < cardsArray.length; i += 1) {
+      if (i < 9) {
+        console.log(cardsArray[i].strDrink);
+        cardMarkup.push(`<li class="card">
+      <img src="${cardsArray[i].strDrinkThumb}" loading="lazy" alt="${cardsArray[i].strDrink}" />
       <div class="card__info">
         <p class="card__title">${cardsArray[i].strDrink}</p>
         <div class="card__btns">
@@ -34,11 +51,16 @@ function renderCards(cardsArray) {
         </div>
       </div>
     </li>`);
+      }
     }
+    cardsListEl.innerHTML = cardMarkup.join('');
   }
 
-  cardsList.innerHTML = cardMarkup.join('');
-
+  function markupToggle() {
+    voidMarkup.classList.toggle('is-hidden');
+    cardsSectionEl.classList.toggle('is-hidden');
+    paginationEl.classList.toggle('is-hidden');
+  }
   // .map(
   //   cardObj => `<li class="card">
   //     <img src="${cardObj.strDrinkThumb}" alt="${cardObj.strDrink}" />
