@@ -78,4 +78,4 @@ export async function getRandomCocktail() {
   }
 }
 
-searchCocktailByName('margarita').then(data => console.log(data));
+// searchCocktailByName('margarita').then(data => console.log(data));
