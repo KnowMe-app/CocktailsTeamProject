@@ -1,0 +1,42 @@
+.void {
+  padding: 40px 0 60px 0;
+  @media screen and (min-width: 768px) {
+      padding: 124px 0 60px 0;
+  }
+    @media screen and (min-width: 1200px) {
+      padding: 171px 0 60px 0;
+    }
+
+  &__container {
+  }
+  &__title {
+    text-align: center;
+    max-width: 331px;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.91;
+    color: var(--var-primary-text-color);
+    margin: 0 auto 60px auto;
+    @media screen and (min-width: 768px) {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 1.31;
+    }
+      @media screen and (min-width: 1200px) {
+        font-size: 48px;
+        line-height: 1.5;
+        max-width: 493px;
+        margin: 0 auto 70px auto;
+     }
+  }
+  &__picture {
+  }
+  &__image {
+    margin: 0 auto;
+    width: 438px;
+    height: auto;
+    @media screen and (min-width: 768px) {
+        width: 345px;
+      }
+  }
+}
