@@ -1,5 +1,4 @@
-import { markupCard } from './randomCocktailsCards';
-import * as icons from '../images/icons.svg';
+import { markupCard, onMediaScreen } from './randomCocktailsCards';
 
 // Referencies
 const refs = {
@@ -10,24 +9,11 @@ const refs = {
   nextPageBtn: document.querySelector('.page-next'),
 };
 
-// Const variables
-let PAGE_LIMIT = 6;
+// Variables
 let currentPage;
+let PAGE_LIMIT = onMediaScreen();
 
-const mobileScreen = window.matchMedia('(max-width: 767px)');
-const desktopScreen = window.matchMedia('(min-width: 1280px)');
-
-function checkScreenWidth() {
-  if (mobileScreen.matches) {
-    PAGE_LIMIT = 3;
-  } else if (desktopScreen.matches) {
-    PAGE_LIMIT = 9;
-  }
-}
-// RENDER PAGE functions
 export function renderPage(drinks) {
-  checkScreenWidth();
-  console.log(PAGE_LIMIT);
   renderCards(drinks, 1);
   renderPaginationNumbers(drinks);
 
