@@ -8,14 +8,14 @@ const refs = {
 };
 
 const listModal = document.querySelector('.cocktails-modal__list');
-console.log(listModal)
+// console.log(listModal)
 const ing = document.querySelector('.ingredients-modal__container');
-console.log(listModal)
+// console.log(listModal)
 
 ing.addEventListener('click', onOpenClick)
 
 function onOpenClick(e) {
-    console.log(e.target)
+    // console.log(e.target)
 
     toggleShowModal()
     // clearGalleryList()

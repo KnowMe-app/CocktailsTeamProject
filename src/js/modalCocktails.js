@@ -22,7 +22,7 @@ function onClick(e) {
     if(e.target.classList.value !== 'card__btn') {
         return
     }
-    console.log(e.target)
+    // console.log(e.target)
 
     const liCard = document.querySelectorAll('.card__title');
 
@@ -33,8 +33,8 @@ function onClick(e) {
     }
     searchParams = element
     e.target = searchParams
-    console.log(searchParams)
-    console.log(e.target)
+    // console.log(searchParams)
+    // console.log(e.target)
 
     searchCocktailByName(searchParams).then(data => {
     const drink = data.drinks[0]
@@ -43,9 +43,7 @@ function onClick(e) {
     clearGalleryList()
     addToGallery(drink)
     closeModal()
-    
     })
-
 }
 
 function closeModal() {
