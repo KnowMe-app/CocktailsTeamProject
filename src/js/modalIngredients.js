@@ -1,91 +1,69 @@
-import { getIngredientById } from './CocktailsApiService';
+import { searchIngredientsByName } from './CocktailsApiService';
 import * as icons from '../images/icons.svg';
 
+    const cocktailsCard = document.querySelector('.cocktails-modal')
+    const ingredientsCard = document.querySelector('.ingredients-modal')
+    const modal = document.querySelector('[data-ingredients-modal]')
 
-export default function nnn(arr) {
-    const ingredientsList = document.querySelector('.cocktails-modal__list')
-    console.log(onIngredientClick)
-    
-    ingredientsList.addEventListener('click', onIngredientClick)
-    modal.document.querySelector('[data-ingredients-modal]')
 
-}
+    cocktailsCard.addEventListener('click', onIngredientClick)
+
 function onIngredientClick(evt) {
-    console.log(evt.target)
-    modal.classList.remove('is-hidden')
+    // evt.preventDefault();
+    
+    // if(evt.target.classList.value !== '.cocktails-modal__it') {
+    //     return
+    // }
 
-    // getIngredientById(searchParams).then(data => {
-    //     const drink = data.drinks[0];
-        
-    //     console.log(drink)
-
-    // })
-
+    
+    let searchParams = evt.target.textContent
+    // console.log(searchParams )
+    searchIngredientsByName(searchParams.trim()).then(data => {
+        const drink = data.ingredients[0];
+        showCocktailsCard(drink)
+        // console.log(drink)
+    })
 }
 
+function showCocktailsCard(drink) {
+    toggleShowModal()
+    clearGalleryList()
+    addToGallery(drink)
+    // const favoriteBtn = document.querySelector('.cocktails-modal__btn')
+    // favoriteBtn.addEventListener('click', changeFavoriteBtn)
+    closeModal();
+}
 
-// const refs = {
-//     modal: document.querySelector("[data-ingredients-modal]"),
-//     cocktailsCard: document.querySelector('.cocktails-modal'),
-//     ulListCocktails: document.querySelector('.markup-cards'),
-// };
-
-// const listModal = document.querySelector('.cocktails-modal__list');
-// // console.log(listModal)
-// const ing = document.querySelector('.ingredients-modal__container');
-// // console.log(listModal)
-
-// ing.addEventListener('click', onOpenClick)
-
-// function onOpenClick(e) {
-//     // console.log(e.target)
-
-//     let searchParams = 12
-
-//     getIngredientById(searchParams).then(data => {
-//         const drink = data.drinks[0]
-//         console.log(listModal)
-//     })
+export function closeModal() {
+    const closeModalBtn = document.querySelector('.ingredients-modal__close')
+    closeModalBtn.addEventListener('click', toggleShowModal)
     
-//     toggleShowModal()
-//     // clearGalleryList()
-//     addToGallery(drink)
-//     // closeModal()
-// }
-
-
-
-// // function closeModal() {
-// //     const closeModalBtn = document.querySelector('.ingredients-modal__close')
-// //     closeModalBtn.addEventListener('click', toggleModal)
-    
-// // }
+}
 
 function toggleShowModal() {
-    modal.classList.toggle('is-hidden')
+    modal.classList.toggle('show-modal')
 }
 
 function addToGallery(drink)  {
-    refs.modal.insertAdjacentHTML('beforeend', createImageCard(drink))
+    ingredientsCard.insertAdjacentHTML('beforeend', createImageCard(drink))
 }
 
 function clearGalleryList() {
-    refs.modal.innerHTML = ''
+    ingredientsCard.innerHTML = ''
 }
 
-function createImageCard({ strDrink, strInstructions, strDrinkThumb, strGlass, 
-    strCategory, strIngredient1, strIngredient2, strIngredient3, strIngredient4,
-    strIngredient5, strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5 }) {
+function createImageCard({ strIngredient, strType, strDescription }) {
     return `
     <button type="button" class="ingredients-modal__close" data-ingredients-modal-close>
     <svg width="18px" height="18px">
-        <use href="./images/icons.svg#icon-vector-off"></use>
+        <use href="${icons}#icon-vector-off"></use>
     </svg>
 </button>
 <div class="ingredients-modal__card">
-<h4 class="ingredients-modal__title">Title</h4>
-<p class="ingredients-modal__pretitle">Title</p>
-<p class="ingredients-modal__text">Title</p>
+<h4 class="ingredients-modal__title"> ${strIngredient} </h4>
+<p class="ingredients-modal__pretitle"> ${strType} </p>
+<div class="footer__line"></div>
+<p class="ingredients-modal__text"> ${strDescription} </p>
     <ul class="cocktails-modal__list">
         <li></li>
         <li></li>
