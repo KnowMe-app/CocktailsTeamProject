@@ -1,0 +1,118 @@
+.backdrop__cocktails-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    cursor: not-allowed;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transition: visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .backdrop__cocktails-modal.is-hidden {
+        visibility: hidden;
+opacity: 0;
+pointer-events: none;
+    }
+
+.backdrop__cocktails-modal.is-hidden .cocktails-modal {
+transform: scale(0.9);
+}
+.cocktails-modal {
+position: relative;
+z-index: 1200;
+max-width: 568px;
+width: 92vw;
+margin: auto;
+padding: 28px;
+background-color: #FCFCFC;
+box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+0px 2px 1px rgba(0, 0, 0, 0.2);
+border-radius: 10px;
+cursor: auto;
+transform: scale(1);
+transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+    .cocktails-modal__close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 32px;
+            height: 32px;
+            border: none;
+            background-color: #fff;
+            
+            outline: blue;
+            padding: 0;
+        cursor: pointer;
+        }
+    
+    
+    
+    .cocktails-modal__container {
+        padding: 40px 20px;
+        width: 100%;
+        height: auto;
+    }
+    .cocktails-modal__title {
+        margin-bottom: 20px;
+    
+        font-family: $secondary-font;
+        font-weight: 900;
+        font-size: 32px;
+        line-height: 1.19;
+    }
+    .cocktails-modal__pretitle {
+        margin-bottom: 20px;
+    
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 1.62;
+    }
+    .cocktails-modal__text {
+        margin-bottom: 32px;
+    
+        font-size: 16px;
+        line-height: 1.75;
+        color: var(--var-primary-text-color-grey);
+    }
+    
+    .cocktails-modal__ingredients {
+        margin-top: 22px;
+        margin-bottom: 8px;
+    
+        font-weight: 600;
+        font-size: 16px;
+        color: #000917;
+    }
+    
+    .cocktails-modal__name {
+        margin-bottom: 8px;
+    
+        font-weight: 300;
+    }
+    
+    .cocktails-modal__list {
+        margin-bottom: 32px;
+    
+        font-size: 16x;
+        line-height: 1.62;
+        color: var(--var-primary-text-color-grey);
+    }
+    
+    .cocktails-modal__btn {
+        width: 185px;
+        height: 48px;
+        padding: 12px 24px;
+        border-radius: 4px;
+    
+        font-family: $secondary-font;
+        font-size: 20x;
+        line-height: 1.2;
+        color: #FCFCFC;
+        background-color: var(--var-accent-color);
+    }
