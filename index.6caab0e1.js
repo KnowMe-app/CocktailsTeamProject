@@ -1,2 +1,0 @@
-const e=document.querySelector(".markup-cards");document.querySelectorAll(".card__btn-add"),document.querySelector(".card__icon");e.addEventListener("click",(function(e){const t=e.target.getAttribute("id");console.log("idFavorite:",t);const o={[t]:t};let r={};if(localStorage.getItem("idFavorite")){const e=JSON.parse(localStorage.getItem("idFavorite"));r={...e,...o}}else r={...o};localStorage.setItem("idFavorite",JSON.stringify(r)),console.log("objFavorite",r)}));
-//# sourceMappingURL=index.6caab0e1.js.map
