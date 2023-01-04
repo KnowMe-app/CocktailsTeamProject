@@ -6,43 +6,40 @@ const markupCards = document.querySelector('.markup-cards');
 randomCocktailsCards();
 
 function randomCocktailsCards() {
+  //  if (mobilScreen.matches) {
+  //    countImg = 3;
+  //  } else if (desctopScreen.matches) {
+  //    countImg = 9;
+  //  }
 
-//  if (mobilScreen.matches) {
-//    countImg = 3;
-//  } else if (desctopScreen.matches) {
-//    countImg = 9;
-//  }
+  //  for (let i = 1; i <= countImg; i++) {
+  //    getRandomCocktail().then(data => {
+  //      const drink = data.drinks;
+  //      // console.log("drink:", drink);
+  //      markupCard(drink, markupCards);
+  //    });
+  //  }
 
-//  for (let i = 1; i <= countImg; i++) {
-//    getRandomCocktail().then(data => {
-//      const drink = data.drinks;
-//      // console.log("drink:", drink);
-//      markupCard(drink, markupCards);
-//    });
-//  }
+  let countImg = onMediaScreen();
 
-    let countImg = onMediaScreen();
-    
-    for (let i = 1; i <= countImg; i++) {
-        getRandomCocktail()
-        .then(data => {
-            const drink = data.drinks;
-            markupCard(drink, markupCards);
-        });
-    }
-
+  for (let i = 1; i <= countImg; i++) {
+    getRandomCocktail().then(data => {
+      const drink = data.drinks;
+      markupCard(drink, markupCards);
+    });
+  }
 }
 
 export function onMediaScreen() {
-    const mobilScreen = window.matchMedia('(max-width: 767px)');
-    const desctopScreen = window.matchMedia('(min-width: 1280px)');
-    let PAGE_LIMIT = 6;
-    if (mobilScreen.matches) {
-        PAGE_LIMIT = 3;
-    } else if (desctopScreen.matches) {
+  const mobilScreen = window.matchMedia('(max-width: 767px)');
+  const desctopScreen = window.matchMedia('(min-width: 1280px)');
+  let PAGE_LIMIT = 6;
+  if (mobilScreen.matches) {
+    PAGE_LIMIT = 3;
+  } else if (desctopScreen.matches) {
     PAGE_LIMIT = 9;
-    }
-    return PAGE_LIMIT;
+  }
+  return PAGE_LIMIT;
 }
 
 export function markupCard(dataForCard, position) {
@@ -55,7 +52,7 @@ export function markupCard(dataForCard, position) {
                                         <button type="button" class="card__btn">Learn more</button>
                                         <button type="button" class="card__btn-add" id="${item.idDrink}">
                                         Add to
-                                        <svg class="card__icon" width="18" height="18">
+                                        <svg class="card__icon svg-default" width="18" height="18">
                                             <use href="${icons}#icon-Heart"></use>
                                         </svg>
                                         </button>
