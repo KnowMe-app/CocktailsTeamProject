@@ -10,3 +10,4 @@ import './js/firebase';
 import './js/heroButtonChange';
 import './js/modalCocktails';
 import './js/modalIngredients';
+import './js/searchMobileMain'
