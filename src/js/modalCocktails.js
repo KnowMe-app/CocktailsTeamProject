@@ -19,7 +19,9 @@ function onClick(e) {
     if(e.target.classList.value !== 'card__btn') {
         return
     }
-    // console.log(e.target)
+    console.log(e.target)
+    console.log(e.target.classList.value)
+
 
     const liCard = document.querySelectorAll('.card__title');
 
@@ -30,8 +32,8 @@ function onClick(e) {
     }
     searchParams = element
     // e.target = searchParams
-    // console.log(searchParams)
-    // console.log(e.target)
+    console.log(searchParams)
+    
 
     searchCocktailByName(searchParams).then(data => {
     const drink = data.drinks[0]
@@ -85,11 +87,11 @@ function createImageCard({ strDrink, strInstructions, strDrinkThumb, strGlass,
         <p class="cocktails-modal__ingredients">INGREDIENTS</p>
         <p class="cocktails-modal__name">${strCategory}</p>
         <ul class="cocktails-modal__list">
-            <li> <a href = "${strIngredient1}"> ✶ ${strMeasure1} ${strIngredient1} </a> </li>
-            <li> <a href = "${strIngredient2}"> ✶ ${strMeasure2} ${strIngredient2} </a> </li>
-            <li> <a href = "${strIngredient3}"> ✶ ${strMeasure3} ${strIngredient3} </a> </li>
-            <li> <a href = "${strIngredient4}"> ✶ ${strMeasure4} ${strIngredient4} </a> </li>
-            <li> <a href = "${strIngredient5}"> ✶ ${strMeasure5} ${strIngredient5} </a> </li>
+        <li> ${strIngredient1 ? `<a href = "${strIngredient1}"> ✶ ${strMeasure1} ${strIngredient1} </a>`  : ''} </li>
+        <li> ${strIngredient2 ? `<a href = "${strIngredient2}"> ✶ ${strMeasure2} ${strIngredient2} </a>`  : ''} </li>
+        <li> ${strIngredient3 ? `<a href = "${strIngredient3}"> ✶ ${strMeasure3} ${strIngredient3} </a>`  : ''} </li>
+        <li> ${strIngredient4 ? `<a href = "${strIngredient4}"> ✶ ${strMeasure4} ${strIngredient4} </a>`  : ''} </li>
+        <li> ${strIngredient5 ? `<a href = "${strIngredient5}"> ✶ ${strMeasure5} ${strIngredient5} </a>`  : ''} </li>
         </ul>
     </div>
     <button type="button" class="cocktails-modal__btn" data-cocktails-modal-btn>Add to favorite</button>
