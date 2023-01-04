@@ -1,76 +1,44 @@
 <section class="header">
   <div class="container">
-  <div class="content">
-    <a href="/src/index.html"><img
-      class="logo__header"
-      src="./images/Logo_cocktail1 (1).svg"
-    ></a>
-     
-   
-  <div class="navigation">
-    <a class="navigation__home" href="./index.html">Home</a>
-    <div class="dropdown">
-      <button class="dropbtn">Favorite</button>
-      <div class="dropdown-content">
-        <a href="#">Favorite cocktails</a>
-        <a href="#">Favorite ingredients</a>
+    <div class="content">
+      <a href="/src/index.html"
+        ><img class="logo__header" src="./images/Logo_cocktail1 (1).svg"
+      /></a>
+
+      <div class="navigation">
+        <a class="navigation__home" href="./index.html">Home</a>
+        <div class="dropdown">
+          <button class="dropbtn">Favorite</button>
+          <div class="dropdown-content">
+            <a href="./partials/favor-cocktails.html">Favorite cocktails</a>
+            <a href="./partials/favor-ingredients.html">Favorite ingredients</a>
+          </div>
+        </div>
+        <!-- <a class="navigation__favorite" href="./index.html">Favorite</a> -->
       </div>
+      <div class="search">
+        <form class="search__form">
+          <button type="submit">
+            <svg class="search__icon" width="18" height="16">
+              <use href="./images/icons.svg#icon-search"></use>
+            </svg>
+          </button>
+          <input type="text" placeholder="Search  |" />
+        </form>
+      </div>
+      <div class="theme">
+        <p class="theme__light">Light</p>
+        <label class="switch">
+          <input class="checkbox" type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+
+        <p class="theme__dark">Dark</p>
+
+        <button class="btn-login">logIn</button>
+      </div>
+      <!-- mobile icon-->
+      
     </div>
-    <!-- <a class="navigation__favorite" href="./index.html">Favorite</a> -->
   </div>
-  <div class="search">
-    
-    <form class="search__form">
-      <button type="submit">
-        <svg class="search__icon"width="18" height="16">
-          <use
-            href="./images/icons.svg#icon-search"
-          ></use>
-        </svg>
-      </button>
-      <input type="text" placeholder="Search  |">
-      
-      </form>
-
-      
-  </div>
- <div class="theme">
-  <p class="theme__light">Light</p>
-  <label class="switch">
-    <input class="checkbox" type="checkbox" >
-    <span class="slider round"></span>
-  </label>
-  
-  <p class="theme__dark">Dark</p>
-
-  <button class="btn-login">logIn</button>
-</div>
-<!-- mobile icon-->
-<button><svg class="mobile__icon open_modal" href="#open" width="30" height="16">
-  <use
-    class="icon__menu"
-    href="./images/icons.svg#icon-menu"
-  ></use>
-</svg></button>
-<div id="modal" class="modal bounceIn">
-  <svg class="mobile__icon open_modal" id="close_modal" href="#open" width="17" height="17">
-    <use
-      class="icon__menu"
-      href="./images/icons.svg#icon-vector-off"
-    ></use>
-  </svg>
-  <div class="theme">
-    <p class="theme__light">Light</p>
-    <label class="switch">
-      <input class="checkbox" type="checkbox" >
-      <span class="slider round"></span>
-    </label>
-    
-    <p class="theme__dark">Dark</p>
-  </div>
-  <div class="modal_txt">Текст в модальном окне</div>
-</div>
-  </div>
-</div>
-
 </section>

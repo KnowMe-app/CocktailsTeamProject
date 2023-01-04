@@ -155,16 +155,17 @@
     }
 
     &:hover {
-        border: 1px solid var(--var-accent-color);
+        border: 2px solid var(--var-accent-color);
         background-color: #F5F5F5;
         color: var(--var-accent-color);
     }
 
-    &:pressed {
-        border: 1px solid var(--var-accent-color);
-    }
+    // &:pressed {
+    //     border: 1px solid var(--var-accent-color);
+    // }
 }
 
 .card__icon {
     fill: currentColor;
+
 }

@@ -17,8 +17,8 @@
 }
 #close_modal {
     color: #000;
-    margin-top: 29px;
-    margin-right: 27px;
+    margin-top: 33px;
+    right: 20px;
     cursor: pointer;
     position: absolute;
 }
@@ -30,3 +30,169 @@
     margin: 100px auto;
     max-width: 100vw;
 }
+// 
+.switch-main {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+.theme-main{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    top: 27px;
+    left: 20px;
+
+    
+    @media screen and(min-width: 1280px) {
+      display: none,
+    }
+  }
+  .theme__light-main{
+    color: var(--var-accent-color)}
+
+    .switch-main input {display:none;}
+    .slider-main{
+      position: absolute;
+      cursor: pointer;
+      height: 33px;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 2px solid var(--var-accent-color);
+  
+      background-color: var(--var-primary-bg-color);
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    
+    .slider-main:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 2px;
+      
+      background-color: var(--var-primary-bg-color);
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    
+    input:checked + .slider-main{
+      background-color: var(--var-accent-color);
+    }
+    input:checked + .theme__light{
+      color: var(--var-accent-color);
+    }
+    
+    input:focus + .slider-main{
+      box-shadow: 0 0 1px var(--var-accent-color);
+    }
+    
+    input:checked + .slider-main:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+      background-color: var(--var-primary-bg-color);
+      
+    }
+
+    .slider-main.round-main {
+      border-radius: 34px;
+      background-color: var(--var-primary-bg-color);
+    }
+    
+    .slider-main.round-main:before {
+      background-color: var(--var-accent-color);
+      border-radius: 50%;
+    }
+    // search
+    .search-main{
+        margin-top: 91px;
+    }
+    .search__form-main{
+        left: 20px;
+        display: flex;
+        position: absolute;
+    }
+    .search__form-main input {
+        height: 42px;
+        padding-left: 50px;
+        border: 2px solid var(--var-accent-color);
+        border-radius: 5px;
+        outline: none;
+        background: var(--var-primary-bg-color);
+        color: #9E9C9C;
+      }
+      .search__form-main button {
+        position: absolute; 
+        width: 42px;
+        height: 42px;
+        border: 2px solid var(--var-accent-color);
+        border-right: 1px solid var(--var-accent-color);
+        background: var(--var-primary-bg-color);
+        border-radius:5px 0 0 5px;}
+       
+    //   navigation
+      .navigation-main{
+width: 86px;
+height: 24px;
+margin-left: 20px;
+margin-top: 171px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 28px;
+line-height: 24px;
+letter-spacing: 0.02em;
+      }
+     
+    //  drop
+    .dropdown-main{
+        margin-top: 32px;
+        position: relative;
+        display: inline-block;
+      } 
+    .dropbtn-main {
+        align-items: center;
+     display: flex;
+        border: none;
+    }
+    
+
+    .dropdown-content-main {
+      border: 1px solid #FD5103;
+  border-radius: 4px;
+  
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 24px;
+  
+        display: none;
+        position: absolute;
+        background-color:var(--var-bgcolor);
+        min-width: 210px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    
+    .dropdown-content-main a {
+        color: var(--var-primary-text-color);
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .dropdown-content-main a:hover {background-color: var(--var-accent-color);
+    color: var(--var-primary-bg-color);}
+    
+    .dropdown-main:hover .dropdown-content-main {display: block;}
+    
+    .dropdown-main:hover .dropbtn-main {color: var(--var-accent-color);}

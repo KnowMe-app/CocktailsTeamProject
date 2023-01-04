@@ -1,3 +1,5 @@
+import { markupCard, onMediaScreen } from './randomCocktailsCards';
+
 // Referencies
 const refs = {
   gallery: document.querySelector('.markup-cards'),
@@ -7,11 +9,10 @@ const refs = {
   nextPageBtn: document.querySelector('.page-next'),
 };
 
-// Const variables
-const PAGE_LIMIT = 9;
-let currentPage = 1;
+// Variables
+let currentPage;
+let PAGE_LIMIT = onMediaScreen();
 
-// RENDER PAGE functions
 export function renderPage(drinks) {
   renderCards(drinks, 1);
   renderPaginationNumbers(drinks);
@@ -34,44 +35,24 @@ export function renderPage(drinks) {
 
 function renderCards(drinks, pageNumber) {
   currentPage = pageNumber;
-  const currentPageGroup = pageNumber * PAGE_LIMIT;
-  const previousPageGroup = (pageNumber - 1) * PAGE_LIMIT;
+  const startIndexOfGroup = (pageNumber - 1) * PAGE_LIMIT;
+  const endIndexOfGroup = pageNumber * PAGE_LIMIT;
 
   clearGallery();
   setPaginationButtonStatus(drinks);
   switchActivePageNumber();
 
-  const formedCardsGroup = [...drinks].filter(
-    (_, index) => index >= previousPageGroup && index < currentPageGroup
-  );
-  return appendCards(formedCardsGroup);
-}
+  const formedCardsGroup = drinks.slice(startIndexOfGroup, endIndexOfGroup);
 
-function createCardMarkup({ strDrinkThumb, strDrink }) {
-  return `<li class="card">
-      <img src="${strDrinkThumb}" alt="${strDrink}" />
-      <div class="card__info">
-        <p class="card__title">${strDrink}</p>
-        <div class="card__btns">
-          <button type="button" class="card__btn">
-            Learn more
-          </button>
-          <button type="button" class="card__btn-add">
-            Add to
-            <svg class="card__icon" width="18" height="18">
-              <use href="./images/icons.svg#icon-Heart"></use>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </li>`;
-}
+  // console.log(`currentPage: ${currentPage}`);
+  // console.log(`pageNumber: ${pageNumber}`);
+  // console.log(`previousPageGroup: ${startIndexOfGroup}`);
+  // console.log(`currentPageGroup: ${endIndexOfGroup}`);
+  // console.log(drinks);
+  // console.log(formedCardsGroup);
+  // console.log('====================');
 
-function appendCards(formedGroup) {
-  refs.gallery.insertAdjacentHTML(
-    'beforeend',
-    formedGroup.map(drink => createCardMarkup(drink)).join('')
-  );
+  return markupCard(formedCardsGroup, refs.gallery);
 }
 
 function clearGallery() {
@@ -100,6 +81,8 @@ function createPaginationNumber(index) {
 
 export function clearPagination() {
   refs.paginationNumbers.innerHTML = '';
+  refs.prevPageBtn.classList.add('visually-hidden');
+  refs.nextPageBtn.classList.add('visually-hidden');
 }
 
 // PAGINATION BUTTONS functions
