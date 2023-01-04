@@ -1,3 +1,4 @@
+import {getIngredientById} from './CocktailsApiService';
 const markupCards = document.querySelector('.markup-cards');
 const favoriteBtn = document.querySelectorAll(".card__btn-add");
 const cardIcon = document.querySelector(".card__icon");
@@ -21,4 +22,15 @@ function onFavorite(event) {
     localStorage.setItem("idFavorite", JSON.stringify(objFavorite));
 
     console.log("objFavorite", objFavorite);
+}
+
+
+markupFavorite (objFavorite, markupCards);
+function markupFavorite(objFavorite, position) {
+    for (const item of objFavorite) {
+        let favorite = getIngredientById(item);
+        console.log("dataFavorite:", favorite);
+
+        markupCard(favorite, markupCards)
+    }
 }
