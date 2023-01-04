@@ -72,6 +72,7 @@ transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
         font-weight: 600;
         font-size: 16px;
         line-height: 1.62;
+        text-transform: uppercase;
     }
     .cocktails-modal__text {
         margin-bottom: 32px;
@@ -88,6 +89,7 @@ transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
         font-weight: 600;
         font-size: 16px;
         color: #000917;
+        text-transform: uppercase;
     }
     
     .cocktails-modal__name {

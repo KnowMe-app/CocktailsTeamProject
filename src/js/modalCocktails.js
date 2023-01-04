@@ -13,7 +13,6 @@ let searchParams = ''
 refs.ulListCocktails.addEventListener('click', onClick)
 
 
-   
 
 
 

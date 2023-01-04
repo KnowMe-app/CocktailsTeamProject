@@ -5,3 +5,4 @@ import './js/headerMain';
 import './js/changeOfSubject';
 import './js/cocktailNotFound';
 import './js/modalCocktails';
+import './js/modalIngredients';
