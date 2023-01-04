@@ -2,28 +2,47 @@ import { getRandomCocktail } from './CocktailsApiService';
 import * as icons from '../images/icons.svg';
 
 const markupCards = document.querySelector('.markup-cards');
-const mobilScreen = window.matchMedia('(max-width: 767px)');
-const desctopScreen = window.matchMedia('(min-width: 1280px)');
-let countImg = 6;
-
-// console.log("mobil:", mobilScreen.matches, "descktop:", desctopScreen.matches);
 
 randomCocktailsCards();
 
 function randomCocktailsCards() {
-  if (mobilScreen.matches) {
-    countImg = 3;
-  } else if (desctopScreen.matches) {
-    countImg = 9;
-  }
 
-  for (let i = 1; i <= countImg; i++) {
-    getRandomCocktail().then(data => {
-      const drink = data.drinks;
-      // console.log("drink:", drink);
-      markupCard(drink, markupCards);
-    });
-  }
+//  if (mobilScreen.matches) {
+//    countImg = 3;
+//  } else if (desctopScreen.matches) {
+//    countImg = 9;
+//  }
+
+//  for (let i = 1; i <= countImg; i++) {
+//    getRandomCocktail().then(data => {
+//      const drink = data.drinks;
+//      // console.log("drink:", drink);
+//      markupCard(drink, markupCards);
+//    });
+//  }
+
+    let countImg = onMediaScreen();
+    
+    for (let i = 1; i <= countImg; i++) {
+        getRandomCocktail()
+        .then(data => {
+            const drink = data.drinks;
+            markupCard(drink, markupCards);
+        });
+    }
+
+}
+
+export function onMediaScreen() {
+    const mobilScreen = window.matchMedia('(max-width: 767px)');
+    const desctopScreen = window.matchMedia('(min-width: 1280px)');
+    let PAGE_LIMIT = 6;
+    if (mobilScreen.matches) {
+        PAGE_LIMIT = 3;
+    } else if (desctopScreen.matches) {
+    PAGE_LIMIT = 9;
+    }
+    return PAGE_LIMIT;
 }
 
 export function markupCard(dataForCard, position) {
