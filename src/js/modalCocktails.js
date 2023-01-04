@@ -1,71 +1,79 @@
 import { getCocktailById } from './CocktailsApiService';
-import { searchCocktailByName } from './CocktailsApiService';
 import * as icons from '../images/icons.svg';
-
-
-
+import { nnn } from './modalIngredients';
 const refs = {
-    backdrop: document.querySelector("[data-cocktails-modal]"),
+    modal: document.querySelector("[data-cocktails-modal]"),
     cocktailsCard: document.querySelector('.cocktails-modal'),
     ulListCocktails: document.querySelector('.markup-cards'),
 };
 
-let searchParams = ''
+let searchParams = '';
 
-refs.ulListCocktails.addEventListener('click', onClick)
+refs.ulListCocktails.addEventListener('click', onClick);
 
 function onClick(e) {
-    e.preventDefault()
     if(e.target.classList.value !== 'card__btn') {
         return
     }
-    console.log(e.target)
-    console.log(e.target.classList.value)
 
+    searchParams = e.target.id;
 
-    const liCard = document.querySelectorAll('.card__title');
-
-    let element = ''
-
-    for (let i = 1; i < liCard.length; i++) {
-        element = liCard[i].textContent;
-    }
-    searchParams = element
-    // e.target = searchParams
-    console.log(searchParams)
+    getCocktailById(searchParams).then(data => {
+    const drink = data.drinks[0];
+    showCocktailsCard(drink);
+    nnn()
     
-
-    searchCocktailByName(searchParams).then(data => {
-    const drink = data.drinks[0]
-    
-    toggleModal()
-    clearGalleryList()
-    addToGallery(drink)
-    closeModal()
+    // console.log(drink)
     })
 }
 
-function closeModal() {
-    const closeModalBtn = document.querySelector('.cocktails-modal__close')
-    closeModalBtn.addEventListener('click', toggleModal)
+function showCocktailsCard(drink) {
     
+    toggleModal();
+    clearCocktailsCard();
+    addToCocktails(drink);
+    const favoriteBtn = document.querySelector('.cocktails-modal__btn')
+    favoriteBtn.addEventListener('click', changeFaviriteBtn)
+    closeModal();
+}
+
+
+
+function changeFaviriteBtn(evt) {
+// console.log(evt.target.textContent)
+evt.target.textContent = 'Remove from favorite'
+evt.target.style.width = '248px'
+// if(evt.target.textContent = 'Remove from favorite') {
+//     console.log(evt.target.textContent)
+//     evt.target.textContent = 'Add to favorite'
+//     evt.target.style.width = '185px'
+// }
+}
+
+function closeModal() {
+    const closeModalBtn = document.querySelector('.cocktails-modal__close');
+    closeModalBtn.addEventListener('click', toggleModal);
 }
 
 function toggleModal() {
-    refs.backdrop.classList.toggle('is-hidden')
+    refs.modal.classList.toggle('is-hidden');
 }
 
-function addToGallery(drink)  {
-    refs.cocktailsCard.insertAdjacentHTML('beforeend', createImageCard(drink))
+function addToCocktails(drink)  {
+    // console.log(drink)
+    refs.cocktailsCard.insertAdjacentHTML('beforeend', createCocktailCard(drink));
 }
 
-function clearGalleryList() {
-    refs.cocktailsCard.innerHTML = ''
+function clearCocktailsCard() {
+    refs.cocktailsCard.innerHTML = '';
 }
 
-function createImageCard({ strDrink, strInstructions, strDrinkThumb, strGlass, 
-    strCategory, strIngredient1, strIngredient2, strIngredient3, strIngredient4,
-    strIngredient5, strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5 }) {
+function createCocktailCard(coctail) {
+    const { strDrink, strInstructions, strDrinkThumb, strGlass, 
+        strCategory, strIngredient1, strIngredient2, strIngredient3, strIngredient4,
+        strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9,
+        strIngredient10, strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5,
+        strMeasure6, strMeasure7, strMeasure8, strMeasure9, strMeasure10 } = coctail
     return `
     <button type="button" class="cocktails-modal__close" data-cocktails-modal-close>
         <svg width="18px" height="18px">
@@ -87,14 +95,23 @@ function createImageCard({ strDrink, strInstructions, strDrinkThumb, strGlass,
         <p class="cocktails-modal__ingredients">INGREDIENTS</p>
         <p class="cocktails-modal__name">${strCategory}</p>
         <ul class="cocktails-modal__list">
-        <li> ${strIngredient1 ? `<a href = "${strIngredient1}"> ✶ ${strMeasure1} ${strIngredient1} </a>`  : ''} </li>
-        <li> ${strIngredient2 ? `<a href = "${strIngredient2}"> ✶ ${strMeasure2} ${strIngredient2} </a>`  : ''} </li>
-        <li> ${strIngredient3 ? `<a href = "${strIngredient3}"> ✶ ${strMeasure3} ${strIngredient3} </a>`  : ''} </li>
-        <li> ${strIngredient4 ? `<a href = "${strIngredient4}"> ✶ ${strMeasure4} ${strIngredient4} </a>`  : ''} </li>
-        <li> ${strIngredient5 ? `<a href = "${strIngredient5}"> ✶ ${strMeasure5} ${strIngredient5} </a>`  : ''} </li>
+        <li> ${strIngredient1 || strMeasure1 ? `<a href = "${strIngredient1}"> ✶ ${strMeasure1} ${strIngredient1} </a>` : ''} </li>
+        <li> ${strIngredient2 || strMeasure2 ? `<a href = "${strIngredient2}"> ✶ ${strMeasure2} ${strIngredient2} </a>` : ''} </li>
+        <li> ${strIngredient3 || strMeasure3 ? `<a href = "${strIngredient3}"> ✶ ${strMeasure3} ${strIngredient3} </a>` : ''} </li>
+        <li> ${strIngredient4 || strMeasure4 ? `<a href = "${strIngredient4}"> ✶ ${strMeasure4} ${strIngredient4} </a>` : ''} </li>
+        <li> ${strIngredient5 || strMeasure5 ? `<a href = "${strIngredient5}"> ✶ ${strMeasure5} ${strIngredient5} </a>` : ''} </li>
+        <li> ${strIngredient6 || strMeasure6 ? `<a href = "${strIngredient6}"> ✶ ${strMeasure6} ${strIngredient6} </a>` : ''} </li>
+        <li> ${strIngredient7 || strMeasure7 ? `<a href = "${strIngredient7}"> ✶ ${strMeasure7} ${strIngredient7} </a>` : ''} </li>
+        <li> ${strIngredient8 || strMeasure8 ? `<a href = "${strIngredient8}"> ✶ ${strMeasure8} ${strIngredient8} </a>` : ''} </li>
+        <li> ${strIngredient9 || strMeasure9 ? `<a href = "${strIngredient9}"> ✶ ${strMeasure9} ${strIngredient9} </a>` : ''} </li>
+        <li> ${strIngredient10 || strMeasure10 ? `<a href = "${strIngredient10}"> ✶ ${strMeasure10} ${strIngredient10} </a>` : ''} </li>
         </ul>
     </div>
-    <button type="button" class="cocktails-modal__btn" data-cocktails-modal-btn>Add to favorite</button>
+    <button type="button" class="cocktails-modal__btn">Add to favorite</button>
 </div>
         </div> `
 }
+
+
+
+
