@@ -1,5 +1,7 @@
+import { getCocktailById } from './CocktailsApiService';
 import { searchCocktailByName } from './CocktailsApiService';
 import * as icons from '../images/icons.svg';
+
 
 
 const refs = {
@@ -12,13 +14,8 @@ let searchParams = ''
 
 refs.ulListCocktails.addEventListener('click', onClick)
 
-
-
-
-
-
 function onClick(e) {
-    
+    e.preventDefault()
     if(e.target.classList.value !== 'card__btn') {
         return
     }
@@ -32,7 +29,7 @@ function onClick(e) {
         element = liCard[i].textContent;
     }
     searchParams = element
-    e.target = searchParams
+    // e.target = searchParams
     // console.log(searchParams)
     // console.log(e.target)
 
