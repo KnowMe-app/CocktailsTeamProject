@@ -1,6 +1,7 @@
 import { getCocktailById } from './CocktailsApiService';
 import { checkInFavourite } from './firebase'; // Додав функцію додавання та вилучення з улюбленого
 import { markupCard } from './randomCocktailsCards';
+import {getFavouriteCocktails} from './firebase';
 
 const markupCards = document.querySelector('.markup-cards');
 const favorCocktails = document.querySelector('.favor-cocktails');
@@ -14,7 +15,7 @@ function onFavorite(event) {
   
   const idFavorite = elemFavorite.getAttribute('ident');
 
-  const obj = { ['idFavorite-1']: idFavorite };
+  const obj = { [idFavorite]: idFavorite };
   let objFavorite = {};
 
   if (localStorage.getItem('idFavorite')) {
@@ -26,23 +27,23 @@ function onFavorite(event) {
   localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
   if (event.target.classList.contains('card__btn-add')) {
   checkInFavourite(event, idFavorite); // Додав функцію додавання та вилучення з улюбленого
-   }
-  // console.log('objFavorite', objFavorite);
+  }
 }
 
 function listFavorite() {
   cardsTitle.textContent = 'Favorite cocktails';
   markupCards.innerHTML = "";
 
-  const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
-  console.log("new:", dataFromStorage);
+  getFavouriteCocktails(); // функція рендерінгу для авторизованих користувачів
 
-  for (const item in dataFromStorage) {
-    console.log("item:", dataFromStorage[item]);
-    getCocktailById(dataFromStorage[item]).then(data => {
-      console.log(data);
-      let dataForCard = data.drinks;
-      markupCard(dataForCard, markupCards);
-    });
-  }
+  // ------ Рендерінг карточок улюблений коктейлів із localStorage--------
+  // const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
+  // console.log("new:", dataFromStorage);
+
+  // for (const item in dataFromStorage) {
+  //   getCocktailById(dataFromStorage[item]).then(data => {
+  //     let dataForCard = data.drinks;
+  //     markupCard(dataForCard, markupCards);
+  //   });
+  // }
 }

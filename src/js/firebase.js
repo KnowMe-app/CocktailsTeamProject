@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
+import { getCocktailById } from './CocktailsApiService';
+import { markupCard } from './randomCocktailsCards';
 import {
   getAuth,
   signInWithPopup,
@@ -31,6 +33,8 @@ const auth = getAuth();
 const analytics = getAnalytics(app);
 const provider = new GoogleAuthProvider();
 const db = getDatabase();
+
+const markupCards = document.querySelector('.markup-cards');
 
 const btnLogin = document.querySelector('.btn-login');
 btnLogin.addEventListener('click', onLogin);
@@ -146,6 +150,14 @@ export async function getFavouriteCocktails() {
           // console.log('Object.keys(snapshot.val())', Object.keys(snapshot.val()))
           // dataKeys.map(dataKey => {...};                                      // рендеремо карточки
           // - перебираємо коктейлі
+          
+          for (const item of dataKeys) {
+            getCocktailById(item).then(data => {
+              let dataForCard = data.drinks;
+              markupCard(dataForCard, markupCards);
+            });
+          }
+          
           // - додаємо сердечко (через клас)
         }
       })
