@@ -1,71 +1,71 @@
 import { searchIngredientsByName } from './CocktailsApiService';
 import * as icons from '../images/icons.svg';
 
-    const cocktailsCard = document.querySelector('.cocktails-modal')
-    const ingredientsCard = document.querySelector('.ingredients-modal')
-    const modal = document.querySelector('[data-ingredients-modal]')
+const refs = {
+    modal: document.querySelector('[data-ingredients-modal]'),
+    cocktailsCard: document.querySelector('.cocktails-modal'),
+    ingredientsCard: document.querySelector('.ingredients-modal'),
+};
 
-    cocktailsCard.addEventListener('click', onIngredientClick)
+refs.cocktailsCard.addEventListener('click', onIngredientClick);
 
-    function onIngredientClick(evt) {
+function onIngredientClick(evt) {
     evt.preventDefault();
     
     if(evt.target.classList.value !== 'cocktails-modal__link') {
         return
     }
 
-    let searchParams = evt.target.textContent
-    // console.log(searchParams )
+    let searchParams = evt.target.textContent;
+
     searchIngredientsByName(searchParams.trim()).then(data => {
         const drink = data.ingredients[0];
-        showCocktailsCard(drink)
-        console.log(drink)
+        showIngredientCard(drink);
+        // console.log(drink)
     })
 }
 
-function showCocktailsCard(drink) {
-    toggleShowModal()
-    clearGalleryList()
-    addToGallery(drink)
-    // const favoriteBtn = document.querySelector('.cocktails-modal__btn')
-    // favoriteBtn.addEventListener('click', changeFavoriteBtn)
+function showIngredientCard(drink) {
+    toggleShowModal();
+    clearIngredientList();
+    addToIngredient(drink);
     closeModal();
 }
 
-export function closeModal() {
-    const closeModalBtn = document.querySelector('.ingredients-modal__close')
-    closeModalBtn.addEventListener('click', toggleShowModal) || 
-    modal.addEventListener('click', toggleShowModal)
+function closeModal() {
+    const closeModalBtn = document.querySelector('.ingredients-modal__close');
+    closeModalBtn.addEventListener('click', toggleShowModal);
+    // modal.addEventListener('click', toggleShowModal)
 }
 
 function toggleShowModal() {
-    modal.classList.toggle('show-modal')
+    refs.modal.classList.toggle('show-modal');
 }
 
-function addToGallery(drink)  {
-    ingredientsCard.insertAdjacentHTML('beforeend', createImageCard(drink))
+function addToIngredient(drink)  {
+    refs.ingredientsCard.insertAdjacentHTML('beforeend', createIngredientCard(drink));
 }
 
-function clearGalleryList() {
-    ingredientsCard.innerHTML = ''
+function clearIngredientList() {
+    refs.ingredientsCard.innerHTML = '';
 }
 
-function createImageCard({ strIngredient, strType, strDescription, strAlcohol }) {
+function createIngredientCard({ strIngredient, strType, strDescription, strAlcohol }) {
     return `
     <button type="button" class="ingredients-modal__close" data-ingredients-modal-close>
-    <svg width="18px" height="18px">
-        <use href="${icons}#icon-vector-off"></use>
-    </svg>
-</button>
-<div class="ingredients-modal__card">
-<h4 class="ingredients-modal__title"> ${strIngredient} </h4>
-<div class="footer__line"></div>
-<p class="ingredients-modal__text"> ${strDescription} </p>
-    <ul class="ingredients-modal__list">
-        <li><p class="ingredients-modal__pretitle"> ✶ Type : ${strType} </p></li>
-        <li><p class="ingredients-modal__pretitle"> ✶ Alcohol : ${strAlcohol} </p></li>
-    </ul>
-<button type="button" class="ingredients-modal__btn" data-ingredients-modal-btn>Add to favorite</button>
-</div>  `
+        <svg width="18px" height="18px">
+            <use href="${icons}#icon-vector-off"></use>
+        </svg>
+    </button>
+    <div class="ingredients-modal__card">
+        <h4 class="ingredients-modal__title"> ${strIngredient} </h4>
+        <div class="ingredients-modal__line"></div>
+        <p class="ingredients-modal__text"> ${strDescription ? `${strDescription}` : 'This information will be added soon'}</p>
+        <ul class="ingredients-modal__list">
+            <li><p class="ingredients-modal__pretitle"> ${strType ? `✶ Type : ${strType}` : ''} </p></li>
+            <li><p class="ingredients-modal__pretitle"> ✶ Alcohol : ${strAlcohol} </p></li>
+        </ul>
+        <button type="button" class="ingredients-modal__btn" data-ingredients-modal-btn>Add to favorite</button>
+    </div>  `
 }
 
