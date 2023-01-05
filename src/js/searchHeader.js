@@ -1,5 +1,9 @@
-import { searchCocktailsByLetter,searchCocktailByName} from './CocktailsApiService';
-import { renderPage, clearPagination } from './pagination';
+import {
+  searchCocktailsByLetter,
+  searchCocktailByName,
+} from './CocktailsApiService';
+// import { renderPage, clearPagination } from './pagination';
+import { clearPagination } from './pagination';
 const headerSearch = document.querySelector('.search__form');
 // const cardsList = document.querySelector('.markup-cards');
 const paginationEl = document.querySelector('.cards__pagination');
@@ -9,20 +13,21 @@ const voidMarkup = document.querySelector('.void');
 headerSearch.addEventListener('input', onLetterClick);
 
 function onLetterClick(event) {
-    event.preventDefault();
-    let selectedLetter = event.target.value;
-  if(selectedLetter.length===1){
-  searchCocktailsByLetter(selectedLetter).then(value =>{
-    clearPagination()
-    renderMarkup(value.drinks)
-    // renderCards(value.drinks)
-    }
-  )}else{searchCocktailByName(selectedLetter).then(value =>{
-    clearPagination()
-    renderMarkup(value.drinks)
-    // renderCards(value.drinks)
+  event.preventDefault();
+  let selectedLetter = event.target.value;
+  if (selectedLetter.length === 1) {
+    searchCocktailsByLetter(selectedLetter).then(value => {
+      clearPagination();
+      renderMarkup(value.drinks);
+      // renderCards(value.drinks)
+    });
+  } else {
+    searchCocktailByName(selectedLetter).then(value => {
+      clearPagination();
+      renderMarkup(value.drinks);
+      // renderCards(value.drinks)
+    });
   }
-    )}
 }
 
 // function renderCards(cardsArray) {
@@ -70,4 +75,3 @@ function markupToggle() {
   cardsSectionEl.classList.toggle('is-hidden');
   paginationEl.classList.toggle('is-hidden');
 }
-
