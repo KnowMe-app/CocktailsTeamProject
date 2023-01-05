@@ -81,14 +81,13 @@ cursor: pointer;
     }
 }
 .ingredients-modal__pretitle {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 
-    font-weight: 600;
     font-size: 16px;
-    line-height: 1.62;
-    text-transform: uppercase;
+    color: var(--var-primary-text-color-grey);
+    // text-transform: uppercase;
     @media screen and (min-width: 768px) {
-        margin-bottom: 40px;
+        margin-bottom: 10px;
     }
 }
 .ingredients-modal__text {
@@ -103,16 +102,13 @@ cursor: pointer;
 }
 
 .ingredients-modal__list {
-    margin-bottom: 32px;
 
-    font-size: 16x;
-    line-height: 1.62;
-    color: var(--var-primary-text-color-grey);
     @media screen and (min-width: 768px) {
         margin-bottom: 40px;
     }
     
 }
+
 .footer__line {
     @media screen and (min-width: 768px) {
         width: 100%;

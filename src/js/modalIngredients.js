@@ -19,7 +19,7 @@ import * as icons from '../images/icons.svg';
     searchIngredientsByName(searchParams.trim()).then(data => {
         const drink = data.ingredients[0];
         showCocktailsCard(drink)
-        // console.log(drink)
+        console.log(drink)
     })
 }
 
@@ -34,7 +34,7 @@ function showCocktailsCard(drink) {
 
 export function closeModal() {
     const closeModalBtn = document.querySelector('.ingredients-modal__close')
-    closeModalBtn.addEventListener('click', toggleShowModal)
+    closeModalBtn.addEventListener('click', toggleShowModal) || 
     modal.addEventListener('click', toggleShowModal)
 }
 
@@ -50,7 +50,7 @@ function clearGalleryList() {
     ingredientsCard.innerHTML = ''
 }
 
-function createImageCard({ strIngredient, strType, strDescription }) {
+function createImageCard({ strIngredient, strType, strDescription, strAlcohol }) {
     return `
     <button type="button" class="ingredients-modal__close" data-ingredients-modal-close>
     <svg width="18px" height="18px">
@@ -59,14 +59,11 @@ function createImageCard({ strIngredient, strType, strDescription }) {
 </button>
 <div class="ingredients-modal__card">
 <h4 class="ingredients-modal__title"> ${strIngredient} </h4>
-<p class="ingredients-modal__pretitle"> ${strType} </p>
 <div class="footer__line"></div>
 <p class="ingredients-modal__text"> ${strDescription} </p>
-    <ul class="cocktails-modal__list">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+    <ul class="ingredients-modal__list">
+        <li><p class="ingredients-modal__pretitle"> ✶ Type : ${strType} </p></li>
+        <li><p class="ingredients-modal__pretitle"> ✶ Alcohol : ${strAlcohol} </p></li>
     </ul>
 <button type="button" class="ingredients-modal__btn" data-ingredients-modal-btn>Add to favorite</button>
 </div>  `
