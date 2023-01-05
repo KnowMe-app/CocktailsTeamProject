@@ -1,16 +1,16 @@
-:root{
-    --var-primary-bg-color: #FDFDFD;
-    --var-primary-text-color:#202025;
+:root {
+  --var-primary-bg-color: #fdfdfd;
+  --var-primary-text-color: #202025;
 
-    --var-primary-text-color-grey: #5F6775;
-    --var-accent-color: #FD5103;
-    --var-accent-color-lighter: #FE7031;
-    }
-    
-    [dark] {
-    --var-primary-bg-color: #202025;
-    --var-primary-text-color:#FDFDFD;
-    }
+  --var-primary-text-color-grey: #5f6775;
+  --var-accent-color: #fd5103;
+  --var-accent-color-lighter: #fe7031;
+}
+
+[dark] {
+  --var-primary-bg-color: #202025;
+  --var-primary-text-color: #fdfdfd;
+}
 
 // transition
 $transition-time: 250ms;

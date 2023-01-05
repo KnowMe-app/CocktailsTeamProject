@@ -3,10 +3,16 @@
   //   font-size: 5px;
 }
 
+.dark .svg-default {
+  // fill: #fcfcfc;
+  // fill: var(--var-primary-bg-color);
+  fill: #202025;
+}
+
 .svg-default {
-  fill: var(--color2, transparent);
+  fill: #fcfcfc;
 }
 
 .svg-favourite {
-  fill: var(--color2, #fd5103);
+  fill: #fd5103;
 }
