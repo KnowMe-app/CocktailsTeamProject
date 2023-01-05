@@ -29,23 +29,23 @@ function changeTheme() {
   }
 }
 
-//   function changeThemeMain() {
-//     if(document.body.classList.toggle("dark")){
-//         bodyMain.style.background="var(--var-primary-text-color)"
-//         black.style.color="var(--var-accent-color)"
-//         light.style.color="var(--var-primary-bg-color)"
-//         home.style.color="var(--var-primary-bg-color)"
-//         favorite.style.color="var(--var-primary-bg-color)"
-//         card.style.color="var(--var-primary-bg-color)"
-//         dropBTN.style.color="var(--var-accent-color)"
+  function changeThemeMain() {
+    if(document.body.classList.toggle("dark")){
+        bodyMain.style.background="var(--var-primary-text-color)"
+        black.style.color="var(--var-accent-color)"
+        light.style.color="var(--var-primary-bg-color)"
+        home.style.color="var(--var-primary-bg-color)"
+        favorite.style.color="var(--var-primary-bg-color)"
+        card.style.color="var(--var-primary-bg-color)"
+        dropBTN.style.color="var(--var-accent-color)"
 
-//     }else{
-//         light.style.color="var(--var-accent-color)"
-//         black.style.color="var(--var-primary-text-color)"
-//         home.style.color="var(--var-primary-text-color)"
-//         favorite.style.color="var(--var-primary-text-color)"
-//         card.style.color="var(--var-primary-bg-color)"
-//         dropBTN.style.color="var(--var-primary-text-color)"
-//         bodyMain.style.backgroundColor="var(--var-accent-color)"
-//     }
-//   }
+    }else{
+        light.style.color="var(--var-accent-color)"
+        black.style.color="var(--var-primary-text-color)"
+        home.style.color="var(--var-primary-text-color)"
+        favorite.style.color="var(--var-primary-text-color)"
+        card.style.color="var(--var-primary-bg-color)"
+        dropBTN.style.color="var(--var-primary-text-color)"
+        bodyMain.style.backgroundColor="var(--var-accent-color)"
+    }
+  }
