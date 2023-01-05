@@ -86,7 +86,7 @@ export async function addCocktailToFav(searchParams) {
   try {
     await update(data, cocktails);
     // console.log('data', data); // структура папок - місце збереження
-    console.log('cocktails', cocktails); // безпосередньо пошукова фраза яка стає ключем і паратметром
+    console.log('added cocktail', cocktails); // безпосередньо пошукова фраза яка стає ключем і паратметром
     // console.log('userId', userId); // унікальний номер юзера
   } catch {
     alert('Please, login');
@@ -112,6 +112,7 @@ async function removeCocktailFromFav(searchParams) {
   const data = ref(db, 'favourite/' + userId + '/cocktails/');
   try {
     await update(data, cocktails);
+    console.log('removed cocktail', cocktails);
   } catch {
     alert('Please, try again');
   }
@@ -157,14 +158,14 @@ export async function getFavouriteCocktails() {
 
 export function checkInFavourite(event, idFavorite) {
   if (!event.target.classList.contains('favourite')) {
-    addCocktailToFav(idFavorite);
     event.target.classList.add('favourite');
     event.target.firstElementChild.classList.remove('svg-default');
     event.target.firstElementChild.classList.add('svg-favourite');
+    addCocktailToFav(idFavorite);
   } else {
-    removeCocktailFromFav(idFavorite);
     event.target.classList.remove('favourite');
     event.target.firstElementChild.classList.remove('svg-favourite');
     event.target.firstElementChild.classList.add('svg-default');
+    removeCocktailFromFav(idFavorite);
   }
 }
