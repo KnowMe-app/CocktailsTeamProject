@@ -1,8 +1,3 @@
-.favourite {
-  //   color: green;
-  //   font-size: 5px;
-}
-
 .dark .svg-default {
   // fill: #fcfcfc;
   // fill: var(--var-primary-bg-color);
@@ -14,5 +9,15 @@
 }
 
 .svg-favourite {
+  fill: #fd5103;
+}
+
+.dark .favourite {
+  fill: #fd5103;
+}
+
+.favourite {
+  //   color: green;
+  //   font-size: 5px;
   fill: #fd5103;
 }

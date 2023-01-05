@@ -3,6 +3,7 @@ import { markupCard, onMediaScreen } from './randomCocktailsCards';
 // Referencies
 const refs = {
   gallery: document.querySelector('.markup-cards'),
+  paginationControls: document.querySelector('.pagination__controls'),
   paginationNumbers: document.querySelector('.pagination__numbers'),
   pageNumbers: document.getElementsByClassName('page__number'),
   prevPageBtn: document.querySelector('.page-prev'),
@@ -11,26 +12,35 @@ const refs = {
 
 // Variables
 let currentPage;
+let controlActionParams;
 let PAGE_LIMIT = onMediaScreen();
 
-export function renderPage(drinks) {
+export function renderPagination(drinks) {
+  clearPagination();
+  refs.paginationControls.removeEventListener('click', controlActionParams);
+
+  controlActionParams = e => controlAction(e, drinks, currentPage);
+
+  refs.paginationControls.addEventListener('click', controlActionParams);
+
   renderCards(drinks, 1);
   renderPaginationNumbers(drinks);
+}
 
-  refs.prevPageBtn.addEventListener('click', () => {
+function controlAction({ target }, drinks, page) {
+  const arrowBtn = target.parentElement;
+  const numberBtn = target;
+  const isDisabled = arrowBtn.classList.contains('disabled');
+  if (arrowBtn.classList.contains('page-prev') && !isDisabled) {
     renderCards(drinks, currentPage - 1);
-  });
-  refs.nextPageBtn.addEventListener('click', () => {
+  }
+  if (arrowBtn.classList.contains('page-next') && !isDisabled) {
     renderCards(drinks, currentPage + 1);
-  });
-
-  [...refs.pageNumbers].forEach(number => {
-    const pageIndex = +number.textContent;
-
-    number.addEventListener('click', () => {
-      renderCards(drinks, pageIndex);
-    });
-  });
+  }
+  if (numberBtn.classList.contains('page__number')) {
+    const pageIndex = +target.textContent;
+    renderCards(drinks, pageIndex);
+  }
 }
 
 function renderCards(drinks, pageNumber) {
@@ -43,14 +53,6 @@ function renderCards(drinks, pageNumber) {
   switchActivePageNumber();
 
   const formedCardsGroup = drinks.slice(startIndexOfGroup, endIndexOfGroup);
-
-  // console.log(`currentPage: ${currentPage}`);
-  // console.log(`pageNumber: ${pageNumber}`);
-  // console.log(`previousPageGroup: ${startIndexOfGroup}`);
-  // console.log(`currentPageGroup: ${endIndexOfGroup}`);
-  // console.log(drinks);
-  // console.log(formedCardsGroup);
-  // console.log('====================');
 
   return markupCard(formedCardsGroup, refs.gallery);
 }
