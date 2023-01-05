@@ -7,6 +7,32 @@
     bottom: 0;
     right: 0;
     z-index: 99999;
+    color: var(--var-primary-text-color);
+    @media screen and(min-width: 480px) {
+   
+      position: absolute;
+    }
+    @media screen and(min-width: 1280px) {
+     display: none;
+    }}
+.faivorite-main{
+  color: var(--var-primary-text-color);
+}
+.navigation__home-main{
+  color:var(--var-primary-text-color) ;
+}
+img.logo__main {
+  display: flex;
+  top: 20px;
+  position: relative;
+  @media screen and(max-width: 480px) {
+    
+    display: none;
+  }
+  @media screen and(min-width: 1280px) {
+    display: none;
+   }
+  
 }
 .modal_vis {
     display: block;
@@ -16,11 +42,15 @@
     margin-right: 17px;
 }
 #close_modal {
-    color: #000;
-    margin-top: 33px;
-    right: 20px;
-    cursor: pointer;
-    position: absolute;
+  color: #000;
+  cursor: pointer;
+  right: 27px;
+  top: 29px;
+  position: absolute;
+  @media screen and(min-width: 480px) {
+    right: 29px;
+    top: 37px;
+  }
 }
 
 .modal_txt {
@@ -45,7 +75,10 @@
     top: 27px;
     left: 20px;
 
-    
+    @media screen and(min-width: 480px) {
+      left: 40%;
+     top: 33px;
+    }
     @media screen and(min-width: 1280px) {
       display: none,
     }
@@ -84,6 +117,7 @@
     
     input:checked + .slider-main{
       background-color: var(--var-accent-color);
+      border: solid 2px var(--var-primary-bg-color);
     }
     input:checked + .theme__light{
       color: var(--var-accent-color);
@@ -113,6 +147,10 @@
     // search
     .search-main{
         margin-top: 91px;
+        @media screen and(min-width: 480px) {
+    
+          display: none;
+        }
     }
     .search__form-main{
         left: 20px;
@@ -150,6 +188,10 @@ font-weight: 400;
 font-size: 28px;
 line-height: 24px;
 letter-spacing: 0.02em;
+@media screen and(min-width: 480px) {
+  left: 35%;
+  position: absolute;
+}
       }
      
     //  drop
@@ -184,7 +226,7 @@ letter-spacing: 0.02em;
     }
     
     .dropdown-content-main a {
-        color: var(--var-primary-text-color);
+     
         padding: 12px 16px;
         text-decoration: none;
         display: block;
