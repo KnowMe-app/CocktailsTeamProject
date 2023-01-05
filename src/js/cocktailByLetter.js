@@ -1,5 +1,5 @@
 import { searchCocktailsByLetter } from './CocktailsApiService';
-import { renderPage, clearPagination } from './pagination';
+import { renderPagination } from './pagination';
 
 const searchListEl = document.querySelector('.hero__search-list');
 const paginationEl = document.querySelector('.cards__pagination');
@@ -11,22 +11,22 @@ searchListEl.addEventListener('click', onLetterClick);
 function onLetterClick(event) {
   let selectedLetter = event.target.name;
   searchCocktailsByLetter(selectedLetter).then(value => {
-    clearPagination();
-    renderMarkup(value.drinks);
+    renderPage(value.drinks);
   });
 }
 
-function renderMarkup(cardsArray) {
+function renderPage(cardsArray) {
   if (cardsArray === null) {
     if (!cardsSectionEl.classList.contains('is-hidden')) {
       markupToggle();
     }
+    return;
   } else {
     if (cardsSectionEl.classList.contains('is-hidden')) {
       markupToggle();
-      renderPage(cardsArray);
+      renderPagination(cardsArray);
     }
-    renderPage(cardsArray);
+    renderPagination(cardsArray);
   }
 }
 
