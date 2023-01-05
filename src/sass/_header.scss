@@ -174,6 +174,7 @@ letter-spacing: 0.02em;
     
     input:checked + .slider {
       background-color: var(--var-accent-color);
+      border: solid 2px var(--var-primary-bg-color);
     }
     input:checked + .theme__light{
       color: var(--var-accent-color);
@@ -280,14 +281,14 @@ border-radius: 4px;
       z-index: 1;
   }
   
-  .dropdown-content a {
-      color: var(--var-primary-text-color);
+  .dropdown-content p {
+    
       padding: 12px 16px;
       text-decoration: none;
       display: block;
   }
   
-  .dropdown-content a:hover {background-color: var(--var-accent-color);
+  .dropdown-content p:hover {background-color: var(--var-accent-color);
   color: var(--var-primary-bg-color);}
   
   .dropdown:hover .dropdown-content {display: block;}
