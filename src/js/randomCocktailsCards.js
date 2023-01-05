@@ -6,20 +6,6 @@ const markupCards = document.querySelector('.markup-cards');
 randomCocktailsCards();
 
 function randomCocktailsCards() {
-  //  if (mobilScreen.matches) {
-  //    countImg = 3;
-  //  } else if (desctopScreen.matches) {
-  //    countImg = 9;
-  //  }
-
-  //  for (let i = 1; i <= countImg; i++) {
-  //    getRandomCocktail().then(data => {
-  //      const drink = data.drinks;
-  //      // console.log("drink:", drink);
-  //      markupCard(drink, markupCards);
-  //    });
-  //  }
-
   let countImg = onMediaScreen();
 
   for (let i = 1; i <= countImg; i++) {
@@ -50,7 +36,7 @@ export function markupCard(dataForCard, position) {
                                     <p class="card__title theme__dark">${item.strDrink}</p>
                                     <div class="card__btns">
                                         <button type="button" class="card__btn" id = "${item.idDrink}">Learn more</button>
-                                        <button type="button" class="card__btn-add" id="${item.idDrink}">
+                                        <button type="button" class="card__btn-add" ident="${item.idDrink}">
                                         Add to
                                         <svg class="card__icon svg-default" width="18" height="18">
                                             <use href="${icons}#icon-Heart"></use>
@@ -62,25 +48,3 @@ export function markupCard(dataForCard, position) {
     position.innerHTML += htmlCards;
   }
 }
-
-// Динамічна зміна кількості карток на головній, згідно адаптивки
-// mobilScreen.onchange = (event) => {
-//     if (event.matches) {
-//         countImg = 3;
-//         console.log("listener mobil");
-//     }
-// }
-// desctopScreen.onchange = (event) => {
-//     if (event.matches) {
-//         countImg = 9;
-//         console.log("listener mobil");
-//     }
-//     }
-
-// Другий варіант
-// mobilScreen.addEventListener("change", (event) => {
-//     if (event.matches) { countImg = 3; }
-//     else desctopScreen.addEventListener("change", (event) => {
-//         if (event.matches) { countImg = 9; }
-//     })
-// })
