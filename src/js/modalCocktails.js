@@ -82,7 +82,7 @@ function createCocktailCard(coctail) {
         // arr.push(array)
         arr += array
     }
-console.log(arr)
+// console.log(arr)
 
     return `
     <button type="button" class="cocktails-modal__close" data-cocktails-modal-close>
