@@ -28,7 +28,7 @@ export function onMediaScreen() {
   return PAGE_LIMIT;
 }
 
-export function markupCard(dataForCard, position) {
+export function markupCard(dataForCard, position, activeNotActive) {
   for (const item of dataForCard) {
     const htmlCards = `<li class="card">
                                     <img src="${item.strDrinkThumb}" alt="${item.strDrink}" />
@@ -36,9 +36,9 @@ export function markupCard(dataForCard, position) {
                                     <p class="card__title theme__dark">${item.strDrink}</p>
                                     <div class="card__btns">
                                         <button type="button" class="card__btn" id = "${item.idDrink}">Learn more</button>
-                                        <button type="button" class="card__btn-add" ident="${item.idDrink}">
+                                        <button type="button" class="card__btn-add ${activeNotActive}" ident="${item.idDrink}">
                                         Add to
-                                        <svg class="card__icon svg-default" width="18" height="18">
+                                        <svg class="card__icon svg-default ${activeNotActive}" width="18" height="18">
                                             <use href="${icons}#icon-Heart"></use>
                                         </svg>
                                         </button>
