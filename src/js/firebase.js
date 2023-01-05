@@ -85,9 +85,9 @@ export async function addCocktailToFav(searchParams) {
   const data = ref(db, 'favourite/' + userId + '/cocktails/');
   try {
     await update(data, cocktails);
-    console.log('data', data); // структура папок - місце збереження
+    // console.log('data', data); // структура папок - місце збереження
     console.log('cocktails', cocktails); // безпосередньо пошукова фраза яка стає ключем і паратметром
-    console.log('userId', userId); // унікальний номер юзера
+    // console.log('userId', userId); // унікальний номер юзера
   } catch {
     alert('Please, login');
   }

@@ -11,7 +11,7 @@ markupCards.addEventListener('click', onFavorite);
 function onFavorite(event) {
   const elemFavorite = event.target;
   const idFavorite = elemFavorite.getAttribute('id');
-  console.log('idFavorite:', idFavorite);
+  // console.log('idFavorite:', idFavorite);
 
   const obj = { [idFavorite]: idFavorite };
   let objFavorite = {};
@@ -23,8 +23,10 @@ function onFavorite(event) {
     objFavorite = { ...obj };
   }
   localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
+  if (event.target.classList.contains('card__btn-add')) {
   checkInFavourite(event, idFavorite); // Додав функцію додавання та вилучення з улюбленого
-  console.log('objFavorite', objFavorite);
+   }
+  // console.log('objFavorite', objFavorite);
 }
 
 markupFavorite(objFavorite, markupCards);
