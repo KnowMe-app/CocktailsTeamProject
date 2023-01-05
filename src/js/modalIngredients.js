@@ -5,17 +5,15 @@ import * as icons from '../images/icons.svg';
     const ingredientsCard = document.querySelector('.ingredients-modal')
     const modal = document.querySelector('[data-ingredients-modal]')
 
-
     cocktailsCard.addEventListener('click', onIngredientClick)
 
-function onIngredientClick(evt) {
-    // evt.preventDefault();
+    function onIngredientClick(evt) {
+    evt.preventDefault();
     
-    // if(evt.target.classList.value !== '.cocktails-modal__it') {
-    //     return
-    // }
+    if(evt.target.classList.value !== 'cocktails-modal__link') {
+        return
+    }
 
-    
     let searchParams = evt.target.textContent
     // console.log(searchParams )
     searchIngredientsByName(searchParams.trim()).then(data => {
@@ -37,7 +35,7 @@ function showCocktailsCard(drink) {
 export function closeModal() {
     const closeModalBtn = document.querySelector('.ingredients-modal__close')
     closeModalBtn.addEventListener('click', toggleShowModal)
-    
+    modal.addEventListener('click', toggleShowModal)
 }
 
 function toggleShowModal() {
