@@ -68,6 +68,7 @@ function renderPaginationNumbers(items) {
     createPaginationNumber(i);
   }
   switchActivePageNumber();
+  truncateDots(refs.pageNumbers);
 
   refs.prevPageBtn.classList.remove('visually-hidden');
   refs.nextPageBtn.classList.remove('visually-hidden');
@@ -98,6 +99,7 @@ function switchActivePageNumber() {
       number.classList.add('page-active');
     }
   });
+  truncateDots(refs.pageNumbers);
 }
 
 // Disable/Enable Prev/Next buttons
@@ -122,5 +124,49 @@ function setPaginationButtonStatus(items) {
     disableButton(refs.nextPageBtn);
   } else {
     enableButton(refs.nextPageBtn);
+  }
+}
+
+// ADD 3 DOTS function
+function truncateDots(array) {
+  if (array.length <= 6) {
+    return;
+  } else {
+    page = +document.querySelector('.page-active').textContent;
+    const pageNumbers = document.querySelectorAll('.page__number');
+    pageNumbers.forEach(number =>
+      number.classList.remove(
+        'visually-hidden',
+        'page__dots-before',
+        'page__dots-after'
+      )
+    );
+    // If button 1 or 2 are active
+    if (page <= 2) {
+      for (let i = 3; i < array.length - 3; i++) {
+        pageNumbers[i].classList.add('visually-hidden');
+      }
+      pageNumbers[2].classList.add('page__dots-after');
+      // if the last or second-to-last is active
+    } else if (page >= array.length - 1) {
+      for (let i = 3; i < array.length - 3; i++) {
+        pageNumbers[i].classList.add('visually-hidden');
+      }
+      pageNumbers[array.length - 3].classList.add('page__dots-before');
+      // if any page is active except for two pages from both edges
+    } else {
+      for (let i = 1; i < array.length - 1; i++) {
+        pageNumbers[i].classList.add('visually-hidden');
+      }
+      pageNumbers[page - 2].classList.remove('visually-hidden');
+      pageNumbers[page - 1].classList.remove('visually-hidden');
+      pageNumbers[page].classList.remove('visually-hidden');
+      if (page - 2 > 1) {
+        pageNumbers[page - 2].classList.add('page__dots-before');
+      }
+      if (page + 2 < array.length) {
+        pageNumbers[page].classList.add('page__dots-after');
+      }
+    }
   }
 }
