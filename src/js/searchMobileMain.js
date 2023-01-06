@@ -2,37 +2,100 @@ import {
   searchCocktailsByLetter,
   searchCocktailByName,
 } from './CocktailsApiService';
+
+import { renderPage } from './cocktailByLetter';
+
 // import { renderPage, clearPagination } from './pagination';
-import { clearPagination } from './pagination';
-const headerSearchMain = document.querySelector('.search__form-main');
+//import { clearPagination } from './pagination';
+//const headerSearchMain = document.querySelector('.search__form-main');
 // const cardsList = document.querySelector('.markup-cards');
-const paginationEl = document.querySelector('.cards__pagination');
-const cardsSectionEl = document.querySelector('.section-cards');
-const voidMarkup = document.querySelector('.void');
+//const paginationEl = document.querySelector('.cards__pagination');
+//const cardsSectionEl = document.querySelector('.section-cards');
+//const voidMarkup = document.querySelector('.void');
 
-headerSearchMain.addEventListener('input', onLetterClick);
 
-function onLetterClick(event) {
+let modal = document.getElementById('modal');
+let body = document.getElementsByTagName('body')[0];
+
+
+const headerSearch = document.querySelector('.search__form-main');
+
+headerSearch.addEventListener('submit', onSearchFormSubmit);
+
+function onSearchFormSubmit(event) {
   event.preventDefault();
-  let selectedLetter = event.target.value;
+
+  let selectedLetter = event.currentTarget.elements.search.value;
+  console.log(selectedLetter);
   if (selectedLetter.length === 1) {
-    searchCocktailsByLetter(selectedLetter).then(
-      value => {
-        clearPagination();
-        renderMarkup(value.drinks);
-      }
-      // renderCards(value.drinks)
-    );
+    searchCocktailsByLetter(selectedLetter).then(value => {
+      renderPage(value.drinks);
+    });
   } else {
-    searchCocktailByName(selectedLetter).then(value =>
-      // renderCards(value.drinks)
-      {
-        clearPagination();
-        renderMarkup(value.drinks);
-      }
-    );
+    searchCocktailByName(selectedLetter).then(value => {
+      renderPage(value.drinks);
+    });
   }
+  modal.classList.add('bounceOutDown');
+  modal.classList.remove('modal_vis');
+  body.classList.remove('body_block');
+
+//function onLetterClick(event) {
+//  event.preventDefault();
+//  let selectedLetter = event.target.value;
+//  if (selectedLetter.length === 1) {
+//    searchCocktailsByLetter(selectedLetter).then(
+ //     value => {
+//        clearPagination();
+//        renderMarkup(value.drinks);
+//      }
+//      // renderCards(value.drinks)
+//    );
+//  } else {
+//    searchCocktailByName(selectedLetter).then(value =>
+//      // renderCards(value.drinks)
+//      {
+//        clearPagination();
+//        renderMarkup(value.drinks);
+//      }
+//    );
+//  }
+
 }
+// import {
+//   searchCocktailsByLetter,
+//   searchCocktailByName,
+// } from './CocktailsApiService';
+// import { renderPage, clearPagination } from './pagination';
+// const headerSearchMain = document.querySelector('.search__form-main');
+// // const cardsList = document.querySelector('.markup-cards');
+// const paginationEl = document.querySelector('.cards__pagination');
+// const cardsSectionEl = document.querySelector('.section-cards');
+// const voidMarkup = document.querySelector('.void');
+
+// headerSearchMain.addEventListener('input', onLetterClick);
+
+// function onLetterClick(event) {
+//   event.preventDefault();
+//   let selectedLetter = event.target.value;
+//   if (selectedLetter.length === 1) {
+//     searchCocktailsByLetter(selectedLetter).then(
+//       value => {
+//         clearPagination();
+//         renderMarkup(value.drinks);
+//       }
+//       // renderCards(value.drinks)
+//     );
+//   } else {
+//     searchCocktailByName(selectedLetter).then(value =>
+//       // renderCards(value.drinks)
+//       {
+//         clearPagination();
+//         renderMarkup(value.drinks);
+//       }
+//     );
+//   }
+// }
 
 // function renderCards(cardsArray) {
 //   let cardMarkup = [];
@@ -60,22 +123,22 @@ function onLetterClick(event) {
 //   }
 //   cardsList.innerHTML = cardMarkup.join('');
 // }
-function renderMarkup(cardsArray) {
-  if (cardsArray === null) {
-    if (!cardsSectionEl.classList.contains('is-hidden')) {
-      markupToggle();
-    }
-  } else {
-    if (cardsSectionEl.classList.contains('is-hidden')) {
-      markupToggle();
-      renderPage(cardsArray);
-    }
-    renderPage(cardsArray);
-  }
-}
+// function renderMarkup(cardsArray) {
+//   if (cardsArray === null) {
+//     if (!cardsSectionEl.classList.contains('is-hidden')) {
+//       markupToggle();
+//     }
+//   } else {
+//     if (cardsSectionEl.classList.contains('is-hidden')) {
+//       markupToggle();
+//       renderPage(cardsArray);
+//     }
+//     renderPage(cardsArray);
+//   }
+// }
 
-function markupToggle() {
-  voidMarkup.classList.toggle('is-hidden');
-  cardsSectionEl.classList.toggle('is-hidden');
-  paginationEl.classList.toggle('is-hidden');
-}
+// function markupToggle() {
+//   voidMarkup.classList.toggle('is-hidden');
+//   cardsSectionEl.classList.toggle('is-hidden');
+//   paginationEl.classList.toggle('is-hidden');
+// }
