@@ -29,39 +29,36 @@ function showIngredientCard(drink) {
     toggleShowModal();
     clearIngredientList();
     addToIngredient(drink);
-    onModalText()
+    onModalText();
     closeModal();
 }
 
 function onModalText() {
-    const text = document.querySelector('.ingredients-modal__text')
-    const showMoreBtn = document.querySelector('.load-more')
+    const text = document.querySelector('.ingredients-modal__text');
+    const showMoreBtn = document.querySelector('.load-more');
+    const fullText = text.textContent;
+    const shortText = truncateString(fullText, 300);
 
-const fullText = text.textContent;
-const shortText = truncateString(fullText, 300)
-
-text.innerHTML = shortText;
-showMoreBtn.addEventListener('click', (() => text.innerHTML = fullText));
-
+    text.innerHTML = shortText;
+    showMoreBtn.addEventListener('click', (() => text.innerHTML = fullText));
 }
+
 function truncateString(str, num) {
     if (str.length <= num) {
-      return str
+        return str;
     }
-    return str.slice(0, num) + '...'
-  }
-
-
+        return str.slice(0, num) + '...';
+}
 
 function closeModal() {
     const closeModalBtn = document.querySelector('.ingredients-modal__close');
     closeModalBtn.addEventListener('click', toggleShowModal);
-    refs.backdrop.addEventListener('click', onBackdropClick)
+    refs.backdrop.addEventListener('click', onBackdropClick);
 }
 
 function onBackdropClick(evt) {
     if(evt.target === evt.currentTarget) {
-        toggleShowModal()
+        toggleShowModal();
     }
 }
 
