@@ -37,10 +37,10 @@ export function markupCard(dataForCard, position, activeNotActive) {
                                     <div class="card__btns">
                                         <button type="button" class="card__btn" id = "${item.idDrink}">Learn more</button>
                                         <button type="button" class="card__btn-add ${activeNotActive}" ident="${item.idDrink}">
-                                        Add to
-                                        <svg class="card__icon svg-default ${activeNotActive}" width="18" height="18">
-                                            <use href="${icons}#icon-Heart"></use>
-                                        </svg>
+                                          <span class="card__btn-title">Add to</span>
+                                          <svg class="card__icon svg-default ${activeNotActive}" width="18" height="18">
+                                              <use href="${icons}#icon-Heart"></use>
+                                          </svg>
                                         </button>
                                     </div>
                                     </div>

@@ -169,15 +169,21 @@ export async function getFavouriteCocktails() {
 }
 
 export function checkInFavourite(event, idFavorite) {
-  if (!event.target.classList.contains('favourite')) {
-    event.target.classList.add('favourite');
-    event.target.firstElementChild.classList.remove('svg-default');
-    event.target.firstElementChild.classList.add('favourite');
+    const perem = event.target.closest('.card__btn-add');
+    console.log('firstElementChild:', perem.firstElementChild);
+    console.log('lastElementChild:', perem.lastElementChild);
+  
+  if (!perem.classList.contains('favourite')) {
+    perem.classList.add('favourite');
+    perem.lastElementChild.classList.remove('svg-default');
+    perem.lastElementChild.classList.add('favourite');
+    perem.firstElementChild.textContent = 'Remove';
     addCocktailToFav(idFavorite);
   } else {
-    event.target.classList.remove('favourite');
-    event.target.firstElementChild.classList.remove('favourite');
-    event.target.firstElementChild.classList.add('svg-default');
+    perem.classList.remove('favourite');
+    perem.lastElementChild.classList.remove('favourite');
+    perem.lastElementChild.classList.add('svg-default');
+    perem.firstElementChild.textContent = 'Add to';
     removeCocktailFromFav(idFavorite);
   }
 }
