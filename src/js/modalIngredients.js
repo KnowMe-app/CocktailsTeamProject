@@ -67,6 +67,7 @@ function onBackdropClick(evt) {
 
 function toggleShowModal() {
     refs.backdrop.classList.toggle('show-modal');
+    refs.ingredientsCard.style.overflowY = "hidden"
 }
 
 function addToIngredient(drink)  {
