@@ -92,7 +92,7 @@
   
       &:hover .hero__search-list {
         // display: flex;
-        visibility: visible;
+        pointer-events: visible;
         transform: translateY(0);
         transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1),
         transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -160,8 +160,9 @@
       }
     
       right: 0;
-      visibility: hidden;
+      // visibility: hidden;
       // display: none;
+      pointer-events: none;
       flex-direction: column;
       align-items: center;
       margin: 0 auto;
@@ -179,12 +180,13 @@
       top: 33px;
       left: 0;
       opacity: 0;
-      transform: translateY(-100%);
+      transform: translateY(-50%);
       z-index: 1;  
    
   
     @media screen and (min-width: 768px) {
-      visibility: visible;
+      pointer-events: visible;
+      // visibility: visible;
       display: flex;
       flex-direction: row;
       justify-content: center;
