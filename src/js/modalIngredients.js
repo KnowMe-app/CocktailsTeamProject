@@ -2,7 +2,7 @@ import { searchIngredientsByName } from './CocktailsApiService';
 import * as icons from '../images/icons.svg';
 
 const refs = {
-    modal: document.querySelector('[data-ingredients-modal]'),
+    backdrop: document.querySelector('[data-ingredients-modal]'),
     cocktailsCard: document.querySelector('.cocktails-modal'),
     ingredientsCard: document.querySelector('.ingredients-modal'),
 };
@@ -40,16 +40,19 @@ text.innerHTML = shortText;
 
 showMoreBtn.addEventListener('click', showMore);
 
+
 function truncateString(str, num) {
   if (str.length <= num) {
     return str
   }
+  
   return str.slice(0, num) + '...'
+
 }
 
 function showMore() {
   text.innerHTML = fullText;
-  showMoreBtn.classList.add('visually-hidden')
+//   showMoreBtn.classList.add('visually-hidden')
 }
     closeModal();
 }
@@ -60,11 +63,17 @@ function showMore() {
 function closeModal() {
     const closeModalBtn = document.querySelector('.ingredients-modal__close');
     closeModalBtn.addEventListener('click', toggleShowModal);
-    // modal.addEventListener('click', toggleShowModal)
+    refs.backdrop.addEventListener('click', onBackdropClick)
+}
+
+function onBackdropClick(evt) {
+    if(evt.target === evt.currentTarget) {
+        toggleShowModal()
+    }
 }
 
 function toggleShowModal() {
-    refs.modal.classList.toggle('show-modal');
+    refs.backdrop.classList.toggle('show-modal');
 }
 
 function addToIngredient(drink)  {
