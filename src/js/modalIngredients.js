@@ -40,15 +40,19 @@ text.innerHTML = shortText;
 
 showMoreBtn.addEventListener('click', showMore);
 
+
 function truncateString(str, num) {
   if (str.length <= num) {
     return str
   }
+  
   return str.slice(0, num) + '...'
+
 }
 
 function showMore() {
   text.innerHTML = fullText;
+//   
   showMoreBtn.classList.add('visually-hidden')
 }
     closeModal();
