@@ -88,6 +88,7 @@ function createCocktailCard(coctail) {
     }
 
     return `
+    <div class="cocktails-modal__container">
     <button type="button" class="cocktails-modal__close" data-cocktails-modal-close>
         <svg width="18px" height="18px">
             <use href="${icons}#icon-vector-off"></use>
@@ -110,6 +111,7 @@ function createCocktailCard(coctail) {
             </div>
         </div>
         <button type="button" class="cocktails-modal__btn">Add to favorite</button>
+    </div>
     </div> `
 }
 
