@@ -78,13 +78,17 @@ function createCocktailCard(coctail) {
     let arr = {}
     
     for(let i = 1; i < strIngredientsObj.length; i++) {
+        if(strMeasureObj[i] === undefined){
+            strMeasureObj[i] =  ""
+        }
+        
         let array = `<li class="cocktails-modal__it"> <span> ✶ ${strMeasureObj[i]} </span> <a class="cocktails-modal__link" href = "${strIngredientsObj[i]}" > ${strIngredientsObj[i]} </a></li>`
         // arr.push(array)
         arr += array
     }
-// console.log(arr)
 
     return `
+    <div class="cocktails-modal__container">
     <button type="button" class="cocktails-modal__close" data-cocktails-modal-close>
         <svg width="18px" height="18px">
             <use href="${icons}#icon-vector-off"></use>
@@ -103,10 +107,11 @@ function createCocktailCard(coctail) {
             <div class="cocktails-modal__wrap">
                 <p class="cocktails-modal__ingredients">INGREDIENTS</p>
                 <p class="cocktails-modal__name">${strCategory}</p>
-                <ul class="cocktails-modal__list"> ${arr} </ul>
+                <ul class="cocktails-modal__list"> ${arr.slice(15)} </ul>
             </div>
         </div>
         <button type="button" class="cocktails-modal__btn">Add to favorite</button>
+    </div>
     </div> `
 }
 
