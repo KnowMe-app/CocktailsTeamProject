@@ -13,12 +13,18 @@ body {
   background-color: var(--var-bgcolor);
   color: var(--var-fontcolor);
 }
-// .header{
-//   background-color: aqua;
-//   position: fixed;
-//   width: 100%;
-//   z-index: 1000;
-// }
+.header{
+border-bottom: solid 2px var(--var-accent-color);
+background: var(--var-bgcolor);
+height: 85px;
+border-radius: 0 25px 25px;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  @media screen and(max-width: 480px) {
+    height: 65px;
+  }
+}
 // .dark-tema{
 //   color: var(--var-primary-bg-color);
 // }
@@ -230,16 +236,23 @@ letter-spacing: 0.02em;
       display: inline-block;
       width: 140px;
       height: 45px;
-      line-height: 45px;
+    
       border: 2px solid var(--var-accent-color);
       border-radius: 45px;
       margin: 10px 20px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 15px;
+
+      font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 24px;
+letter-spacing: 0.02em;
+      
+    
       text-transform: uppercase;
       text-align: center;
-      letter-spacing: 3px;
-      font-weight: 600;
+
+      
       color: var(--var-accent-color);
       background: white;
       box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
@@ -261,6 +274,9 @@ letter-spacing: 0.02em;
     
       position: relative;
       display: inline-block;
+  }
+  .dropbtn-Favorite{
+    color: var(--var-primary-text-color);
   }
   
   .dropdown-content {
