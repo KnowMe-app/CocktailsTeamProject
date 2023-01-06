@@ -29,46 +29,39 @@ function showIngredientCard(drink) {
     toggleShowModal();
     clearIngredientList();
     addToIngredient(drink);
-
-    const text = document.querySelector('.ingredients-modal__text')
-    const showMoreBtn = document.querySelector('.load-more')
-
-const fullText = text.textContent;
-const shortText = truncateString(fullText, 300)
-
-text.innerHTML = shortText;
-
-showMoreBtn.addEventListener('click', showMore);
-
-
-function truncateString(str, num) {
-  if (str.length <= num) {
-    return str
-  }
-  
-  return str.slice(0, num) + '...'
-
-}
-
-function showMore() {
-  text.innerHTML = fullText;
-//   showMoreBtn.classList.add('visually-hidden')
-}
+    onModalText();
     closeModal();
 }
 
+function onModalText() {
+    const text = document.querySelector('.ingredients-modal__text');
+    const showMoreBtn = document.querySelector('.ingredients-modal__show-btn');
+    const fullText = text.textContent;
+    const shortText = truncateString(fullText, 300);
 
+    text.innerHTML = shortText;
+    showMoreBtn.addEventListener('click', (() => {
+        text.innerHTML = fullText
+        refs.ingredientsCard.style.overflowY = "auto"
+    }));
+}
 
+function truncateString(str, num) {
+    if (str.length <= num) {
+        return str;
+    }
+        return str.slice(0, num) + '...';
+}
 
 function closeModal() {
     const closeModalBtn = document.querySelector('.ingredients-modal__close');
     closeModalBtn.addEventListener('click', toggleShowModal);
-    refs.backdrop.addEventListener('click', onBackdropClick)
+    refs.backdrop.addEventListener('click', onBackdropClick);
 }
 
 function onBackdropClick(evt) {
     if(evt.target === evt.currentTarget) {
-        toggleShowModal()
+        toggleShowModal();
     }
 }
 
@@ -95,7 +88,7 @@ function createIngredientCard({ strIngredient, strType, strDescription, strAlcoh
         <h4 class="ingredients-modal__title"> ${strIngredient} </h4>
         <div class="ingredients-modal__line"></div>
         <p class="ingredients-modal__text"> ${strDescription ? `${strDescription}` : 'This information will be added soon'}</p>
-        <button type="button" class='load-more'>Show more</button>
+        <button type="button" class='ingredients-modal__show-btn'>Show more</button>
         <ul class="ingredients-modal__list">
             <li><p class="ingredients-modal__pretitle"> ${strType ? `✶ Type : ${strType}` : ''} </p></li>
             <li><p class="ingredients-modal__pretitle"> ✶ Alcohol : ${strAlcohol} </p></li>
