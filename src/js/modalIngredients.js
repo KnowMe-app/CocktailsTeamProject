@@ -29,7 +29,11 @@ function showIngredientCard(drink) {
     toggleShowModal();
     clearIngredientList();
     addToIngredient(drink);
+    onModalText()
+    closeModal();
+}
 
+function onModalText() {
     const text = document.querySelector('.ingredients-modal__text')
     const showMoreBtn = document.querySelector('.load-more')
 
@@ -37,26 +41,15 @@ const fullText = text.textContent;
 const shortText = truncateString(fullText, 300)
 
 text.innerHTML = shortText;
+showMoreBtn.addEventListener('click', (() => text.innerHTML = fullText));
 
-showMoreBtn.addEventListener('click', showMore);
-
-
+}
 function truncateString(str, num) {
-  if (str.length <= num) {
-    return str
+    if (str.length <= num) {
+      return str
+    }
+    return str.slice(0, num) + '...'
   }
-  
-  return str.slice(0, num) + '...'
-
-}
-
-function showMore() {
-  text.innerHTML = fullText;
-//   showMoreBtn.classList.add('visually-hidden')
-}
-    closeModal();
-}
-
 
 
 
