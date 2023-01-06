@@ -15,6 +15,10 @@
     @media screen and(min-width: 1280px) {
      display: none;
     }}
+    .mobile__icon{
+      position: fixed;
+      z-index: 1000;
+    }
 .faivorite-main{
   color: var(--var-primary-text-color);
 }
@@ -225,16 +229,54 @@ letter-spacing: 0.02em;
         z-index: 1;
     }
     
-    .dropdown-content-main a {
+    .dropdown-content-main p {
      
         padding: 12px 16px;
         text-decoration: none;
         display: block;
     }
     
-    .dropdown-content-main a:hover {background-color: var(--var-accent-color);
+    .dropdown-content-main p:hover {background-color: var(--var-accent-color);
     color: var(--var-primary-bg-color);}
     
     .dropdown-main:hover .dropdown-content-main {display: block;}
     
     .dropdown-main:hover .dropbtn-main {color: var(--var-accent-color);}
+    .btn-login-main {
+      position: absolute;
+      text-decoration: none;
+      display: inline-block;
+      width: 100px;
+      height: 45px;
+      top: 20px;
+    right: 80px;
+      border: 2px solid var(--var-accent-color);
+      border-radius: 45px;
+    
+
+      font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 24px;
+letter-spacing: 0.02em;
+      
+    
+      text-transform: uppercase;
+      text-align: center;
+
+      
+      color: var(--var-accent-color);
+      background: white;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+      transition: .3s;
+      @media screen and(max-width: 375px) {
+        width: 70px;
+      }
+    }
+    .btn-login-main:hover {
+      background: var(--var-accent-color);
+      box-shadow: 0 15px 20px rgba(253, 81, 1, 0.4);
+      color: var(--var-primary-bg-color);
+      transform: translateY(-7px);
+    }
