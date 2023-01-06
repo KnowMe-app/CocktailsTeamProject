@@ -132,7 +132,7 @@ function truncateDots(array) {
   if (array.length <= 6) {
     return;
   } else {
-    page = +document.querySelector('.page-active').textContent;
+    const page = +document.querySelector('.page-active').textContent;
     const pageNumbers = document.querySelectorAll('.page__number');
     pageNumbers.forEach(number =>
       number.classList.remove(
