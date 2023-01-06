@@ -15,7 +15,7 @@ function onLetterClick(event) {
   });
 }
 
-function renderPage(cardsArray) {
+export function renderPage(cardsArray) {
   if (cardsArray === null) {
     if (!cardsSectionEl.classList.contains('is-hidden')) {
       markupToggle();
