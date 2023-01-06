@@ -3,7 +3,7 @@ import * as icons from '../images/icons.svg';
 
 
 const refs = {
-    modal: document.querySelector("[data-cocktails-modal]"),
+    backdrop: document.querySelector("[data-cocktails-modal]"),
     cocktailsCard: document.querySelector('.cocktails-modal'),
     ulListCocktails: document.querySelector('.markup-cards'),
 };
@@ -49,10 +49,17 @@ function showCocktailsCard(drink) {
 function closeModal() {
     const closeModalBtn = document.querySelector('.cocktails-modal__close');
     closeModalBtn.addEventListener('click', toggleModal);
+    refs.backdrop.addEventListener('click', onBackdropClick)
 }
 
 function toggleModal() {
-    refs.modal.classList.toggle('is-hidden');
+    refs.backdrop.classList.toggle('is-hidden');
+}
+
+function onBackdropClick(evt) {
+    if(evt.target === evt.currentTarget) {
+        toggleModal()
+    }
 }
 
 function addToCocktails(drink)  {
