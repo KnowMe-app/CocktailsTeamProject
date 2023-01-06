@@ -52,8 +52,7 @@ function truncateString(str, num) {
 
 function showMore() {
   text.innerHTML = fullText;
-//   
-  showMoreBtn.classList.add('visually-hidden')
+//   showMoreBtn.classList.add('visually-hidden')
 }
     closeModal();
 }
