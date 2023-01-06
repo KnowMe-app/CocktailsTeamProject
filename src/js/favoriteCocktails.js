@@ -1,7 +1,7 @@
 import { getCocktailById } from './CocktailsApiService';
 import { checkInFavourite } from './firebase'; // Додав функцію додавання та вилучення з улюбленого
 import { markupCard } from './randomCocktailsCards';
-import {getFavouriteCocktails} from './firebase';
+import { getFavouriteCocktails } from './firebase';
 
 const markupCards = document.querySelector('.markup-cards');
 const favorCocktails = document.querySelector('.favor-cocktails');
@@ -12,7 +12,7 @@ favorCocktails.addEventListener('click', listFavorite);
 
 function onFavorite(event) {
   const elemFavorite = event.target;
-  
+
   const idFavorite = elemFavorite.getAttribute('ident');
 
   const obj = { [idFavorite]: idFavorite };
@@ -26,13 +26,16 @@ function onFavorite(event) {
   }
   localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
   if (event.target.classList.contains('card__btn-add')) {
-  checkInFavourite(event, idFavorite); // Додав функцію додавання та вилучення з улюбленого
+    checkInFavourite(event, idFavorite); // Додав функцію додавання та вилучення з улюбленого
+  } else if (event.target.classList.contains('favourite')) {
+    console.log(event.target.classList.contains('favourite'));
+    getFavouriteCocktails();
   }
 }
 
 function listFavorite() {
   cardsTitle.textContent = 'Favorite cocktails';
-  markupCards.innerHTML = "";
+  markupCards.innerHTML = '';
 
   getFavouriteCocktails(); // функція рендерінгу для авторизованих користувачів
 

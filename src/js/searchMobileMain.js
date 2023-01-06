@@ -2,10 +2,21 @@ import {
   searchCocktailsByLetter,
   searchCocktailByName,
 } from './CocktailsApiService';
+
 import { renderPage } from './cocktailByLetter';
+
+// import { renderPage, clearPagination } from './pagination';
+//import { clearPagination } from './pagination';
+//const headerSearchMain = document.querySelector('.search__form-main');
+// const cardsList = document.querySelector('.markup-cards');
+//const paginationEl = document.querySelector('.cards__pagination');
+//const cardsSectionEl = document.querySelector('.section-cards');
+//const voidMarkup = document.querySelector('.void');
+
 
 let modal = document.getElementById('modal');
 let body = document.getElementsByTagName('body')[0];
+
 
 const headerSearch = document.querySelector('.search__form-main');
 
@@ -28,6 +39,28 @@ function onSearchFormSubmit(event) {
   modal.classList.add('bounceOutDown');
   modal.classList.remove('modal_vis');
   body.classList.remove('body_block');
+
+//function onLetterClick(event) {
+//  event.preventDefault();
+//  let selectedLetter = event.target.value;
+//  if (selectedLetter.length === 1) {
+//    searchCocktailsByLetter(selectedLetter).then(
+ //     value => {
+//        clearPagination();
+//        renderMarkup(value.drinks);
+//      }
+//      // renderCards(value.drinks)
+//    );
+//  } else {
+//    searchCocktailByName(selectedLetter).then(value =>
+//      // renderCards(value.drinks)
+//      {
+//        clearPagination();
+//        renderMarkup(value.drinks);
+//      }
+//    );
+//  }
+
 }
 // import {
 //   searchCocktailsByLetter,

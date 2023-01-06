@@ -82,3 +82,30 @@
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+.page__dots-after,
+.page__dots-before {
+  position: relative;
+}
+
+.page__dots-after::after,
+.page__dots-before::before {
+  position: absolute;
+  content: '...';
+  color: var(--var-accent-color);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.page__dots-after {
+  margin-right: 20px;
+  &::after {
+    left: 38px;
+  }
+}
+.page__dots-before {
+  margin-left: 20px;
+  &::before {
+    right: 38px;
+  }
+}

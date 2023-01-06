@@ -150,14 +150,14 @@ export async function getFavouriteCocktails() {
           // console.log('Object.keys(snapshot.val())', Object.keys(snapshot.val()))
           // dataKeys.map(dataKey => {...};                                      // рендеремо карточки
           // - перебираємо коктейлі
-          
+
           for (const item of dataKeys) {
             getCocktailById(item).then(data => {
               let dataForCard = data.drinks;
-              markupCard(dataForCard, markupCards);
+              markupCard(dataForCard, markupCards, 'favourite');
             });
           }
-          
+
           // - додаємо сердечко (через клас)
         }
       })
@@ -172,11 +172,11 @@ export function checkInFavourite(event, idFavorite) {
   if (!event.target.classList.contains('favourite')) {
     event.target.classList.add('favourite');
     event.target.firstElementChild.classList.remove('svg-default');
-    event.target.firstElementChild.classList.add('svg-favourite');
+    event.target.firstElementChild.classList.add('favourite');
     addCocktailToFav(idFavorite);
   } else {
     event.target.classList.remove('favourite');
-    event.target.firstElementChild.classList.remove('svg-favourite');
+    event.target.firstElementChild.classList.remove('favourite');
     event.target.firstElementChild.classList.add('svg-default');
     removeCocktailFromFav(idFavorite);
   }
