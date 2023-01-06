@@ -23,6 +23,7 @@ function changeTheme() {
     light.style.color = 'var(--var-primary-bg-color)';
     home.style.color = 'var(--var-primary-bg-color)';
     drow.style.color = 'var(--var-primary-bg-color)';
+    drow.style.background='var(--var-primary-text-color)'
     dropBTN.style.color = 'var(--var-primary-bg-color)';
     login.style.background='var(--var-accent-color)'
     login.style.color='var(--var-primary-bg-color)'
@@ -31,6 +32,7 @@ function changeTheme() {
     card.style.color='var(--var-primary-bg-color)'
   } else {
     drow.style.color = 'var(--var-primary-text-color)'
+    drow.style.background='var(--var-primary-bg-color)'
     light.style.color = 'var(--var-accent-color)';
     black.style.color = 'var(--var-primary-text-color)';
     home.style.color = 'var(--var-primary-text-color)';
