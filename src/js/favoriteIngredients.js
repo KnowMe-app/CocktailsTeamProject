@@ -1,9 +1,11 @@
 
-import { markupCard } from './randomCocktailsCards';
+// import { markupCard } from './randomCocktailsCards';
 import { getFavouriteCocktails } from './firebase';
 import { addIngrToFav } from './firebase';
 import { removeIngrFromFav } from './firebase';
 import { getIngredientById } from './CocktailsApiService';
+import { getIngredientById } from './CocktailsApiService';
+import * as icons from '../images/icons.svg';
 
 const favorIngredients = document.querySelector('.favor-ingredients')
 
@@ -11,7 +13,6 @@ let objFavorite = {};
 
 const cardsTitle = document.querySelector('.cards-title');
 const markupCards = document.querySelector('.markup-cards');
-    console.log(cardsTitle)
 
 export function name() {
 const btn = document.querySelector('.ingredients-modal__btn');
@@ -66,15 +67,10 @@ function checkIngredientFavourite(event) {
     markupCards.innerHTML = '';
   
     // getFavouriteCocktails(); 
-    
-  
     for (const item in dataFromStorage) {
         getIngredientById(dataFromStorage[item]).then(data => {
-            let dataForCard = data.drinks;
-            console.log(dataForCard);
-            // markupCard(dataForCard, markupCards, 'favourite');
-        
-
+            let dataForCard = data.ingredients;
+            markupIngredientCard(dataForCard, markupCards, 'favourite');
       });
     }
   }
@@ -96,3 +92,24 @@ function checkFavourite(event, idIngredient) {
     }
 }
 
+
+function markupIngredientCard(dataForCard, position, activeNotActive) {
+    for (const item of dataForCard) {
+      const htmlCards = `<div class="favor-ingredient__card">
+      <h4 class="favor-ingredient__title"> ${item.strIngredient} </h4>
+      <ul class="favor-ingredient__list">
+      <li><p class="ingredients-modal__pretitle"> ${item.strType ? `${item.strType}` : ''} </p></li>
+      </ul>
+      <div class="card__btns">
+      <button type="button" class="card__btn" id = "${item.idDrink}">Learn more</button>
+      <button type="button" class="card__btn-add" >
+        <span class="card__btn-title">Add to</span>
+        <svg class="card__icon svg-default" width="18" height="18">
+            <use href="${icons}#icon-Heart"></use>
+        </svg>
+      </button>
+  </div> `;
+      position.innerHTML += htmlCards;
+    }
+  }
+  
