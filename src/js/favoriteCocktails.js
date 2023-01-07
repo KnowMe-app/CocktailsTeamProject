@@ -15,7 +15,7 @@ let objFavorite = {};
 
 markupCards.addEventListener('click', onFavorite);
 favorCocktails.addEventListener('click', listFavorite);
-favorCocktailsMain.addEventListener('click', listFavorite);
+// favorCocktailsMain.addEventListener('click', listFavorite);
 
 // --------------- ФУНКЦІЯ Додавання в улюблені по кліку
 export async function onFavorite(event) {
@@ -79,21 +79,29 @@ function listFavorite() {
   markupCards.innerHTML = '';
   modal.classList.remove('modal_vis')
   
+// async function listFavorite() {
   try {
-    getFavouriteCocktails();
+    const userId = getAuth().currentUser.uid;
+    cardsTitle.textContent = 'Favorite cocktails';
+    markupCards.innerHTML = '';
     clearPagination();
+    getFavouriteCocktails(); // рендерінг для авторизованих
   } catch {
+    console.log('Please, login, to use God mode');
+    const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
+    cardsTitle.textContent = 'Favorite cocktails';
+    markupCards.innerHTML = '';
     clearPagination(); //видаляє пагінацію, яка могла залишитися від попередньої видачі
 
   // ------ Рендерінг із localStorage 
-  for (const item in dataFromStorage) {
-    getCocktailById(dataFromStorage[item]).then(data => {
-      let dataForCard = data.drinks;
-      markupCard(dataForCard, markupCards, 'favourite');
+    for (const item in dataFromStorage) {
+      getCocktailById(dataFromStorage[item]).then(data => {
+        let dataForCard = data.drinks;
+        markupCard(dataForCard, markupCards, 'favourite');
 
-      let forBtnFavorite = markupCards.querySelectorAll('.card__btn-add');
-      inFavoritePage(forBtnFavorite);
-    });
+        let forBtnFavorite = markupCards.querySelectorAll('.card__btn-add');
+        inFavoritePage(forBtnFavorite);
+      });
   }
   }
 }
