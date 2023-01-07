@@ -1,5 +1,6 @@
 import { getCocktailById } from './CocktailsApiService';
 import * as icons from '../images/icons.svg';
+import { onFavorite } from './favoriteCocktails';
 
 
 const refs = {
@@ -30,21 +31,11 @@ function showCocktailsCard(drink) {
     toggleModal();
     clearCocktailsCard();
     addToCocktails(drink);
-    // const favoriteBtn = document.querySelector('.cocktails-modal__btn')
-    // favoriteBtn.addEventListener('click', changeFavoriteBtn)
+    const favoriteBtn = document.querySelector('.card__btn-add.cocktails-modal__btn')
+    favoriteBtn.addEventListener('click', onFavorite)
     closeModal();
 }
 
-// function changeFavoriteBtn(evt) {
-// // console.log(evt.target.textContent)
-// evt.target.textContent = 'Remove from favorite'
-// evt.target.style.width = '248px'
-// // if(evt.target.textContent = 'Remove from favorite') {
-// //     console.log(evt.target.textContent)
-// //     evt.target.textContent = 'Add to favorite'
-// //     evt.target.style.width = '185px'
-// // }
-// }
 
 function closeModal() {
     const closeModalBtn = document.querySelector('.cocktails-modal__close');
@@ -72,7 +63,7 @@ function clearCocktailsCard() {
 
 function createCocktailCard(coctail) {
     const { strDrink, strInstructions, strDrinkThumb, strGlass, 
-    strCategory } = coctail
+    strCategory, idDrink } = coctail
 
     const strMeasureObj = []
     const strIngredientsObj = []
@@ -117,7 +108,9 @@ function createCocktailCard(coctail) {
                 <ul class="cocktails-modal__list"> ${arr.slice(15)} </ul>
             </div>
         </div>
-        <button type="button" class="cocktails-modal__btn">Add to favorite</button>
+        <button type="button" class="card__btn-add cocktails-modal__btn" ident="${idDrink}">
+        <span class="cocktails-modal__span">Add to favorite</span>
+    </button>
     </div>
     </div> `
 }

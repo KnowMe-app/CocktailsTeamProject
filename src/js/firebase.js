@@ -170,21 +170,34 @@ export async function getFavouriteCocktails() {
 }
 
 export function checkInFavourite(event, idFavorite) {
-  const perem = event.target.closest('.card__btn-add');
+  const perem = event.target.closest('.card__btn-add') || event.target.closest('.card__btn-add.cocktails-modal__btn');
   console.log('firstElementChild:', perem.firstElementChild);
   console.log('lastElementChild:', perem.lastElementChild);
-
+ 
   if (!perem.classList.contains('favourite')) {
     perem.classList.add('favourite');
+    if(perem === event.target.closest('.card__btn-add.cocktails-modal__btn')) {
+      perem.textContent = 'Remove from favotite'
+      perem.style.width = '248px'
+      perem.style.backgroundColor = '#fd5103'
+    return
+    }
+    perem.firstElementChild.textContent = 'Remove'
     perem.lastElementChild.classList.remove('svg-default');
     perem.lastElementChild.classList.add('favourite');
-    perem.firstElementChild.textContent = 'Remove';
     addCocktailToFav(idFavorite);
   } else {
     perem.classList.remove('favourite');
+    
+    if(perem === event.target.closest('.card__btn-add.cocktails-modal__btn')) {
+      perem.style.color = 'white'
+      perem.textContent = 'Add to favotite'
+      perem.style.border = '0'
+    return
+    }
+    perem.firstElementChild.textContent = 'Add to'
     perem.lastElementChild.classList.remove('favourite');
     perem.lastElementChild.classList.add('svg-default');
-    perem.firstElementChild.textContent = 'Add to';
     removeCocktailFromFav(idFavorite);
   }
 }

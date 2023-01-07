@@ -12,12 +12,12 @@ let objFavorite = {};
 markupCards.addEventListener('click', onFavorite);
 favorCocktails.addEventListener('click', listFavorite);
 
-function onFavorite(event) {
+export function onFavorite(event) {
   if (event.target.closest('.card__btn')) {
     return;
   }
 
-  const elemFavorite = event.target.closest('.card__btn-add');
+  const elemFavorite = event.target.closest('.card__btn-add') || event.target.closest('.card__btn-add.cocktails-modal__btn')
   const idFavorite = elemFavorite.getAttribute('ident');
   const obj = { [idFavorite]: idFavorite };
   // console.log('idFavorite', idFavorite);
