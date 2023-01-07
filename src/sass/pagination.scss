@@ -101,11 +101,19 @@
   margin-right: 20px;
   &::after {
     left: 38px;
+
+    @media screen and(min-width: 768px) {
+      left: 47px;
+    }
   }
 }
 .page__dots-before {
   margin-left: 20px;
   &::before {
     right: 38px;
+
+    @media screen and(min-width: 768px) {
+      right: 47px;
+    }
   }
 }
