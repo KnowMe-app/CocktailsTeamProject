@@ -43,6 +43,7 @@ function onModalText() {
     showMoreBtn.addEventListener('click', (() => {
         text.innerHTML = fullText
         refs.ingredientsCard.style.overflowY = "auto"
+        // showMoreBtn.classList.add('visually-hidden')
     }));
 }
 
