@@ -13,50 +13,57 @@ markupCards.addEventListener('click', onFavorite);
 favorCocktails.addEventListener('click', listFavorite);
 
 function onFavorite(event) {
-  const elemFavorite = event.target.closest('.card__btn-add');
-  console.log('elemFavorite', elemFavorite);
-
-  const idFavorite = elemFavorite.getAttribute('ident');
-  console.log('idFavorite', idFavorite);
-
-  checkInFavourite(event, idFavorite); // !!!!!!!!!!!!!!!!!!
-  
-  const obj = { [idFavorite]: idFavorite };
-
-  if (objFavorite.hasOwnProperty(idFavorite)) {
-    localStorage.removeItem('idFavorite');
+  if (event.target.closest('.card__btn')) {
     return;
   }
 
+  const elemFavorite = event.target.closest('.card__btn-add');
+  const idFavorite = elemFavorite.getAttribute('ident');
+  const obj = { [idFavorite]: idFavorite };
+  // console.log('idFavorite', idFavorite);
+
+  checkInFavourite(event, idFavorite); // Змінюємо сердечко і назву кнопки
+
   if (localStorage.getItem('idFavorite')) {
     const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
-    objFavorite = { ...dataFromStorage, ...obj };
+
+    if (dataFromStorage.hasOwnProperty(idFavorite)) {
+      removeFromLocalStorage(idFavorite, dataFromStorage);
+      localStorage.setItem('idFavorite', JSON.stringify(dataFromStorage));
+    } else {
+      objFavorite = { ...dataFromStorage, ...obj };
+      localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
+    }
   } else {
     objFavorite = { ...obj };
+    localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
   }
 
-  console.log('objFavorite', objFavorite);
-
-  localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
-
-  if (event.target.classList.contains('card__btn-add')) {
-    checkInFavourite(event, idFavorite); // Додав функцію додавання та вилучення з улюбленого
-  } else if (event.target.classList.contains('favourite')) {
-    console.log(event.target.classList.contains('favourite'));
-    getFavouriteCocktails();
-  }
+  // if (event.target.classList.contains('card__btn-add')) {
+  //   checkInFavourite(event, idFavorite); // Додав функцію додавання та вилучення з улюбленого
+  // } else if (event.target.classList.contains('favourite')) {
+  //   console.log(event.target.classList.contains('favourite'));
+  //   getFavouriteCocktails();
+  // }
 }
 
+export function removeFromLocalStorage(idFavorite, dataFromStorage) {
+  for (const key in dataFromStorage) {
+    if (dataFromStorage[key] === idFavorite) {
+      delete dataFromStorage[key];
+    }
+  }
+}
 
 function listFavorite() {
   cardsTitle.textContent = 'Favorite cocktails';
   markupCards.innerHTML = '';
 
-  getFavouriteCocktails(); // функція рендерінгу для авторизованих користувачів
+  getFavouriteCocktails(); // рендерінг для авторизованих користувачів
 
-  // ------ Рендерінг карточок улюблений коктейлів із localStorage--------
+  // ------ Рендерінг із localStorage--------
   const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
-  console.log("new:", dataFromStorage);
+  console.log('new:', dataFromStorage);
 
   for (const item in dataFromStorage) {
     getCocktailById(dataFromStorage[item]).then(data => {
