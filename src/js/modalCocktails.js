@@ -1,6 +1,6 @@
 import { getCocktailById } from './CocktailsApiService';
 import * as icons from '../images/icons.svg';
-import { onFavorite } from './favoriteCocktails';
+// import { onFavorite } from './favoriteCocktails';
 
 
 const refs = {
@@ -32,8 +32,9 @@ function showCocktailsCard(drink) {
     toggleModal();
     clearCocktailsCard();
     addToCocktails(drink);
-    const favoriteBtn = document.querySelector('.card__btn-add cocktails-modal__btn')
-    favoriteBtn.addEventListener('click', onFavorite)
+
+    // const favoriteBtn = document.querySelector('.card__btn-add cocktails-modal__btn')
+    // favoriteBtn.addEventListener('click', onFavorite)
     
     // favoriteBtn.addEventListener('click', changeFavoriteBtn)
     
