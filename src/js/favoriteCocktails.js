@@ -2,6 +2,7 @@ import { getCocktailById } from './CocktailsApiService';
 import { checkInFavourite } from './firebase'; // Додав функцію додавання та вилучення з улюбленого
 import { markupCard } from './randomCocktailsCards';
 import { getFavouriteCocktails } from './firebase';
+import { clearPagination } from './pagination';
 
 const markupCards = document.querySelector('.markup-cards');
 const favorCocktails = document.querySelector('.favor-cocktails');
@@ -60,6 +61,7 @@ function listFavorite() {
   markupCards.innerHTML = '';
 
   getFavouriteCocktails(); // рендерінг для авторизованих користувачів
+  clearPagination(); //видаляє пагінацію, яка могла залишитися від попередньої видачі
 
   // ------ Рендерінг із localStorage--------
   const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
