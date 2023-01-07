@@ -1,5 +1,8 @@
+
+
 import { searchIngredientsByName } from './CocktailsApiService';
 import * as icons from '../images/icons.svg';
+import { name } from './favoriteIngredients';
 
 const refs = {
     backdrop: document.querySelector('[data-ingredients-modal]'),
@@ -22,8 +25,14 @@ function onIngredientClick(evt) {
         const drink = data.ingredients[0];
         showIngredientCard(drink);
         // console.log(drink)
+        name()
+        
+        
     })
+
+    
 }
+
 
 function showIngredientCard(drink) {
     toggleShowModal();
@@ -31,6 +40,7 @@ function showIngredientCard(drink) {
     addToIngredient(drink);
     onModalText();
     closeModal();
+    
 }
 
 function onModalText() {
@@ -71,7 +81,8 @@ function toggleShowModal() {
     refs.ingredientsCard.style.overflowY = "hidden"
 }
 
-function addToIngredient(drink)  {
+export function addToIngredient(drink)  {
+   
     refs.ingredientsCard.insertAdjacentHTML('beforeend', createIngredientCard(drink));
 }
 
@@ -79,7 +90,7 @@ function clearIngredientList() {
     refs.ingredientsCard.innerHTML = '';
 }
 
-function createIngredientCard({ strIngredient, strType, strDescription, strAlcohol }) {
+function createIngredientCard({ strIngredient, strType, strDescription, strAlcohol, idIngredient }) {
     return `
     <button type="button" class="ingredients-modal__close" data-ingredients-modal-close>
         <svg width="18px" height="18px">
@@ -95,8 +106,7 @@ function createIngredientCard({ strIngredient, strType, strDescription, strAlcoh
             <li><p class="ingredients-modal__pretitle"> ${strType ? `✶ Type : ${strType}` : ''} </p></li>
             <li><p class="ingredients-modal__pretitle"> ✶ Alcohol : ${strAlcohol} </p></li>
         </ul>
-        <button type="button" class="ingredients-modal__btn" data-ingredients-modal-btn>Add to favorite</button>
+        <button type="button" class="ingredients-modal__btn" id="${idIngredient}" data-ingredients-modal-btn>Add to favorite</button>
     </div>  `
 }
-
 

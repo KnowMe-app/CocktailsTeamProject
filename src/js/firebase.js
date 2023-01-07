@@ -98,7 +98,7 @@ export async function addCocktailToFav(searchParams) {
   }
 }
 
-async function addIngrToFav(searchParams) {
+export async function addIngrToFav(searchParams) {
   const ingredients = {};
   ingredients[searchParams] = searchParams;
 
@@ -124,7 +124,7 @@ async function removeCocktailFromFav(searchParams) {
   }
 }
 
-async function removeIngrFromFav(searchParams) {
+export async function removeIngrFromFav(searchParams) {
   const ingredients = {};
   ingredients[searchParams] = null;
   try {
