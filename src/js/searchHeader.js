@@ -15,7 +15,6 @@ headerSearch.addEventListener('submit', onSearchFormSubmit);
 function onSearchFormSubmit(event) {
   event.preventDefault();
 
-
   let selectedLetter = event.currentTarget.elements.search.value.trim();
   console.log(selectedLetter);
   if (selectedLetter.length === 1) {
@@ -26,21 +25,20 @@ function onSearchFormSubmit(event) {
     searchCocktailByName(selectedLetter).then(value => {
       renderPage(value.drinks);
 
-//function onLetterClick(event) {
-//  event.preventDefault();
-//  let selectedLetter = event.target.value;
-//  if (selectedLetter.length === 1) {
-//    searchCocktailsByLetter(selectedLetter).then(value => {
- //     clearPagination();
-//      renderMarkup(value.drinks);
-//      // renderCards(value.drinks)
-//    });
-//  } else {
-//    searchCocktailByName(selectedLetter).then(value => {
-//      clearPagination();
-//      renderMarkup(value.drinks);
-//      // renderCards(value.drinks)
-
+      //function onLetterClick(event) {
+      //  event.preventDefault();
+      //  let selectedLetter = event.target.value;
+      //  if (selectedLetter.length === 1) {
+      //    searchCocktailsByLetter(selectedLetter).then(value => {
+      //     clearPagination();
+      //      renderMarkup(value.drinks);
+      //      // renderCards(value.drinks)
+      //    });
+      //  } else {
+      //    searchCocktailByName(selectedLetter).then(value => {
+      //      clearPagination();
+      //      renderMarkup(value.drinks);
+      //      // renderCards(value.drinks)
     });
   }
 }
