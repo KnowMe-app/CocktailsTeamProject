@@ -1,5 +1,6 @@
 import { searchCocktailsByLetter } from './CocktailsApiService';
 import { renderPagination } from './pagination';
+import Notiflix from 'notiflix';
 
 const searchListEl = document.querySelector('.hero__search-list');
 const paginationEl = document.querySelector('.cards__pagination');
@@ -19,6 +20,7 @@ export function renderPage(cardsArray) {
   if (cardsArray === null) {
     if (!cardsSectionEl.classList.contains('is-hidden')) {
       markupToggle();
+      Notiflix.Notify.failure('Ooops... can not find this cocktail');
     }
     return;
   } else {
