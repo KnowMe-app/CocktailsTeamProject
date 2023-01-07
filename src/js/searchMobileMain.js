@@ -25,7 +25,7 @@ headerSearch.addEventListener('submit', onSearchFormSubmit);
 function onSearchFormSubmit(event) {
   event.preventDefault();
 
-  let selectedLetter = event.currentTarget.elements.search.value;
+  let selectedLetter = event.currentTarget.elements.search.value.trim();
   console.log(selectedLetter);
   if (selectedLetter.length === 1) {
     searchCocktailsByLetter(selectedLetter).then(value => {
