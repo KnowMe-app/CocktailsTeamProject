@@ -13,6 +13,7 @@ const drow = document.querySelector('.dropdown-content');
 const login = document.querySelector('.btn-login')
 const searForm = document.querySelector('.search__form button')
 const searInput = document.querySelector('.search__form input')
+const modalCocktail= document.querySelector('.cocktails-modal')
 
 slider.addEventListener('click', changeTheme);
 sliderMain.addEventListener('click', changeThemeMain);
@@ -30,6 +31,7 @@ function changeTheme() {
     searForm.style.background='var(--var-primary-text-color)'
     searInput.style.background='var(--var-primary-text-color)'
     card.style.color='var(--var-primary-bg-color)'
+    modalCocktail.style.background='var(--var-primary-text-color)'
   } else {
     drow.style.color = 'var(--var-primary-text-color)'
     drow.style.background='var(--var-primary-bg-color)'
@@ -42,6 +44,7 @@ function changeTheme() {
     searForm.style.background='var(--var-primary-bg-color)'
     searInput.style.background='var(--var-primary-bg-color)'
     card.style.color='var(--var-primary-text-color)'
+    modalCocktail.style.background='var(--var-primary-bg-color)'
   }
 }
 const favMain = document.querySelector('.faivorite-main')
@@ -79,6 +82,7 @@ const closeIcon = document.querySelector('.close_modal')
     loginMain.style.color='var(--var-primary-bg-color)'
     mobileIcon.style.fill='var(--var-primary-bg-color)'
     closeIcon.style.fill='var(--var-primary-bg-color)'
+    modalCocktail.style.background='var(--var-primary-text-color)'
     }else{
         light.style.color="var(--var-accent-color)"
         black.style.color="var(--var-primary-text-color)"
@@ -102,5 +106,6 @@ const closeIcon = document.querySelector('.close_modal')
     loginMain.style.color='var(--var-accent-color)'
     mobileIcon.style.fill='var(--var-primary-text-color)'
     closeIcon.style.fill='var(--var-primary-text-color)'
+    modalCocktail.style.background='var(--var-primary-bg-color)'
     }
   }

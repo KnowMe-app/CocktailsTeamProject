@@ -1,6 +1,7 @@
 .hero {
   background-color: inherit;
   padding: 60px 0 40px 0;
+  
   @media screen and (min-width: 768px) {
       padding: 100px 0 199px 0;
     }
@@ -8,8 +9,10 @@
       padding: 97px 0 291px 0;
     }
   &__container {
+    margin-top: 60px;
     @media screen and (min-width: 768px) {
       position: relative;
+      margin-top: 100px;
     }
 }
 
