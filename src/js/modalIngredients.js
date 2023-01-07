@@ -43,6 +43,7 @@ function onModalText() {
     showMoreBtn.addEventListener('click', (() => {
         text.innerHTML = fullText
         refs.ingredientsCard.style.overflowY = "auto"
+        // showMoreBtn.classList.add('visually-hidden')
     }));
 }
 
@@ -67,6 +68,7 @@ function onBackdropClick(evt) {
 
 function toggleShowModal() {
     refs.backdrop.classList.toggle('show-modal');
+    refs.ingredientsCard.style.overflowY = "hidden"
 }
 
 function addToIngredient(drink)  {
