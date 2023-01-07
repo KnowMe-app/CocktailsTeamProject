@@ -15,7 +15,7 @@ let objFavorite = {};
 
 markupCards.addEventListener('click', onFavorite);
 favorCocktails.addEventListener('click', listFavorite);
-// favorCocktailsMain.addEventListener('click', listFavorite);
+favorCocktailsMain.addEventListener('click', listFavorite);
 
 // --------------- ФУНКЦІЯ Додавання в улюблені по кліку
 export async function onFavorite(event) {
