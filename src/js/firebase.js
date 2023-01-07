@@ -170,8 +170,8 @@ export async function getFavouriteCocktails() {
 
 export function checkInFavourite(event, idFavorite) {
     const perem = event.target.closest('.card__btn-add');
-    console.log('firstElementChild:', perem.firstElementChild);
-    console.log('lastElementChild:', perem.lastElementChild);
+    // console.log('firstElementChild:', perem.firstElementChild);
+    // console.log('lastElementChild:', perem.lastElementChild);
   
   if (!perem.classList.contains('favourite')) {
     perem.classList.add('favourite');
