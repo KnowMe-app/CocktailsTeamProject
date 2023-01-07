@@ -10,6 +10,7 @@ const favorCocktails = document.querySelector('.favor-cocktails');
 const cardsTitle = document.querySelector('.cards-title');
 const svgCardIcon = document.querySelector('.card__icon');
 const favorCocktailsMain = document.querySelector('.favor-cocktails-main');
+const modal = document.querySelector('#modal')
 let objFavorite = {};
 
 markupCards.addEventListener('click', onFavorite);
@@ -76,7 +77,8 @@ function listFavorite() {
   const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
   cardsTitle.textContent = 'Favorite cocktails';
   markupCards.innerHTML = '';
-
+  modal.classList.remove('modal_vis')
+  
   try {
     getFavouriteCocktails();
     clearPagination();
