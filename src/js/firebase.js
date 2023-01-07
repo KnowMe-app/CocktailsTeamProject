@@ -85,52 +85,53 @@ function changeBtnLoginLogout(user) {
 export async function addCocktailToFav(searchParams) {
   const cocktails = {};
   cocktails[searchParams] = searchParams;
-  const userId = auth.currentUser.uid; // The user's ID, unique to the Firebase project. Do NOT use this value to authenticate with your backend server, if you have one. Use User.getToken() instead.
-  const data = ref(db, 'favourite/' + userId + '/cocktails/');
   try {
+    const userId = auth.currentUser.uid; // The user's ID, unique to the Firebase project. Do NOT use this value to authenticate with your backend server, if you have one. Use User.getToken() instead.
+    const data = ref(db, 'favourite/' + userId + '/cocktails/');
     await update(data, cocktails);
     // console.log('data', data); // структура папок - місце збереження
     console.log('added cocktail', cocktails); // безпосередньо пошукова фраза яка стає ключем і паратметром
     // console.log('userId', userId); // унікальний номер юзера
   } catch {
-    alert('Please, login');
+    console.log('Please, login, to use God mode');
   }
 }
 
 async function addIngrToFav(searchParams) {
   const ingredients = {};
   ingredients[searchParams] = searchParams;
-  const userId = auth.currentUser.uid;
-  const data = ref(db, 'favourite/' + userId + '/ingredients/');
+
   try {
+    const userId = auth.currentUser.uid;
+    const data = ref(db, 'favourite/' + userId + '/ingredients/');
     await update(data, ingredients);
   } catch {
-    alert('Please, login');
+    console.log('Please, login, to use God mode');
   }
 }
 
 async function removeCocktailFromFav(searchParams) {
   const cocktails = {};
   cocktails[searchParams] = null;
-  const userId = auth.currentUser.uid;
-  const data = ref(db, 'favourite/' + userId + '/cocktails/');
   try {
+    const userId = auth.currentUser.uid;
+    const data = ref(db, 'favourite/' + userId + '/cocktails/');
     await update(data, cocktails);
     console.log('removed cocktail', cocktails);
   } catch {
-    alert('Please, try again');
+    console.log('Please, login, to use God mode');
   }
 }
 
 async function removeIngrFromFav(searchParams) {
   const ingredients = {};
   ingredients[searchParams] = null;
-  const userId = auth.currentUser.uid;
-  const data = ref(db, 'favourite/' + userId + '/ingredients/');
   try {
+    const userId = auth.currentUser.uid;
+    const data = ref(db, 'favourite/' + userId + '/ingredients/');
     await update(data, ingredients);
   } catch {
-    alert('Please, try again');
+    console.log('Please, login, to use God mode');
   }
 }
 
@@ -169,10 +170,10 @@ export async function getFavouriteCocktails() {
 }
 
 export function checkInFavourite(event, idFavorite) {
-    const perem = event.target.closest('.card__btn-add');
-    console.log('firstElementChild:', perem.firstElementChild);
-    console.log('lastElementChild:', perem.lastElementChild);
-  
+  const perem = event.target.closest('.card__btn-add');
+  console.log('firstElementChild:', perem.firstElementChild);
+  console.log('lastElementChild:', perem.lastElementChild);
+
   if (!perem.classList.contains('favourite')) {
     perem.classList.add('favourite');
     perem.lastElementChild.classList.remove('svg-default');
