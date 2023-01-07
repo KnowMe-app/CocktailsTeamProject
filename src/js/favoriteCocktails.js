@@ -3,43 +3,63 @@ import { checkInFavourite } from './firebase'; // Додав функцію до
 import { markupCard } from './randomCocktailsCards';
 import { getFavouriteCocktails } from './firebase';
 import { clearPagination } from './pagination';
+import { getAuth } from 'firebase/auth';
 
 const markupCards = document.querySelector('.markup-cards');
 const favorCocktails = document.querySelector('.favor-cocktails');
 const cardsTitle = document.querySelector('.cards-title');
 const svgCardIcon = document.querySelector('.card__icon');
+const favorCocktailsMain = document.querySelector('.favor-cocktails-main');
 let objFavorite = {};
 
 markupCards.addEventListener('click', onFavorite);
 favorCocktails.addEventListener('click', listFavorite);
+favorCocktailsMain.addEventListener('click', listFavorite);
 
 // --------------- ФУНКЦІЯ Додавання в улюблені по кліку
-export function onFavorite(event) {
-  if (event.target.closest('.card__btn')) {
-    return;
-  }
-
-  const elemFavorite = event.target.closest('.card__btn-add') || event.target.closest('.card__btn-add.cocktails-modal__btn')
-  const idFavorite = elemFavorite.getAttribute('ident');
-  const obj = { [idFavorite]: idFavorite };
-
-  checkInFavourite(event, idFavorite); // Змінюємо сердечко і назву кнопки
-
-  // --------------- додавання в localStorage об'єкту наклацаних улюблених
-  if (localStorage.getItem('idFavorite')) {
-    const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
-
-    if (dataFromStorage.hasOwnProperty(idFavorite)) {
-      removeFromLocalStorage(idFavorite, dataFromStorage);
-      localStorage.setItem('idFavorite', JSON.stringify(dataFromStorage));
-    } else {
-      objFavorite = { ...dataFromStorage, ...obj };
-      localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
+export async function onFavorite(event) {
+  try {
+    const userId = getAuth().currentUser.uid;
+    console.log(`Your login id is ${userId}`);
+    
+    if (event.target.closest('.card__btn')) {
+      return;
     }
-  } else {
-    objFavorite = { ...obj };
-    localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
-  }
+
+    const elemFavorite = event.target.closest('.card__btn-add') || event.target.closest('.card__btn-add.cocktails-modal__btn')
+    const idFavorite = elemFavorite.getAttribute('ident');
+    const obj = { [idFavorite]: idFavorite };
+
+    checkInFavourite(event, idFavorite); // Змінюємо сердечко і назву кнопки
+    
+  } catch {
+    console.log('Please, login, to use God mode');
+    if (event.target.closest('.card__btn')) {
+      return;
+    }
+
+    const elemFavorite = event.target.closest('.card__btn-add') || event.target.closest('.card__btn-add.cocktails-modal__btn')
+    const idFavorite = elemFavorite.getAttribute('ident');
+    const obj = { [idFavorite]: idFavorite };
+
+    checkInFavourite(event, idFavorite); // Змінюємо сердечко і назву кнопки
+
+    // --------------- додавання в localStorage об'єкту наклацаних улюблених
+    if (localStorage.getItem('idFavorite')) {
+      const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
+
+      if (dataFromStorage.hasOwnProperty(idFavorite)) {
+        removeFromLocalStorage(idFavorite, dataFromStorage);
+        localStorage.setItem('idFavorite', JSON.stringify(dataFromStorage));
+      } else {
+        objFavorite = { ...dataFromStorage, ...obj };
+        localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
+      }
+    } else {
+      objFavorite = { ...obj };
+      localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
+      }
+    }
 }
 
 // --------------- ФУНКЦІЯ видалення з localStorage 
@@ -57,8 +77,11 @@ function listFavorite() {
   cardsTitle.textContent = 'Favorite cocktails';
   markupCards.innerHTML = '';
 
-  // getFavouriteCocktails(); // рендерінг для авторизованих користувачів
-  clearPagination(); //видаляє пагінацію, яка могла залишитися від попередньої видачі
+  try {
+    getFavouriteCocktails();
+    clearPagination();
+  } catch {
+    clearPagination(); //видаляє пагінацію, яка могла залишитися від попередньої видачі
 
   // ------ Рендерінг із localStorage 
   for (const item in dataFromStorage) {
@@ -70,9 +93,10 @@ function listFavorite() {
       inFavoritePage(forBtnFavorite);
     });
   }
+  }
 }
 
-// --------------- ФУНКЦІЯ заміни кнопок на Remove
+// --------------- ФУНКЦІЯ заміни кнопок на Remove в рендерінгу сторінки Фаворитів
 function inFavoritePage(forBtnFavorite) {
   for (const item of forBtnFavorite) {
       item.classList.add('favourite');
