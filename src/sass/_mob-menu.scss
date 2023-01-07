@@ -8,10 +8,10 @@
     right: 0;
     z-index: 99999;
     color: var(--var-primary-text-color);
-    @media screen and(min-width: 480px) {
+    // @media screen and(min-width: 480px) {
    
-      position: absolute;
-    }
+    //   // position: absolute;
+    // }
     @media screen and(min-width: 1280px) {
      display: none;
     }}
@@ -268,15 +268,14 @@ letter-spacing: 0.02em;
       
       color: var(--var-accent-color);
       background: white;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
-      transition: .3s;
+      
       @media screen and(max-width: 375px) {
         width: 70px;
       }
     }
     .btn-login-main:hover {
       background: var(--var-accent-color);
-      box-shadow: 0 15px 20px rgba(253, 81, 1, 0.4);
+    
       color: var(--var-primary-bg-color);
-      transform: translateY(-7px);
+      
     }
