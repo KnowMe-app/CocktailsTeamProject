@@ -2,6 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { getCocktailById } from './CocktailsApiService';
 import { markupCard } from './randomCocktailsCards';
+import { inFavoritePage } from './favoriteCocktails';
 import {
   getAuth,
   signInWithPopup,
@@ -146,20 +147,22 @@ export async function getFavouriteCocktails() {
         if (snapshot.exists()) {
           // перевіряємо чи є взагалі збережені коктейлі на firebase
           const data = snapshot.val(); // спеціальний метод отримання даних
-          // console.log('snapshot.val()', snapshot.val())
           const dataKeys = Object.keys(data); // ключ дорівнює назві пошукового запиту (коктейль / інгридієнт)
-          // console.log('Object.keys(snapshot.val())', Object.keys(snapshot.val()))
-          // dataKeys.map(dataKey => {...};                                      // рендеремо карточки
-          // - перебираємо коктейлі
 
+          // рендеремо карточки
+          // - перебираємо коктейлі
           for (const item of dataKeys) {
             getCocktailById(item).then(data => {
               let dataForCard = data.drinks;
               markupCard(dataForCard, markupCards, 'favourite');
+
+          // - додаємо сердечко + Remove
+              let forBtnFavorite = markupCards.querySelectorAll('.card__btn-add');
+              inFavoritePage(forBtnFavorite);
             });
           }
 
-          // - додаємо сердечко (через клас)
+
         }
       })
       .catch(error => {

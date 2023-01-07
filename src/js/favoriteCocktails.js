@@ -97,11 +97,11 @@ function listFavorite() {
 }
 
 // --------------- ФУНКЦІЯ заміни кнопок на Remove в рендерінгу сторінки Фаворитів
-function inFavoritePage(forBtnFavorite) {
+export function inFavoritePage(forBtnFavorite) {
   for (const item of forBtnFavorite) {
       item.classList.add('favourite');
       item.lastElementChild.classList.remove('svg-default');
       item.lastElementChild.classList.add('favourite');
-      item.firstElementChild.textContent = 'Remove';
+    item.firstElementChild.textContent = 'Remove';
   }
 }
