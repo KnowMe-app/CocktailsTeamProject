@@ -13,7 +13,9 @@ markupCards.addEventListener('click', onFavorite);
 favorCocktails.addEventListener('click', listFavorite);
 
 function onFavorite(event) {
-  if (event.target.closest('.card__btn')) { return };
+  if (event.target.closest('.card__btn')) {
+    return;
+  }
 
   const elemFavorite = event.target.closest('.card__btn-add');
   const idFavorite = elemFavorite.getAttribute('ident');
@@ -31,13 +33,11 @@ function onFavorite(event) {
     } else {
       objFavorite = { ...dataFromStorage, ...obj };
       localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
-      }
+    }
   } else {
     objFavorite = { ...obj };
     localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
-    }
-
-
+  }
 
   // if (event.target.classList.contains('card__btn-add')) {
   //   checkInFavourite(event, idFavorite); // Додав функцію додавання та вилучення з улюбленого
@@ -49,12 +49,11 @@ function onFavorite(event) {
 
 export function removeFromLocalStorage(idFavorite, dataFromStorage) {
   for (const key in dataFromStorage) {
-      if (dataFromStorage[key] === idFavorite) {
-        delete dataFromStorage[key];
-      }
+    if (dataFromStorage[key] === idFavorite) {
+      delete dataFromStorage[key];
     }
   }
-
+}
 
 function listFavorite() {
   cardsTitle.textContent = 'Favorite cocktails';
@@ -64,7 +63,7 @@ function listFavorite() {
 
   // ------ Рендерінг із localStorage--------
   const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
-  console.log("new:", dataFromStorage);
+  console.log('new:', dataFromStorage);
 
   for (const item in dataFromStorage) {
     getCocktailById(dataFromStorage[item]).then(data => {
