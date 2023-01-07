@@ -6,7 +6,7 @@
 .dark {
   --var-bgcolor: var(--var-primary-text-color);
   --var-fontcolor: var(--var-primary-bg-color);
- 
+
 }
 
 body {
@@ -292,16 +292,17 @@ letter-spacing: 0.02em;
     }
     
     // main FAIVORIT
+    .dropdown {
+    
+      position: relative;
+      display: inline-block;
+  }
     .dropbtn {
      
       border: none;
   }
   
-  .dropdown {
-    
-      position: relative;
-      display: inline-block;
-  }
+  
   .dropbtn-Favorite{
     color: var(--var-primary-text-color);
   }
