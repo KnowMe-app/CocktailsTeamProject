@@ -12,7 +12,7 @@ let objFavorite = {};
 markupCards.addEventListener('click', onFavorite);
 favorCocktails.addEventListener('click', listFavorite);
 
-function onFavorite(event) {
+export default function onFavorite(event) {
   const elemFavorite = event.target.closest('.card__btn-add');
   console.log('elemFavorite', elemFavorite);
 
