@@ -71,7 +71,7 @@ function listFavorite() {
     console.log('dataFromStorageIngr:', dataFromStorageIngr);
     
 
-  }  
+ // }  
 
 
   
