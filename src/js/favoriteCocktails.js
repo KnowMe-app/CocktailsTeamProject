@@ -4,6 +4,7 @@ import { markupCard } from './randomCocktailsCards';
 import { getFavouriteCocktails } from './firebase';
 import { clearPagination } from './pagination';
 import { getAuth } from 'firebase/auth';
+import exp from 'constants';
 
 const markupCards = document.querySelector('.markup-cards');
 const favorCocktails = document.querySelector('.favor-cocktails');
@@ -26,7 +27,9 @@ favorCocktailsMain.addEventListener('click', listFavorite);
 
 // --------------- ФУНКЦІЯ Додавання в улюблені по кліку
 export async function onFavorite(event) {
+  
   try {
+    if (event.target.classList.contains('ingr')) return;
     const userId = getAuth().currentUser.uid;
     console.log(`Your login id is ${userId}`);
 
@@ -42,6 +45,7 @@ export async function onFavorite(event) {
 
     checkInFavourite(event, idFavorite); // Змінюємо сердечко і назву кнопки
   } catch {
+    if (event.target.classList.contains('ingr')) return;
     console.log('Please, login, to use God mode');
     if (event.target.closest('.card__btn')) {
       return;
@@ -56,6 +60,26 @@ export async function onFavorite(event) {
     checkInFavourite(event, idFavorite); // Змінюємо сердечко і назву кнопки
 
     // --------------- додавання в localStorage об'єкту наклацаних улюблених
+    // if (localStorage.getItem('idFavorite')) {
+    //   const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
+
+    //   if (dataFromStorage.hasOwnProperty(idFavorite)) {
+    //     removeFromLocalStorage(idFavorite, dataFromStorage);
+    //     localStorage.setItem('idFavorite', JSON.stringify(dataFromStorage));
+    //   } else {
+    //     objFavorite = { ...dataFromStorage, ...obj };
+    //     localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
+    //   }
+    // } else {
+    //   objFavorite = { ...obj };
+    //   localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
+    //   }
+
+    chekInLocalStorageFavorite(idFavorite, obj, objFavorite);
+    }
+}
+
+export function chekInLocalStorageFavorite(idFavorite, obj, objFavorite) {
     if (localStorage.getItem('idFavorite')) {
       const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
 
@@ -69,8 +93,12 @@ export async function onFavorite(event) {
     } else {
       objFavorite = { ...obj };
       localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
+// <<<<<< no-favorite-cocktail
     }
   }
+// =======
+//  }
+//>>>>>>> main
 }
 
 // --------------- ФУНКЦІЯ видалення з localStorage
@@ -87,9 +115,14 @@ function listFavorite() {
   const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
   cardsTitle.textContent = 'Favorite cocktails';
   markupCards.innerHTML = '';
+//<<<<<<< no-favorite-cocktail
   modal.classList.remove('modal_vis');
 
-  // async function listFavorite() {
+// async function listFavorite() {
+//=======
+//  modal.classList.remove('modal_vis')
+  
+//>>>>>>> main
   try {
     const userId = getAuth().currentUser.uid;
     cardsTitle.textContent = 'Favorite cocktails';
