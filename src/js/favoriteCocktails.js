@@ -99,7 +99,7 @@ export function chekInLocalStorageFavorite(idFavorite, obj, objFavorite) {
 // =======
 //  }
 //>>>>>>> main
-}
+
 
 // --------------- ФУНКЦІЯ видалення з localStorage
 export function removeFromLocalStorage(idFavorite, dataFromStorage) {
