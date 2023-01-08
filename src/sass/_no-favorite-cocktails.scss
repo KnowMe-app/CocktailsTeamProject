@@ -1,0 +1,45 @@
+.no-fav-cocktail {
+  padding: 114px 0 232px 0;
+  @media screen and (min-width: 768px) {
+    padding: 131px 0 523px 0;
+    }
+    @media screen and (min-width: 1200px) {
+    padding: 132px 0 472px 0;
+    }
+  &__title {
+    font-weight: 600;
+    font-size: 22;
+    line-height: 1.91;
+    text-align: center;
+    color: var(--var-primary-text-color);
+    padding-bottom: 60px;
+    @media screen and (min-width: 768px) {
+       font-weight: 700;
+       font-size: 32px;
+       line-height: 1.19;
+      }
+      @media screen and (min-width: 1200px) {
+        font-size: 48px;
+        line-height: 1.5;
+      }
+  }
+  &__description {
+    font-weight: 400;
+    font-size: 20;
+    line-height: 3;
+    text-align: center;
+    margin: 0 auto;
+    width: 239px;
+    color: var(--var-primary-text-color);
+    @media screen and (min-width: 768px) {
+       font-size: 24px;
+       line-height: 2.5;
+       width: 296px;
+      }
+      @media screen and (min-width: 1200px) {
+        font-size: 32px;
+        line-height: 2.25;
+        width: 385px;
+      }
+  }
+}
