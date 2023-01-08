@@ -14,6 +14,7 @@ const login = document.querySelector('.btn-login')
 const searForm = document.querySelector('.search__form button')
 const searInput = document.querySelector('.search__form input')
 const modalCocktail= document.querySelector('.cocktails-modal')
+const svg = document.querySelectorAll('svg')
 
 // const currentTheme = localStorage.getItem("theme");
 // // Если текущая тема в localStorage равна "dark"…
@@ -41,6 +42,7 @@ function changeTheme() {
     searInput.style.background='var(--var-primary-text-color)'
     card.style.color='var(--var-primary-bg-color)'
     modalCocktail.style.background='var(--var-primary-text-color)'
+    svg.forEach(Add => Add.style.fill='var(--var-primary-bg-color)')
     
   } else {
     drow.style.color = 'var(--var-primary-text-color)'
@@ -55,18 +57,19 @@ function changeTheme() {
     searInput.style.background='var(--var-primary-bg-color)'
     card.style.color='var(--var-primary-text-color)'
     modalCocktail.style.background='var(--var-primary-bg-color)'
+    svg.forEach(Add => Add.style.fill='var(--var-primary-text-color)')
+    
   }
 }
 const favMain = document.querySelector('.faivorite-main')
 const homeMain = document.querySelector('.navigation__home-main')
-const vector = document.querySelector('.favorite__icon')
+
 const drop = document.querySelector('.dropdown-content-main')
 const dropText =document.querySelector('.drownFavor')
 const drowFav =document.querySelector('.drownFav')
 const searFormMain = document.querySelector('.search__form-main button')
 const searInputMain= document.querySelector('.search__form-main input')
-const mobileIcon = document.querySelector('.mobile__icon')
-const closeIcon = document.querySelector('.close_modal')
+
   function changeThemeMain() {
     if(document.body.classList.toggle("dark")){
         bodyMain.style.background="var(--var-primary-text-color)"
@@ -79,7 +82,7 @@ const closeIcon = document.querySelector('.close_modal')
     darkMain.style.color='var(--var-accent-color)'
     favMain.style.color='var(--var-primary-bg-color)'
     homeMain.style.color='var(--var-primary-bg-color)'
-    vector.style.fill='var(--var-primary-bg-color)'
+    // vector.style.fill='var(--var-primary-bg-color)'
     dropText.style.color='var(--var-primary-bg-color)'
     drop.style.background='var(--var-primary-text-color)'
     drowFav.style.color='var(--var-primary-bg-color)'
@@ -89,9 +92,11 @@ const closeIcon = document.querySelector('.close_modal')
     searInput.style.background='var(--var-primary-text-color)'
     login.style.background='var(--var-primary-text-color)'
     login.style.color='var(--var-primary-bg-color)'
-    mobileIcon.style.fill='var(--var-primary-bg-color)'
-    closeIcon.style.fill='var(--var-primary-bg-color)'
+    // mobileIcon.style.fill='var(--var-primary-bg-color)'
+    // closeIcon.style.fill='var(--var-primary-bg-color)'
     modalCocktail.style.background='var(--var-primary-text-color)'
+   
+    svg.forEach(Add => Add.style.fill='var(--var-primary-bg-color)')
     }else{
         light.style.color="var(--var-accent-color)"
         black.style.color="var(--var-primary-text-color)"
@@ -103,7 +108,7 @@ const closeIcon = document.querySelector('.close_modal')
     darkMain.style.color='var(--var-primary-text-color)'
     favMain.style.color='var(--var-primary-text-color)'
     homeMain.style.color='var(--var-primary-text-color)'
-    vector.style.fill='var(--var-primary-text-color)'
+    // vector.style.fill='var(--var-primary-text-color)'
     dropText.style.color='var(--var-primary-text-color)'
     drop.style.background='var(--var-primary-bg-color)'
     drowFav.style.color='var(--var-primary-text-color)'
@@ -113,8 +118,10 @@ const closeIcon = document.querySelector('.close_modal')
     searInput.style.background='var(--var-primary-bg-color)'
     login.style.background='var(--var-primary-bg-color)'
     login.style.color='var(--var-accent-color)'
-    mobileIcon.style.fill='var(--var-primary-text-color)'
-    closeIcon.style.fill='var(--var-primary-text-color)'
+    // mobileIcon.style.fill='var(--var-primary-text-color)'
+    // closeIcon.style.fill='var(--var-primary-text-color)'
     modalCocktail.style.background='var(--var-primary-bg-color)'
+    
+    svg.forEach(Add => Add.style.fill='var(--var-primary-text-color)')
     }
   }
