@@ -1,5 +1,5 @@
 import { getCocktailById } from './CocktailsApiService';
-import { checkInFavourite } from './firebase'; // Додав функцію додавання та вилучення з улюбленого
+import { checkInFavourite } from './firebase'; // додавання та вилучення з улюбленого
 import { markupCard } from './randomCocktailsCards';
 import { getFavouriteCocktails } from './firebase';
 import { clearPagination } from './pagination';
@@ -12,22 +12,22 @@ const cardsTitle = document.querySelector('.cards-title');
 const svgCardIcon = document.querySelector('.card__icon');
 const favorCocktailsMain = document.querySelector('.favor-cocktails-main');
 const modal = document.querySelector('#modal');
+const hero = document.querySelector('.hero');
 
 const searchListEl = document.querySelector('.hero__search-list');
 const heroEl = document.querySelector('.hero');
 const paginationEl = document.querySelector('.cards__pagination');
 const cardsSectionEl = document.querySelector('.section-cards');
 const noFavoriteCocktailMarkup = document.querySelector('.no-fav-cocktail');
-
 let objFavorite = {};
 
 markupCards.addEventListener('click', onFavorite);
 favorCocktails.addEventListener('click', listFavorite);
 favorCocktailsMain.addEventListener('click', listFavorite);
 
-// --------------- ФУНКЦІЯ Додавання в улюблені по кліку
+// --------------- Click ФУНКЦІЯ Додавання в Фаворіти
 export async function onFavorite(event) {
-  
+  // для авторизованих
   try {
     if (event.target.classList.contains('ingr')) return;
     const userId = getAuth().currentUser.uid;
@@ -45,6 +45,7 @@ export async function onFavorite(event) {
 
     checkInFavourite(event, idFavorite); // Змінюємо сердечко і назву кнопки
   } catch {
+  // для неавторизованих додається в localStorage
     if (event.target.classList.contains('ingr')) return;
     console.log('Please, login, to use God mode');
     if (event.target.closest('.card__btn')) {
@@ -58,27 +59,11 @@ export async function onFavorite(event) {
     const obj = { [idFavorite]: idFavorite };
 
     checkInFavourite(event, idFavorite); // Змінюємо сердечко і назву кнопки
-
-    // --------------- додавання в localStorage об'єкту наклацаних улюблених
-    // if (localStorage.getItem('idFavorite')) {
-    //   const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
-
-    //   if (dataFromStorage.hasOwnProperty(idFavorite)) {
-    //     removeFromLocalStorage(idFavorite, dataFromStorage);
-    //     localStorage.setItem('idFavorite', JSON.stringify(dataFromStorage));
-    //   } else {
-    //     objFavorite = { ...dataFromStorage, ...obj };
-    //     localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
-    //   }
-    // } else {
-    //   objFavorite = { ...obj };
-    //   localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
-    //   }
-
-    chekInLocalStorageFavorite(idFavorite, obj, objFavorite);
+    chekInLocalStorageFavorite(idFavorite, obj, objFavorite); // взаємодія з localStorage
     }
 }
 
+// --------------- Перевірка localStorage. Додавання/видалення
 export function chekInLocalStorageFavorite(idFavorite, obj, objFavorite) {
     if (localStorage.getItem('idFavorite')) {
       const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
@@ -110,26 +95,27 @@ export function removeFromLocalStorage(idFavorite, dataFromStorage) {
   }
 }
 
-// --------------- ФУНКЦІЯ рендерингу сторінки Фаворитів
+// --------------- Click ФУНКЦІЯ рендерингу сторінки Фаворитів
 function listFavorite() {
   const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
   cardsTitle.textContent = 'Favorite cocktails';
   markupCards.innerHTML = '';
+  hero.innerHTML = '';
+  hero.cl
 //<<<<<<< no-favorite-cocktail
   modal.classList.remove('modal_vis');
 
-// async function listFavorite() {
 //=======
-//  modal.classList.remove('modal_vis')
-  
 //>>>>>>> main
   try {
+    // для авторизованих
     const userId = getAuth().currentUser.uid;
     cardsTitle.textContent = 'Favorite cocktails';
     markupCards.innerHTML = '';
     clearPagination();
     getFavouriteCocktails(); // рендерінг для авторизованих
   } catch {
+    // для неавторизованих берем з localStorage
     if (Object.keys(dataFromStorage).length === 0) {
       if (!cardsSectionEl.classList.contains('is-hidden')) {
         markupToggle();
