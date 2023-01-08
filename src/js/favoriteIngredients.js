@@ -10,6 +10,8 @@ import { removeFromLocalStorage } from './favoriteCocktails';
 import * as icons from '../images/icons.svg';
 
 const favorIngredients = document.querySelector('.favor-ingredients')
+const favorIngridientMain = document.querySelector('.favor-ingridient-main')
+const modal = document.querySelector('#modal')
 
 let objFavorite = {};
 
@@ -61,8 +63,9 @@ function checkIngredientFavourite(event) {
   // }
 
   favorIngredients.addEventListener('click', listFavorite);
-
+  favorIngridientMain.addEventListener('click', listFavorite);
   function listFavorite() {
+    modal.classList.remove('modal_vis')
     const dataFromStorage = JSON.parse(localStorage.getItem('idIngredient'));
     console.log('new:', dataFromStorage);
     cardsTitle.textContent = 'Favorite ingredients';
