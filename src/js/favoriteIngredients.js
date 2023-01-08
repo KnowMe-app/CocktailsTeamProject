@@ -4,6 +4,7 @@ import { getIngredientById } from './CocktailsApiService';
 import { removeFromLocalStorage } from './favoriteCocktails';
 import { checkInFavourite } from './firebase';
 import * as icons from '../images/icons.svg';
+import { showIngredientCard } from './modalIngredients';
 
 const favorIngredients = document.querySelector('.favor-ingredients')
 const favorIngridientMain = document.querySelector('.favor-ingridient-main')
@@ -36,7 +37,7 @@ function checkIngredientFavourite (event) {
 //------------------------- Click on Page Favorite Ingredients
 function checkIngredientFavouritePage(event) {
   if (event.target.classList.contains('card__btn')) {
-    onClick(event.target);
+    onClick(event);
   } else {
     const elemFavoriteIngr = event.target.closest('.card__btn-add');
     const idIngredient = elemFavoriteIngr.getAttribute('idingr');
@@ -139,18 +140,21 @@ function markupIngredientCard(dataForCard, position, activeNotActive) {
     }
   }
 
-// -------------- кнопка Lean More на сторінці Фаворитів Інгрідієнтів
+// // -------------- кнопка Lean More на сторінці Фаворитів Інгрідієнтів
 function onClick (event) {
-  console.log(event.target.classList.value);
+  // console.log(event.target.classList.value);
   // if (e.target.classList.value !== '.card__btn .btn-ingridient') {
   //   return
   //  }
 
   const idIngredient = event.target.id;
-  console.log(idIngredient);
+  // console.log(idIngredient);
+
 
   getIngredientById(idIngredient).then(data => {
-    let dataForCard = data.ingredients;
+
+    let dataForCard = data.ingredients[0];
+    console.log(dataForCard);
     showIngredientCard(dataForCard);
   })
 }

@@ -34,7 +34,7 @@ function onIngredientClick(evt) {
 }
 
 
-function showIngredientCard(drink) {
+export function showIngredientCard(drink) {
     toggleShowModal();
     clearIngredientList();
     addToIngredient(drink);
