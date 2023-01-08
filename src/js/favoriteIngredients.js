@@ -14,6 +14,7 @@ const cardsTitle = document.querySelector('.cards-title');
 const cardsTitleIngr = document.querySelector('.cards-title');
 const markupCards = document.querySelector('.markup-cards');
 const markupIngr = document.querySelector('.markup-ingr');
+const hero = document.querySelector('.hero');
 let objFavorite = {};
 
 export function name() {
@@ -72,8 +73,10 @@ function listFavorite() {
     const dataFromStorageIngr = JSON.parse(localStorage.getItem('idIngredient'));
     
     cardsTitle.textContent = 'Favorite ingredients';
-    // cardsTitleIngr.textContent = '';
     markupCards.innerHTML = '';
+    hero.innerHTML = '';
+    hero.style.paddingTop = "0";
+    hero.style.paddingBottom = "150px";
   
     for (const item in dataFromStorageIngr) {
         getIngredientById(dataFromStorageIngr[item]).then(data => {

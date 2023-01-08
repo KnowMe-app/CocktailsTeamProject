@@ -13,6 +13,7 @@ const svgCardIcon = document.querySelector('.card__icon');
 const favorCocktailsMain = document.querySelector('.favor-cocktails-main');
 const modal = document.querySelector('#modal');
 const hero = document.querySelector('.hero');
+const markupIngr = document.querySelector('.markup-ingr');
 
 const searchListEl = document.querySelector('.hero__search-list');
 const heroEl = document.querySelector('.hero');
@@ -78,13 +79,8 @@ export function chekInLocalStorageFavorite(idFavorite, obj, objFavorite) {
     } else {
       objFavorite = { ...obj };
       localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
-// <<<<<< no-favorite-cocktail
     }
   }
-// =======
-//  }
-//>>>>>>> main
-
 
 // --------------- ФУНКЦІЯ видалення з localStorage
 export function removeFromLocalStorage(idFavorite, dataFromStorage) {
@@ -100,14 +96,13 @@ function listFavorite() {
   const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
   cardsTitle.textContent = 'Favorite cocktails';
   markupCards.innerHTML = '';
+  markupIngr.innerHTML = '';
   hero.innerHTML = '';
   hero.style.paddingTop = "0";
   hero.style.paddingBottom = "150px";
-//<<<<<<< no-favorite-cocktail
+
   modal.classList.remove('modal_vis');
 
-//=======
-//>>>>>>> main
   try {
     // для авторизованих
     const userId = getAuth().currentUser.uid;
@@ -132,6 +127,7 @@ function listFavorite() {
   }
 }
 
+  // ------------------ Рендерінг із localStorage
 function renderFromLocalStorage() {
   console.log('Please, login, to use God mode');
   const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
@@ -139,7 +135,6 @@ function renderFromLocalStorage() {
   markupCards.innerHTML = '';
   clearPagination(); //видаляє пагінацію, яка могла залишитися від попередньої видачі
 
-  // ------ Рендерінг із localStorage
   for (const item in dataFromStorage) {
     getCocktailById(dataFromStorage[item]).then(data => {
       let dataForCard = data.drinks;
@@ -162,7 +157,6 @@ export function inFavoritePage(forBtnFavorite) {
 }
 
 //-----------------toggle between favorite cards markup and no favorite cocktail markup
-
 function markupToggle() {
   noFavoriteCocktailMarkup.classList.toggle('is-hidden');
   heroEl.classList.toggle('is-hidden');
