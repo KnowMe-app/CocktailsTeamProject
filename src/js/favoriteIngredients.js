@@ -35,9 +35,9 @@ function checkIngredientFavourite (event) {
 
 //------------------------- Click on Page Favorite Ingredients
 function checkIngredientFavouritePage(event) {
-  // if (event.target.classList.contains('.card__btn')) {
-  //   onClick();
-  // } else {
+  if (event.target.classList.contains('card__btn')) {
+    onClick(event.target);
+  } else {
     const elemFavoriteIngr = event.target.closest('.card__btn-add');
     const idIngredient = elemFavoriteIngr.getAttribute('idingr');
     const obj = { [idIngredient]: idIngredient };
@@ -45,6 +45,7 @@ function checkIngredientFavouritePage(event) {
     checkInFavourite(event, idIngredient);
     chekInLocalStorageIngredients(idIngredient, obj, objFavorite);
   }
+}
 
 //------------------------- Перевірка на наявність інгрідієнта в localStorage => додавання, видалення
 function chekInLocalStorageIngredients(idIngredient, obj, objFavorite) {
