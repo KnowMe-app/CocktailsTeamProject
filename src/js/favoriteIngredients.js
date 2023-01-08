@@ -4,7 +4,9 @@ import { getFavouriteCocktails } from './firebase';
 import { addIngrToFav } from './firebase';
 import { removeIngrFromFav } from './firebase';
 import { getIngredientById } from './CocktailsApiService';
-import { getIngredientById } from './CocktailsApiService';
+import { inFavoritePage } from './favoriteCocktails';
+import { removeFromLocalStorage } from './favoriteCocktails';
+
 import * as icons from '../images/icons.svg';
 
 const favorIngredients = document.querySelector('.favor-ingredients')
@@ -27,7 +29,7 @@ function checkIngredientFavourite(event) {
     // console.log(idIngredient);
     const obj = { [idIngredient]: idIngredient };
     
-    checkFavourite(event);
+    checkFavourite(event, idIngredient);
 
     if (localStorage.getItem('idIngredient')) {
         const dataFromStorage = JSON.parse(localStorage.getItem('idIngredient'));
@@ -50,13 +52,13 @@ function checkIngredientFavourite(event) {
 
   
 
-  export function removeFromLocalStorage(idIngredient, dataFromStorage) {
-    for (const key in dataFromStorage) {
-      if (dataFromStorage[key] === idIngredient) {
-        delete dataFromStorage[key];
-      }
-    }
-  }
+  // export function removeFromLocalStorage(idIngredient, dataFromStorage) {
+  //   for (const key in dataFromStorage) {
+  //     if (dataFromStorage[key] === idIngredient) {
+  //       delete dataFromStorage[key];
+  //     }
+  //   }
+  // }
 
   favorIngredients.addEventListener('click', listFavorite);
 
@@ -71,6 +73,9 @@ function checkIngredientFavourite(event) {
         getIngredientById(dataFromStorage[item]).then(data => {
             let dataForCard = data.ingredients;
             markupIngredientCard(dataForCard, markupCards, 'favourite');
+
+            let forBtnFavorite = markupCards.querySelectorAll('.card__btn-add');
+            inFavoritePage(forBtnFavorite)
       });
     }
   }
@@ -101,15 +106,17 @@ function markupIngredientCard(dataForCard, position, activeNotActive) {
       <li><p class="ingredients-modal__pretitle"> ${item.strType ? `${item.strType}` : ''} </p></li>
       </ul>
       <div class="card__btns">
-      <button type="button" class="card__btn" id = "${item.idDrink}">Learn more</button>
-      <button type="button" class="card__btn-add" >
-        <span class="card__btn-title">Add to</span>
-        <svg class="card__icon svg-default" width="18" height="18">
-            <use href="${icons}#icon-Heart"></use>
-        </svg>
-      </button>
-  </div> `;
+                                        <button type="button" class="card__btn" id = "${item.idDrink}">Learn more</button>
+                                        <button type="button" class="card__btn-add ${activeNotActive}" ident="${item.idDrink}">
+                                          <span class="card__btn-title">Add to</span>
+                                          <svg class="card__icon svg-default ${activeNotActive}" width="18" height="18">
+                                              <use href="${icons}#icon-Heart"></use>
+                                          </svg>
+                                        </button>
+                                    </div>
+                                    </div>`;
       position.innerHTML += htmlCards;
     }
   }
+  
   
