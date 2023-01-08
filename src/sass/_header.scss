@@ -20,7 +20,7 @@ height: 85px;
 border-radius: 0 25px 25px;
   position: fixed;
   width: 100%;
-  z-index: 1000;
+  z-index: 9;
   @media screen and(max-width: 480px) {
     height: 65px;
   }
@@ -309,7 +309,7 @@ letter-spacing: 0.02em;
   .dropdown-content {
     border: 1px solid #FD5103;
 border-radius: 4px;
-
+cursor: pointer;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;

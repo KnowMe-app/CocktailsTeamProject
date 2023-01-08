@@ -12,6 +12,7 @@ import * as icons from '../images/icons.svg';
 const favorIngredients = document.querySelector('.favor-ingredients')
 const favorIngridientMain = document.querySelector('.favor-ingridient-main')
 const modal = document.querySelector('#modal')
+
 const cardsTitle = document.querySelector('.cards-title');
 const cardsTitleIngr = document.querySelector('.cards-title');
 const markupCards = document.querySelector('.markup-cards');
@@ -60,6 +61,7 @@ function chekInLocalStorageIngredients(idIngredient, obj, objFavorite) {
         objFavorite = { ...obj };
         localStorage.setItem('idIngredient', JSON.stringify(objFavorite));
       }
+
 }
 
 // -------------- Рендерінг сторінки Фаворитів Інгридієнтів
@@ -67,6 +69,28 @@ function listFavorite() {
     modal.classList.remove('modal_vis')
     const dataFromStorageIngr = JSON.parse(localStorage.getItem('idIngredient'));
     console.log('dataFromStorageIngr:', dataFromStorageIngr);
+    
+
+  }  
+
+
+  
+
+  // export function removeFromLocalStorage(idIngredient, dataFromStorage) {
+  //   for (const key in dataFromStorage) {
+  //     if (dataFromStorage[key] === idIngredient) {
+  //       delete dataFromStorage[key];
+  //     }
+  //   }
+  // }
+
+  //favorIngredients.addEventListener('click', listFavorite);
+  //favorIngridientMain.addEventListener('click', listFavorite);
+  //function listFavorite() {
+    //modal.classList.remove('modal_vis')
+    //const dataFromStorage = JSON.parse(localStorage.getItem('idIngredient'));
+    //console.log('new:', dataFromStorage);
+    
     cardsTitle.textContent = 'Favorite ingredients';
     // cardsTitleIngr.textContent = '';
     markupCards.innerHTML = '';
