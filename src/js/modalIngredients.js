@@ -106,7 +106,7 @@ function createIngredientCard({ strIngredient, strType, strDescription, strAlcoh
             <li><p class="ingredients-modal__pretitle"> ${strType ? `✶ Type : ${strType}` : ''} </p></li>
             <li><p class="ingredients-modal__pretitle"> ✶ Alcohol : ${strAlcohol} </p></li>
         </ul>
-        <button type="button" class="ingredients-modal__btn" id="${idIngredient}" data-ingredients-modal-btn>Add to favorite</button>
+        <button type="button" class="ingredients-modal__btn ingr" id="${idIngredient}" data-ingredients-modal-btn>Add to favorite</button>
     </div>  `
 }
 

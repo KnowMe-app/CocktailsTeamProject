@@ -36,6 +36,30 @@
   }
 }
 
+.markup-ingr {
+    padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+
+  @media screen and(min-width: 768px) {
+    padding-top: 60px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  @media screen and(min-width: 1280px) {
+    padding-top: 60px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+}
+
 .card {
   width: 100%;
   border: 1px solid var(--var-accent-color);
