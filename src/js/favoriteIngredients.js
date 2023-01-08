@@ -10,6 +10,8 @@ import { checkInFavourite } from './firebase';
 import * as icons from '../images/icons.svg';
 
 const favorIngredients = document.querySelector('.favor-ingredients')
+const favorIngridientMain = document.querySelector('.favor-ingridient-main')
+const modal = document.querySelector('#modal')
 const cardsTitle = document.querySelector('.cards-title');
 const cardsTitleIngr = document.querySelector('.cards-title');
 const markupCards = document.querySelector('.markup-cards');
@@ -23,6 +25,7 @@ export function name() {
 
 markupIngr.addEventListener('click', checkIngredientFavouritePage);
 favorIngredients.addEventListener('click', listFavorite);
+favorIngridientMain.addEventListener('click', listFavorite);
 
 function checkIngredientFavourite (event) {
   const idIngredient = event.target.id
@@ -61,6 +64,7 @@ function chekInLocalStorageIngredients(idIngredient, obj, objFavorite) {
 
 // -------------- Рендерінг сторінки Фаворитів Інгридієнтів
 function listFavorite() {
+    modal.classList.remove('modal_vis')
     const dataFromStorageIngr = JSON.parse(localStorage.getItem('idIngredient'));
     console.log('dataFromStorageIngr:', dataFromStorageIngr);
     cardsTitle.textContent = 'Favorite ingredients';
