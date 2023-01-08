@@ -34,6 +34,7 @@ function showCocktailsCard(drink) {
     const favoriteBtn = document.querySelector('.card__btn-add.cocktails-modal__btn')
     favoriteBtn.addEventListener('click', onFavorite)
     closeModal();
+    // inFavoritePageIngr(favoriteBtn) 
 }
 
 
@@ -115,6 +116,15 @@ function createCocktailCard(coctail) {
     </div> `
 }
 
+// function inFavoritePageIngr(favoriteBtn) {
+//     if (!favoriteBtn.classList.contains('ingr')) {
+//         return;
+//       } else {
+//         favoriteBtn.classList.add('favourite');
+//         favoriteBtn.textContent = 'Remove from';
+//       }
+    
+//     }
 
 
 
