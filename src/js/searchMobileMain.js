@@ -13,10 +13,8 @@ import { renderPage } from './cocktailByLetter';
 //const cardsSectionEl = document.querySelector('.section-cards');
 //const voidMarkup = document.querySelector('.void');
 
-
 let modal = document.getElementById('modal');
 let body = document.getElementsByTagName('body')[0];
-
 
 const headerSearch = document.querySelector('.search__form-main');
 
@@ -30,37 +28,38 @@ function onSearchFormSubmit(event) {
   if (selectedLetter.length === 1) {
     searchCocktailsByLetter(selectedLetter).then(value => {
       renderPage(value.drinks);
+      window.location.href = '#cards';
     });
   } else {
     searchCocktailByName(selectedLetter).then(value => {
       renderPage(value.drinks);
+      window.location.href = '#cards';
     });
   }
   modal.classList.add('bounceOutDown');
   modal.classList.remove('modal_vis');
   body.classList.remove('body_block');
 
-//function onLetterClick(event) {
-//  event.preventDefault();
-//  let selectedLetter = event.target.value;
-//  if (selectedLetter.length === 1) {
-//    searchCocktailsByLetter(selectedLetter).then(
- //     value => {
-//        clearPagination();
-//        renderMarkup(value.drinks);
-//      }
-//      // renderCards(value.drinks)
-//    );
-//  } else {
-//    searchCocktailByName(selectedLetter).then(value =>
-//      // renderCards(value.drinks)
-//      {
-//        clearPagination();
-//        renderMarkup(value.drinks);
-//      }
-//    );
-//  }
-
+  //function onLetterClick(event) {
+  //  event.preventDefault();
+  //  let selectedLetter = event.target.value;
+  //  if (selectedLetter.length === 1) {
+  //    searchCocktailsByLetter(selectedLetter).then(
+  //     value => {
+  //        clearPagination();
+  //        renderMarkup(value.drinks);
+  //      }
+  //      // renderCards(value.drinks)
+  //    );
+  //  } else {
+  //    searchCocktailByName(selectedLetter).then(value =>
+  //      // renderCards(value.drinks)
+  //      {
+  //        clearPagination();
+  //        renderMarkup(value.drinks);
+  //      }
+  //    );
+  //  }
 }
 // import {
 //   searchCocktailsByLetter,
