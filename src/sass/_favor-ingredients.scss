@@ -1,28 +1,28 @@
-// .favor-ingredient__list{
-//     padding-top: 60px;
-//     display: flex;
-//     flex-direction: column;
-//     gap: 20px;
-//     justify-content: center;
+.favor-ingredient{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
   
-//     @media screen and(min-width: 768px) {
-//       padding-top: 60px;
-//       display: flex;
-//       flex-direction: row;
-//       flex-wrap: wrap;
-//       gap: 32px;
-//     }
+    @media screen and(min-width: 768px) {
+      padding-top: 20px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
   
-//     @media screen and(min-width: 1280px) {
-//       padding-top: 60px;
-//       display: flex;
-//       flex-direction: row;
-//       flex-wrap: wrap;
-//       gap: 32px;
-//     }
-//   }
+    // @media screen and(min-width: 1280px) {
+    //   padding-top: 60px;
+    //   display: flex;
+    //   flex-direction: row;
+    //   flex-wrap: wrap;
+    //   gap: 32px;
+    // }
+  }
   
-  .ingredients-modal__card {
+  .favor-ingredient__card {
     width: 100%;
     border: 1px solid var(--var-accent-color);
     border-radius: 4px;
@@ -75,7 +75,7 @@
     &__btn {
         // width: 185px;
         // height: 48px;
-        padding: 12px 24px;
+        padding: 8px 16px;
         border-radius: 4px;
         font-family: $secondary-font;
         font-size: 20x;
