@@ -14,7 +14,8 @@ let searchParams = '';
 refs.ulListCocktails.addEventListener('click', onClick);
 
 function onClick(e) {
-    if(e.target.classList.value !== 'card__btn') {
+    
+    if(e.target.classList.value !== 'card__btn' || e.target == 'null') {
         return
     }
 

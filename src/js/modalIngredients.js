@@ -22,7 +22,7 @@ function onIngredientClick(evt) {
     let searchParams = evt.target.textContent;
 
     searchIngredientsByName(searchParams.trim()).then(data => {
-        const drink = data.ingredients[0];
+        const drink = data.ingredients;
         showIngredientCard(drink);
         // console.log(drink)
         name()
@@ -34,7 +34,7 @@ function onIngredientClick(evt) {
 }
 
 
-function showIngredientCard(drink) {
+export function showIngredientCard(drink) {
     toggleShowModal();
     clearIngredientList();
     addToIngredient(drink);
@@ -48,6 +48,7 @@ function onModalText() {
     const showMoreBtn = document.querySelector('.ingredients-modal__show-btn');
     const fullText = text.textContent;
     const shortText = truncateString(fullText, 300);
+    // showMoreBtn.classList.add('visually-hidden')
 
     text.innerHTML = shortText;
     showMoreBtn.addEventListener('click', (() => {
@@ -90,7 +91,8 @@ function clearIngredientList() {
     refs.ingredientsCard.innerHTML = '';
 }
 
-function createIngredientCard({ strIngredient, strType, strDescription, strAlcohol, idIngredient }) {
+function createIngredientCard(item) {
+    // const { strIngredient, strType, strDescription, strAlcohol, idIngredient } = item
     return `
     <button type="button" class="ingredients-modal__close" data-ingredients-modal-close>
         <svg width="18px" height="18px">
@@ -98,15 +100,15 @@ function createIngredientCard({ strIngredient, strType, strDescription, strAlcoh
         </svg>
     </button>
     <div class="ingredients-modal__card">
-        <h4 class="ingredients-modal__title"> ${strIngredient} </h4>
+        <h4 class="ingredients-modal__title"> ${item.strIngredient} </h4>
         <div class="ingredients-modal__line"></div>
-        <p class="ingredients-modal__text"> ${strDescription ? `${strDescription}` : 'This information will be added soon'}</p>
+        <p class="ingredients-modal__text"> ${item.strDescription ? `${item.strDescription}` : 'This information will be added soon'}</p>
         <button type="button" class='ingredients-modal__show-btn'>Show more</button>
         <ul class="ingredients-modal__list">
-            <li><p class="ingredients-modal__pretitle"> ${strType ? `✶ Type : ${strType}` : ''} </p></li>
-            <li><p class="ingredients-modal__pretitle"> ✶ Alcohol : ${strAlcohol} </p></li>
+            <li><p class="ingredients-modal__pretitle"> ${item.strType ? `✶ Type : ${item.strType}` : ''} </p></li>
+            <li><p class="ingredients-modal__pretitle"> ✶ Alcohol : ${item.strAlcohol} </p></li>
         </ul>
-        <button type="button" class="ingredients-modal__btn" id="${idIngredient}" data-ingredients-modal-btn>Add to favorite</button>
+        <button type="button" class="ingredients-modal__btn" id="${item.idIngredient}" data-ingredients-modal-btn>Add to favorite</button>
     </div>  `
 }
 
