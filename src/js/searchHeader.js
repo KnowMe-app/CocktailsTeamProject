@@ -20,10 +20,12 @@ function onSearchFormSubmit(event) {
   if (selectedLetter.length === 1) {
     searchCocktailsByLetter(selectedLetter).then(value => {
       renderPage(value.drinks);
+      window.location.href = '#cards';
     });
   } else {
     searchCocktailByName(selectedLetter).then(value => {
       renderPage(value.drinks);
+      window.location.href = '#cards';
 
       //function onLetterClick(event) {
       //  event.preventDefault();
