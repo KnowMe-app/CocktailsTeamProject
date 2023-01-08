@@ -12,6 +12,7 @@ const cardsTitle = document.querySelector('.cards-title');
 const svgCardIcon = document.querySelector('.card__icon');
 const favorCocktailsMain = document.querySelector('.favor-cocktails-main');
 const modal = document.querySelector('#modal');
+const hero = document.querySelector('.hero');
 
 const searchListEl = document.querySelector('.hero__search-list');
 const heroEl = document.querySelector('.hero');
@@ -99,6 +100,8 @@ function listFavorite() {
   const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
   cardsTitle.textContent = 'Favorite cocktails';
   markupCards.innerHTML = '';
+  hero.innerHTML = '';
+  hero.cl
 //<<<<<<< no-favorite-cocktail
   modal.classList.remove('modal_vis');
 
