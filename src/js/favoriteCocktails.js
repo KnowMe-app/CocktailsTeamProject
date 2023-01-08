@@ -101,7 +101,8 @@ function listFavorite() {
   cardsTitle.textContent = 'Favorite cocktails';
   markupCards.innerHTML = '';
   hero.innerHTML = '';
-  hero.cl
+  hero.style.paddingTop = "0";
+  hero.style.paddingBottom = "150px";
 //<<<<<<< no-favorite-cocktail
   modal.classList.remove('modal_vis');
 
