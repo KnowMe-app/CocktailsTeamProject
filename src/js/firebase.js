@@ -179,7 +179,6 @@ export function checkInFavourite(event, idFavorite) {
     perem.classList.add('favourite');
     if(perem === event.target.closest('.card__btn-add.cocktails-modal__btn')) {
       perem.textContent = 'Remove from favotite'
-      perem.style.width = '248px'
       perem.style.backgroundColor = '#fd5103'
     return
     }

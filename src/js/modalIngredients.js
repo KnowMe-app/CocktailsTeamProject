@@ -47,21 +47,28 @@ function onModalText() {
     const text = document.querySelector('.ingredients-modal__text');
     const showMoreBtn = document.querySelector('.ingredients-modal__show-btn');
     const fullText = text.textContent;
-    const shortText = truncateString(fullText, 300);
+    const shortText = truncateString(fullText, 300, showMoreBtn);
 
     text.innerHTML = shortText;
+    toggleShowMoreBtn(showMoreBtn)
     showMoreBtn.addEventListener('click', (() => {
         text.innerHTML = fullText
         refs.ingredientsCard.style.overflowY = "auto"
-        // showMoreBtn.classList.add('visually-hidden')
+        toggleShowMoreBtn(showMoreBtn)   
     }));
 }
 
-function truncateString(str, num) {
+function truncateString(str, num, showMoreBtn) {
     if (str.length <= num) {
         return str;
     }
-        return str.slice(0, num) + '...';
+    toggleShowMoreBtn(showMoreBtn)
+    return str.slice(0, num) + '...';
+        
+}
+
+function toggleShowMoreBtn(showMoreBtn) {
+    showMoreBtn.classList.toggle('visually-hidden')  
 }
 
 function closeModal() {
