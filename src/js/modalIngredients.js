@@ -1,8 +1,7 @@
-
-
 import { searchIngredientsByName } from './CocktailsApiService';
 import * as icons from '../images/icons.svg';
 import { name } from './favoriteIngredients';
+// import { checkIngredientFavouritePage } from './favoriteIngredients';
 
 const refs = {
     backdrop: document.querySelector('[data-ingredients-modal]'),
@@ -24,13 +23,9 @@ function onIngredientClick(evt) {
     searchIngredientsByName(searchParams.trim()).then(data => {
         const drink = data.ingredients[0];
         showIngredientCard(drink);
-        // console.log(drink)
-        name()
-        
-        
-    })
-
+        name();
     
+    })
 }
 
 
@@ -38,15 +33,13 @@ export function showIngredientCard(drink) {
     toggleShowModal();
     clearIngredientList();
     addToIngredient(drink);
-
-    const idIngredient = drink.idIngredient;
-    console.log("idIngredient", idIngredient);
-    const favoriteBtn = document.querySelector('.card__btn-add.ingredients-modal__btn')
-    chekModalFromLocalStorageIngr(idIngredient, favoriteBtn);
-
     onModalText();
     closeModal();
-    
+
+    const idIngredient = drink.idIngredient;
+    const favoriteBtn = document.querySelector('.ingredients-modal__btn');
+    chekModalFromLocalStorageIngr(idIngredient, favoriteBtn);
+    name();
 }
 
     function onModalText() {
@@ -95,7 +88,6 @@ function toggleShowModal() {
 }
 
 export function addToIngredient(drink)  {
-   
     refs.ingredientsCard.insertAdjacentHTML('beforeend', createIngredientCard(drink));
 }
 
@@ -126,13 +118,11 @@ function createIngredientCard({ strIngredient, strType, strDescription, strAlcoh
 function chekModalFromLocalStorageIngr(idIngredient, favoriteBtn) {
     if (localStorage.getItem('idIngredient')) {
         const dataFromStorage = JSON.parse(localStorage.getItem('idIngredient'));
-        console.log('dataFromStorage', dataFromStorage);
         for (const key in dataFromStorage) {
-            console.log('key', key);
             if (dataFromStorage[key] === idIngredient) {
-                console.log('=======');
                 favoriteBtn.classList.add('favourite');
-                favoriteBtn.textContent = 'Remove from'
+                favoriteBtn.textContent = 'Remove from favorite'
+
             }
         }
         

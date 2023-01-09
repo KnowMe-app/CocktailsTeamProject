@@ -40,7 +40,7 @@ function checkIngredientFavouritePage(event) {
   if (event.target.classList.contains('card__btn')) {
     onClick(event);
   } else {
-    const elemFavoriteIngr = event.target.closest('.card__btn-add');
+    const elemFavoriteIngr = event.target.closest('.card__btn-add') || event.target.closest('.ingredients-modal__btn');
     const idIngredient = elemFavoriteIngr.getAttribute('idingr');
     const obj = { [idIngredient]: idIngredient };
     
@@ -69,6 +69,7 @@ function chekInLocalStorageIngredients(idIngredient, obj, objFavorite) {
 
 // -------------- Click Рендерінг сторінки Фаворитів Інгридієнтів
 function listFavorite() {
+  console.log("markupIngr", markupIngr);
     modal.classList.remove('modal_vis')
     const dataFromStorageIngr = JSON.parse(localStorage.getItem('idIngredient'));
     
@@ -151,9 +152,6 @@ function onClick (event) {
   //  }
 
   const idIngredient = event.target.id;
-  // console.log(idIngredient);
-
-
   getIngredientById(idIngredient).then(data => {
 
     let dataForCard = data.ingredients[0];
