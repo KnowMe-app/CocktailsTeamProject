@@ -31,6 +31,8 @@ function showCocktailsCard(drink) {
     toggleModal();
     clearCocktailsCard();
     addToCocktails(drink);
+    const as = drink.idDrink
+    console.log(as)
     const favoriteBtn = document.querySelector('.card__btn-add.cocktails-modal__btn')
     favoriteBtn.addEventListener('click', onFavorite)
     closeModal();
@@ -109,22 +111,21 @@ function createCocktailCard(coctail) {
                 <ul class="cocktails-modal__list"> ${arr.slice(15)} </ul>
             </div>
         </div>
-        <button type="button" class="card__btn-add cocktails-modal__btn" ident="${idDrink}">
+        <button type="button" class="card__btn-add cocktails-modal__btn ingr" ident="${idDrink}">
         <span class="cocktails-modal__span">Add to favorite</span>
     </button>
     </div>
     </div> `
 }
 
-// function inFavoritePageIngr(favoriteBtn) {
-//     if (!favoriteBtn.classList.contains('ingr')) {
-//         return;
-//       } else {
-//         favoriteBtn.classList.add('favourite');
-//         favoriteBtn.textContent = 'Remove from';
-//       }
-    
-//     }
+function inFavoritePageIngr(favoriteBtn) {
+    if (!favoriteBtn.classList.contains('ingr')) {
+        return;
+    } else {
+        favoriteBtn.classList.add('favourite');
+        favoriteBtn.textContent = 'Remove from';
+}
+    }
 
 
 
