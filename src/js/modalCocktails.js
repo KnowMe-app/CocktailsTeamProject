@@ -31,6 +31,8 @@ function showCocktailsCard(drink) {
     toggleModal();
     clearCocktailsCard();
     addToCocktails(drink);
+    const idFavorite = drink.idDrink;
+    console.log("idFavorite", idFavorite);
     const favoriteBtn = document.querySelector('.card__btn-add.cocktails-modal__btn')
     favoriteBtn.addEventListener('click', onFavorite)
     closeModal();
