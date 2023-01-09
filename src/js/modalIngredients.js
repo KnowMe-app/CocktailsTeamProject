@@ -126,8 +126,11 @@ function createIngredientCard({ strIngredient, strType, strDescription, strAlcoh
 function chekModalFromLocalStorageIngr(idIngredient, favoriteBtn) {
     if (localStorage.getItem('idIngredient')) {
         const dataFromStorage = JSON.parse(localStorage.getItem('idIngredient'));
+        console.log('dataFromStorage', dataFromStorage);
         for (const key in dataFromStorage) {
+            console.log('key', key);
             if (dataFromStorage[key] === idIngredient) {
+                console.log('=======');
                 favoriteBtn.classList.add('favourite');
                 favoriteBtn.textContent = 'Remove from'
             }
