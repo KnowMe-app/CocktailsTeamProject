@@ -33,7 +33,7 @@
     position: relative;
     z-index: 1200;
     max-width: 320px;
-    width: 320x;
+    width: 320px;
     // height: 956px;
     margin: auto;
     // overflow-y: scroll;
@@ -232,6 +232,23 @@
             background-color: var(--var-accent-color);
             color: #f5f5f5;
             transition: background-color $transition-time $transition-function;
+        }
+    }
+
+    &__show-btn {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+
+        @media screen and (min-width: 768px) {
+            margin-bottom: 77px;
+        }
+    
+        &:hover,
+        &:focus {
+            color: var(--var-accent-color-lighter);
         }
     }
 }
