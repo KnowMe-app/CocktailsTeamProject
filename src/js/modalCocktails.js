@@ -34,6 +34,7 @@ function showCocktailsCard(drink) {
     const idFavorite = drink.idDrink;
     console.log("idFavorite", idFavorite);
     const favoriteBtn = document.querySelector('.card__btn-add.cocktails-modal__btn')
+    chekModalFromLocalStorage(idFavorite, favoriteBtn);
     favoriteBtn.addEventListener('click', onFavorite)
     closeModal();
     // inFavoritePageIngr(favoriteBtn) 
@@ -118,15 +119,15 @@ function createCocktailCard(coctail) {
     </div> `
 }
 
-// function inFavoritePageIngr(favoriteBtn) {
-//     if (!favoriteBtn.classList.contains('ingr')) {
-//         return;
-//       } else {
-//         favoriteBtn.classList.add('favourite');
-//         favoriteBtn.textContent = 'Remove from';
-//       }
-    
-//     }
-
-
-
+export function chekModalFromLocalStorage(idFavorite, favoriteBtn) {
+    if (localStorage.getItem('idFavorite')) {
+        const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
+        for (const key in dataFromStorage) {
+            if (dataFromStorage[key] === idFavorite) {
+                favoriteBtn.classList.add('favourite');
+                favoriteBtn.textContent = 'Remove from'
+            }
+        }
+        
+    }
+}
