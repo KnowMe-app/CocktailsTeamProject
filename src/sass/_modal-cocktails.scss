@@ -201,7 +201,18 @@
         font-size: 20px;
         line-height: 1.2;
         color: #FCFCFC;
-        background-color: var(--var-accent-color);
+        background-color: var(--var-accent-color-lighter);
+        &:hover {
+                background-color: #f5f5f5;
+                color: var(--var-accent-color);
+                transition: background-color $transition-time $transition-function;
+            }
+        
+            &:active {
+                background-color: var(--var-accent-color);
+                color: #f5f5f5;
+                transition: background-color $transition-time $transition-function;
+            }
     
         @media screen and (min-width: 768px) {
             // margin-left: 480px;
