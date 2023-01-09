@@ -30,13 +30,10 @@ favorCocktailsMain.addEventListener('click', listFavorite);
 export async function onFavorite(event) {
   // для авторизованих
   try {
+    if (!event.target.closest('.card__btn-add')) return;
     if (event.target.classList.contains('ingr')) return;
     const userId = getAuth().currentUser.uid;
     console.log(`Your login id is ${userId}`);
-
-    if (event.target.closest('.card__btn')) {
-      return;
-    }
 
     const elemFavorite =
       event.target.closest('.card__btn-add') ||
@@ -47,6 +44,7 @@ export async function onFavorite(event) {
     checkInFavourite(event, idFavorite); // Змінюємо сердечко і назву кнопки
   } catch {
   // для неавторизованих додається в localStorage
+    if (!event.target.closest('.card__btn-add')) return;
     if (event.target.classList.contains('ingr')) return;
     console.log('Please, login, to use God mode');
     if (event.target.closest('.card__btn')) {
