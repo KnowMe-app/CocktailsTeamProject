@@ -38,6 +38,12 @@ export function showIngredientCard(drink) {
     toggleShowModal();
     clearIngredientList();
     addToIngredient(drink);
+
+    const idIngredient = drink.idIngredient;
+    console.log("idIngredient", idIngredient);
+    const favoriteBtn = document.querySelector('.card__btn-add.ingredients-modal__btn')
+    chekModalFromLocalStorageIngr(idIngredient, favoriteBtn);
+
     onModalText();
     closeModal();
     
@@ -117,3 +123,15 @@ function createIngredientCard({ strIngredient, strType, strDescription, strAlcoh
     </div>  `
 }
 
+function chekModalFromLocalStorageIngr(idIngredient, favoriteBtn) {
+    if (localStorage.getItem('idIngredient')) {
+        const dataFromStorage = JSON.parse(localStorage.getItem('idIngredient'));
+        for (const key in dataFromStorage) {
+            if (dataFromStorage[key] === idIngredient) {
+                favoriteBtn.classList.add('favourite');
+                favoriteBtn.textContent = 'Remove from'
+            }
+        }
+        
+    }
+}
