@@ -1,8 +1,7 @@
-
-
 import { searchIngredientsByName } from './CocktailsApiService';
 import * as icons from '../images/icons.svg';
 import { name } from './favoriteIngredients';
+// import { checkIngredientFavouritePage } from './favoriteIngredients';
 
 const refs = {
     backdrop: document.querySelector('[data-ingredients-modal]'),
@@ -24,13 +23,9 @@ function onIngredientClick(evt) {
     searchIngredientsByName(searchParams.trim()).then(data => {
         const drink = data.ingredients[0];
         showIngredientCard(drink);
-        // console.log(drink)
-        name()
-        
-        
-    })
-
+        name();
     
+    })
 }
 
 
@@ -40,7 +35,11 @@ export function showIngredientCard(drink) {
     addToIngredient(drink);
     onModalText();
     closeModal();
-    
+
+    const idIngredient = drink.idIngredient;
+    const favoriteBtn = document.querySelector('.ingredients-modal__btn');
+    chekModalFromLocalStorageIngr(idIngredient, favoriteBtn);
+    name();
 }
 
     function onModalText() {
@@ -89,7 +88,6 @@ function toggleShowModal() {
 }
 
 export function addToIngredient(drink)  {
-   
     refs.ingredientsCard.insertAdjacentHTML('beforeend', createIngredientCard(drink));
 }
 
@@ -117,3 +115,16 @@ function createIngredientCard({ strIngredient, strType, strDescription, strAlcoh
     </div>  `
 }
 
+function chekModalFromLocalStorageIngr(idIngredient, favoriteBtn) {
+    if (localStorage.getItem('idIngredient')) {
+        const dataFromStorage = JSON.parse(localStorage.getItem('idIngredient'));
+        for (const key in dataFromStorage) {
+            if (dataFromStorage[key] === idIngredient) {
+                favoriteBtn.classList.add('favourite');
+                favoriteBtn.textContent = 'Remove from favorite'
+
+            }
+        }
+        
+    }
+}
