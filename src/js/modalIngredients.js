@@ -43,7 +43,7 @@ export function showIngredientCard(drink) {
     
 }
 
-function onModalText() {
+    function onModalText() {
     const text = document.querySelector('.ingredients-modal__text');
     const showMoreBtn = document.querySelector('.ingredients-modal__show-btn');
     const fullText = text.textContent;
