@@ -43,7 +43,7 @@ export async function onFavorite(event) {
 
     checkInFavourite(event, idFavorite); // Змінюємо сердечко і назву кнопки
   } catch {
-  // для неавторизованих додається в localStorage
+    // для неавторизованих додається в localStorage
     if (!event.target.closest('.card__btn-add')) return;
     if (event.target.classList.contains('ingr')) return;
     console.log('Please, login, to use God mode');
@@ -59,26 +59,26 @@ export async function onFavorite(event) {
 
     checkInFavourite(event, idFavorite); // Змінюємо сердечко і назву кнопки
     chekInLocalStorageFavorite(idFavorite, obj, objFavorite); // взаємодія з localStorage
-    }
+  }
 }
 
 // --------------- Перевірка localStorage. Додавання/видалення
 export function chekInLocalStorageFavorite(idFavorite, obj, objFavorite) {
-    if (localStorage.getItem('idFavorite')) {
-      const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
+  if (localStorage.getItem('idFavorite')) {
+    const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
 
-      if (dataFromStorage.hasOwnProperty(idFavorite)) {
-        removeFromLocalStorage(idFavorite, dataFromStorage);
-        localStorage.setItem('idFavorite', JSON.stringify(dataFromStorage));
-      } else {
-        objFavorite = { ...dataFromStorage, ...obj };
-        localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
-      }
+    if (dataFromStorage.hasOwnProperty(idFavorite)) {
+      removeFromLocalStorage(idFavorite, dataFromStorage);
+      localStorage.setItem('idFavorite', JSON.stringify(dataFromStorage));
     } else {
-      objFavorite = { ...obj };
+      objFavorite = { ...dataFromStorage, ...obj };
       localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
     }
+  } else {
+    objFavorite = { ...obj };
+    localStorage.setItem('idFavorite', JSON.stringify(objFavorite));
   }
+}
 
 // --------------- ФУНКЦІЯ видалення з localStorage
 export function removeFromLocalStorage(idFavorite, dataFromStorage) {
@@ -96,8 +96,8 @@ function listFavorite() {
   markupCards.innerHTML = '';
   markupIngr.innerHTML = '';
   hero.innerHTML = '';
-  hero.style.paddingTop = "0";
-  hero.style.paddingBottom = "150px";
+  hero.style.paddingTop = '0';
+  hero.style.paddingBottom = '150px';
 
   modal.classList.remove('modal_vis');
 
@@ -125,7 +125,7 @@ function listFavorite() {
   }
 }
 
-  // ------------------ Рендерінг із localStorage
+// ------------------ Рендерінг із localStorage
 function renderFromLocalStorage() {
   console.log('Please, login, to use God mode');
   const dataFromStorage = JSON.parse(localStorage.getItem('idFavorite'));
@@ -155,7 +155,7 @@ export function inFavoritePage(forBtnFavorite) {
 }
 
 //-----------------toggle between favorite cards markup and no favorite cocktail markup
-function markupToggle() {
+export function markupToggle() {
   noFavoriteCocktailMarkup.classList.toggle('is-hidden');
   heroEl.classList.toggle('is-hidden');
   cardsSectionEl.classList.toggle('is-hidden');

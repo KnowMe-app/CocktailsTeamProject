@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { getCocktailById } from './CocktailsApiService';
 import { markupCard } from './randomCocktailsCards';
-import { inFavoritePage } from './favoriteCocktails';
+import { inFavoritePage, markupToggle } from './favoriteCocktails';
 import {
   getAuth,
   signInWithPopup,
@@ -138,13 +138,39 @@ export async function removeIngrFromFav(searchParams) {
 
 ///---------------------------------------------------Get from Firebase
 export async function getFavouriteCocktails() {
+  const cardsSectionEl = document.querySelector('.section-cards');
   if (auth.currentUser) {
     // перевірка на логін
     const userId = auth.currentUser.uid;
     const dbRef = ref(getDatabase());
     return await get(child(dbRef, `favourite/${userId}/cocktails`))
       .then(snapshot => {
-        if (snapshot.exists()) {
+        if (!snapshot.exists()) {
+          if (!cardsSectionEl.classList.contains('is-hidden')) {
+            markupToggle();
+          }
+          return;
+        } else {
+          if (cardsSectionEl.classList.contains('is-hidden')) {
+            markupToggle();
+            // перевіряємо чи є взагалі збережені коктейлі на firebase
+            const data = snapshot.val(); // спеціальний метод отримання даних
+            const dataKeys = Object.keys(data); // ключ дорівнює назві пошукового запиту (коктейль / інгридієнт)
+
+            // рендеремо карточки
+            // - перебираємо коктейлі
+            for (const item of dataKeys) {
+              getCocktailById(item).then(data => {
+                let dataForCard = data.drinks;
+                markupCard(dataForCard, markupCards, 'favourite');
+
+                // - додаємо сердечко + Remove
+                let forBtnFavorite =
+                  markupCards.querySelectorAll('.card__btn-add');
+                inFavoritePage(forBtnFavorite);
+              });
+            }
+          }
           // перевіряємо чи є взагалі збережені коктейлі на firebase
           const data = snapshot.val(); // спеціальний метод отримання даних
           const dataKeys = Object.keys(data); // ключ дорівнює назві пошукового запиту (коктейль / інгридієнт)
@@ -156,13 +182,12 @@ export async function getFavouriteCocktails() {
               let dataForCard = data.drinks;
               markupCard(dataForCard, markupCards, 'favourite');
 
-          // - додаємо сердечко + Remove
-              let forBtnFavorite = markupCards.querySelectorAll('.card__btn-add');
+              // - додаємо сердечко + Remove
+              let forBtnFavorite =
+                markupCards.querySelectorAll('.card__btn-add');
               inFavoritePage(forBtnFavorite);
             });
           }
-
-
         }
       })
       .catch(error => {
@@ -173,13 +198,15 @@ export async function getFavouriteCocktails() {
 }
 
 export function checkInFavourite(event, idFavorite) {
-  const perem = event.target.closest('.card__btn-add') || event.target.closest('.card__btn-add.cocktails-modal__btn');
+  const perem =
+    event.target.closest('.card__btn-add') ||
+    event.target.closest('.card__btn-add.cocktails-modal__btn');
 
   if (!perem.classList.contains('favourite')) {
     perem.classList.add('favourite');
-    if(perem === event.target.closest('.card__btn-add.cocktails-modal__btn')) {
+    if (perem === event.target.closest('.card__btn-add.cocktails-modal__btn')) {
       perem.textContent = 'Remove from favotite';
-    return
+      return;
     }
     perem.firstElementChild.textContent = 'Remove';
     perem.lastElementChild.classList.remove('svg-default');
@@ -187,10 +214,10 @@ export function checkInFavourite(event, idFavorite) {
     addCocktailToFav(idFavorite);
   } else {
     perem.classList.remove('favourite');
-    
-    if(perem === event.target.closest('.card__btn-add.cocktails-modal__btn')) {
+
+    if (perem === event.target.closest('.card__btn-add.cocktails-modal__btn')) {
       perem.textContent = 'Add to favotite';
-    return
+      return;
     }
     perem.firstElementChild.textContent = 'Add to';
     perem.lastElementChild.classList.remove('favourite');
