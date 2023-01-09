@@ -111,9 +111,7 @@ function createCocktailCard(coctail) {
         if(strMeasureObj[i] === undefined){
             strMeasureObj[i] =  ""
         }
-        
         let array = `<li class="cocktails-modal__it"> <span> ✶ ${strMeasureObj[i]} </span> <a class="cocktails-modal__link" href = "${strIngredientsObj[i]}" > ${strIngredientsObj[i]} </a></li>`
-        // arr.push(array)
         arr += array
     }
 
