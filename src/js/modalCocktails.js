@@ -32,14 +32,42 @@ function showCocktailsCard(drink) {
     clearCocktailsCard();
     addToCocktails(drink);
     const idFavorite = drink.idDrink;
-    console.log("idFavorite", idFavorite);
+    // console.log("idFavorite", idFavorite);
     const favoriteBtn = document.querySelector('.card__btn-add.cocktails-modal__btn')
     chekModalFromLocalStorage(idFavorite, favoriteBtn);
     favoriteBtn.addEventListener('click', onFavorite)
+    onModalText()
     closeModal();
     // inFavoritePageIngr(favoriteBtn) 
 }
 
+function onModalText() {
+    const text = document.querySelector('.cocktails-modal__text');
+    const showMoreBtn = document.querySelector('.cocktails-modal__show-btn');
+    const fullText = text.textContent;
+    const shortText = truncateString(fullText, 300, showMoreBtn);
+
+    text.innerHTML = shortText;
+    toggleShowMoreBtn(showMoreBtn)
+    showMoreBtn.addEventListener('click', (() => {
+        text.innerHTML = fullText
+        refs.backdrop.style.overflowY = "auto"
+        toggleShowMoreBtn(showMoreBtn)   
+    }));
+}
+
+function truncateString(str, num, showMoreBtn) {
+    if (str.length <= num) {
+        return str;
+    }
+    toggleShowMoreBtn(showMoreBtn)
+    return str.slice(0, num) + '...';
+        
+}
+
+function toggleShowMoreBtn(showMoreBtn) {
+    showMoreBtn.classList.toggle('visually-hidden')  
+}
 
 function closeModal() {
     const closeModalBtn = document.querySelector('.cocktails-modal__close');
@@ -102,6 +130,7 @@ function createCocktailCard(coctail) {
             <div class="cocktails-modal__wraper">
                 <p class="cocktails-modal__pretitle">Instractions:</p>
                 <p class="cocktails-modal__text">${strInstructions}</p>
+                <button type="button" class='cocktails-modal__show-btn'>Show more</button>
             </div>
             <a class = "cocktails-modal__item" href = "${strDrinkThumb}">
                 <img class = "cocktails-modal__image"  src = "${strDrinkThumb}" alt = "${strGlass}" loading="lazy" width="280px" height="280px" />
