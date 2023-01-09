@@ -182,4 +182,16 @@
 }
 
 
-
+.card__btn-add .cocktails-modal__btn .favourite {
+    &:hover {
+        background-color: #f5f5f5;
+        color: var(--var-accent-color);
+        transition: background-color $transition-time $transition-function;
+    }
+    
+    &:active {
+        background-color: var(--var-accent-color);
+        color: #f5f5f5;
+        transition: background-color $transition-time $transition-function;
+    }
+}

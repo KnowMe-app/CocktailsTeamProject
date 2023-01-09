@@ -179,7 +179,7 @@ export function checkInFavourite(event, idFavorite) {
     perem.classList.add('favourite');
     if(perem === event.target.closest('.card__btn-add.cocktails-modal__btn')) {
       perem.textContent = 'Remove from favotite'
-      perem.style.backgroundColor = '#fd5103'
+      // perem.style.backgroundColor = '#fd5103'
     return
     }
     perem.firstElementChild.textContent = 'Remove'
@@ -190,9 +190,9 @@ export function checkInFavourite(event, idFavorite) {
     perem.classList.remove('favourite');
     
     if(perem === event.target.closest('.card__btn-add.cocktails-modal__btn')) {
-      perem.style.color = 'white'
+      // perem.style.color = 'white'
       perem.textContent = 'Add to favotite'
-      perem.style.border = '0'
+      // perem.style.border = '0'
     return
     }
     perem.firstElementChild.textContent = 'Add to'
