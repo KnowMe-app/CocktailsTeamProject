@@ -172,13 +172,17 @@
             margin-left: 320px;
             height: 164px;
             margin-bottom: 28px;
-        }
+        }      
     }
 
     &__it {
         display: flex;
         font-size: 16px;
         gap: 10px;
+        &:hover,
+        &:focus {
+            color: var(--var-accent-color-lighter);
+        }
     }
 
     &__link {
