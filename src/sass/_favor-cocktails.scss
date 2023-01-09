@@ -19,6 +19,7 @@
 // .favourite {
   //   color: green;
   //   font-size: 5px;
+//<<<<<<< favorite-23
   // fill: #fd5103;
   // color: #f5f5f5;
   // background-color: var(--var-accent-color-lighter);
@@ -34,3 +35,20 @@
 //       transition: background-color $transition-time $transition-function;
 //     }
 // }
+//=======
+  //fill: #fd5103;
+ 
+ 
+ // &:hover {
+ //     background-color: #f5f5f5;
+   //   color: var(--var-accent-color);
+  //    transition: background-color $transition-time $transition-function;
+ //   }
+  
+ //   &:active {
+ //     background-color: transparent;
+  //    color: var(--var-accent-color);
+ //     transition: background-color $transition-time $transition-function;
+//    }
+//}
+//>>>>>>> main
