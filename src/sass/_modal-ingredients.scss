@@ -85,6 +85,7 @@
         
         @media screen and (min-width: 768px) {
             margin-bottom: 10px;
+            margin-top: 10px;
         }
     }
 
@@ -96,12 +97,14 @@
         
         @media screen and (min-width: 768px) {
             margin-top: 68px;
+            margin-bottom: 0;
         }
     }
 
     &__list {
         @media screen and (min-width: 768px) {
             margin-bottom: 58px;
+            
         }
     }
 
@@ -152,6 +155,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        color: blue;
         
 
         @media screen and (min-width: 768px) {
