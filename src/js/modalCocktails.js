@@ -45,7 +45,7 @@ function onModalText() {
     const text = document.querySelector('.cocktails-modal__text');
     const showMoreBtn = document.querySelector('.cocktails-modal__show-btn');
     const fullText = text.textContent;
-    const shortText = truncateString(fullText, 300, showMoreBtn);
+    const shortText = truncateString(fullText, 550, showMoreBtn);
 
     text.innerHTML = shortText;
     toggleShowMoreBtn(showMoreBtn)
